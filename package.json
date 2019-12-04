@@ -1,6 +1,6 @@
 {
   "name": "ember-asset-size-report",
-  "version": "0.0.1-dev.0",
+  "version": "0.0.1",
   "description": "Asset size report generation for Ember.js apps",
   "main": "dist/index.js",
   "repository": "https://github.com/mike-north/ember-asset-size-report",
@@ -44,6 +44,7 @@
     "execa": "^3.4.0",
     "fs-extra": "^8.1.0",
     "ora": "^4.0.3",
+    "pkg-up": "^3.1.0",
     "rimraf": "^3.0.0",
     "terser": "^4.4.2",
     "walk-sync": "^2.0.2",
