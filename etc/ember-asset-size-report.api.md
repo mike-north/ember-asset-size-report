@@ -4,7 +4,8 @@
 
 ```ts
 
+// @public
+export function run(): Promise<void>;
 
-// (No @packageDocumentation comment for this package)
 
 ```

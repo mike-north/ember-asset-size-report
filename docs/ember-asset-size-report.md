@@ -4,3 +4,11 @@
 
 ## ember-asset-size-report package
 
+Asset size report generator
+
+## Functions
+
+|  Function | Description |
+|  --- | --- |
+|  [run()](./ember-asset-size-report.run.md) | Run the asset size report generator |
+

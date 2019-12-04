@@ -1,3 +1,9 @@
+/**
+ * Asset size report generator
+ *
+ * @packageDocumentation
+ */
+
 import * as fs from "fs-extra";
 import * as path from "path";
 
@@ -81,7 +87,12 @@ async function addPublicFiles(csv: StatsCsv, assetPath: string): Promise<void> {
   });
 }
 
-async function main() {
+/**
+ * Run the asset size report generator
+ *
+ * @public
+ */
+export async function run() {
   if (process.env.SKIP_BUILD === undefined) {
     // delete old concat-stats data
     await execa("rm", ["-rf", CONCAT_STATS_FOR_PATH]);
@@ -118,5 +129,3 @@ async function main() {
 
   SPIN.succeed(`Done. Total min + br: ${toKB(vendorBundle.brSize)}`);
 }
-
-main();
