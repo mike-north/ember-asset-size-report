@@ -34,6 +34,7 @@ async function maybeCreateEmberProdBuild() {
 
   const buildPromise = execa(EMBER_BIN_PATH, ["build", "-prod"], {
     env: {
+      CI: process.env.CI,
       CONCAT_STATS: "true",
       EMBER_DATA_ROLLUP_PRIVATE: "false"
     }
