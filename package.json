@@ -1,8 +1,8 @@
 {
   "name": "ember-asset-size-report",
-  "version": "0.0.0-dev.0",
+  "version": "0.0.0-dev.1",
   "description": "Asset size report generation for Ember.js apps",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/mike-north/ember-asset-size-report",
   "author": "Mike North <michael.l.north@gmail.com>",
   "license": "BSD-2-Clause",
