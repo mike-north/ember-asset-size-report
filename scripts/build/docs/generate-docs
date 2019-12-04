@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+yarn api-documenter markdown --input-folder temp --output-folder docs

@@ -1,0 +1,52 @@
+{
+  "name": "ember-asset-size-report",
+  "version": "0.0.0-dev.0",
+  "description": "Asset size report generation for Ember.js apps",
+  "main": "index.js",
+  "repository": "https://github.com/mike-north/ember-asset-size-report",
+  "author": "Mike North <michael.l.north@gmail.com>",
+  "license": "BSD-2-Clause",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "etc",
+    "docs"
+  ],
+  "devDependencies": {
+    "@microsoft/api-documenter": "^7.5.4",
+    "@microsoft/api-extractor": "^7.5.2",
+    "@types/execa": "^2.0.0",
+    "@types/fs-extra": "^8.0.1",
+    "@types/node": "12",
+    "@types/ora": "^3.2.0",
+    "@types/pkg-up": "^3.1.0",
+    "@types/rimraf": "^2.0.3",
+    "@types/terser": "^3.12.0",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "fs-extra": "^8.1.0",
+    "ora": "^4.0.3",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "scripty": "^1.9.1",
+    "tsd": "^0.10.0",
+    "typescript": "^3.7.2"
+  },
+  "scripts": {
+    "build": "scripty",
+    "build:docs": "scripty"
+  },
+  "dependencies": {
+    "execa": "^3.4.0",
+    "terser": "^4.4.2",
+    "walk-sync": "^2.0.2",
+    "zlib": "^1.0.5"
+  },
+  "volta": {
+    "node": "12.13.1",
+    "yarn": "1.19.2"
+  }
+}

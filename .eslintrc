@@ -1,0 +1,28 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/no-explicit-any": 0
+  },
+  "overrides": [
+    {
+      "files": ["bin/**/*"],
+      "parser": "babel",
+      "parserOptions": {
+        "extraFileExtensions": ""
+      },
+      "env": { "commonjs": true, "node": true }
+    }
+  ]
+}
