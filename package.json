@@ -1,6 +1,6 @@
 {
   "name": "ember-asset-size-report",
-  "version": "0.0.0-dev.2",
+  "version": "0.0.0-dev.3",
   "description": "Asset size report generation for Ember.js apps",
   "main": "dist/index.js",
   "repository": "https://github.com/mike-north/ember-asset-size-report",
@@ -32,9 +32,8 @@
     "eslint-config-prettier": "^6.6.0",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
     "scripty": "^1.9.1",
-    "tsd": "^0.10.0",
+    "tsd": "^0.11.0",
     "typescript": "^3.7.2"
   },
   "scripts": {
@@ -42,9 +41,10 @@
     "build:docs": "scripty"
   },
   "dependencies": {
+    "execa": "^3.4.0",
     "fs-extra": "^8.1.0",
     "ora": "^4.0.3",
-    "execa": "^3.4.0",
+    "rimraf": "^3.0.0",
     "terser": "^4.4.2",
     "walk-sync": "^2.0.2",
     "zlib": "^1.0.5"

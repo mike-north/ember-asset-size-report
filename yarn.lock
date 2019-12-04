@@ -940,21 +940,6 @@ execa@^0.7.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-execa@^2.0.4:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/execa/-/execa-2.1.0.tgz#e5d3ecd837d2a60ec50f3da78fd39767747bbe99"
-  integrity sha512-Y/URAVapfbYy2Xp/gb6A0E7iR8xeqOCXsuuaoMn7A5PzrXUK84E1gyiEfq0wQd/GHA6GsoHWwhNq8anb0mleIw==
-  dependencies:
-    cross-spawn "^7.0.0"
-    get-stream "^5.0.0"
-    is-stream "^2.0.0"
-    merge-stream "^2.0.0"
-    npm-run-path "^3.0.0"
-    onetime "^5.1.0"
-    p-finally "^2.0.0"
-    signal-exit "^3.0.2"
-    strip-final-newline "^2.0.0"
-
 expand-brackets@^2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/expand-brackets/-/expand-brackets-2.1.4.tgz#b77735e315ce30f6b6eff0f83b04151a22449622"
@@ -1912,13 +1897,6 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-npm-run-path@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-3.1.0.tgz#7f91be317f6a466efed3c9f2980ad8a4ee8b0fa5"
-  integrity sha512-Dbl4A/VfiVGLgQv29URL9xshU8XDY1GeLy+fsaZ1AA8JDSfjvr5P5+pzRbWqRSBxk6/DW7MIh8lTM/PaGnP2kg==
-  dependencies:
-    path-key "^3.0.0"
-
 npm-run-path@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-4.0.0.tgz#d644ec1bd0569187d2a52909971023a0a58e8438"
@@ -2742,13 +2720,12 @@ trim-newlines@^2.0.0:
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-2.0.0.tgz#b403d0b91be50c331dfc4b82eeceb22c3de16d20"
   integrity sha1-tAPQuRvlDDMd/EuC7s6yLD3hbSA=
 
-tsd@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/tsd/-/tsd-0.10.0.tgz#092e5dbfdccaab89fd31e75a43a2e67411bcfff9"
-  integrity sha512-Gj/GoGBoskUJHZnja8V936sMAs3daHjZDQCqYQWMWEm4kNZLzYHvAAdV+apeg3mjsxMmvt8FByOM1AnYDdo+6g==
+tsd@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/tsd/-/tsd-0.11.0.tgz#ede8b8e85850845b753fff7eaaf68dbd3673700b"
+  integrity sha512-klKMNC0KRzUIaLJG8XqkvH/9rKwYX74xpqJBN8spWjYUDojAesd6AfDCT5dray+yhLfTGkem7O3nU6i4KwzNDw==
   dependencies:
     eslint-formatter-pretty "^1.3.0"
-    execa "^2.0.4"
     globby "^9.1.0"
     meow "^5.0.0"
     path-exists "^3.0.0"
