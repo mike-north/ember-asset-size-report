@@ -8,5 +8,5 @@
 
 |  Package | Description |
 |  --- | --- |
-|  [ember-asset-size-report](./ember-asset-size-report.md) | Asset size report generator |
+|  [ember-asset-size-report](./ember-asset-size-report.md) |  |
 

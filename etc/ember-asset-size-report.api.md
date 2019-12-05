@@ -4,8 +4,82 @@
 
 ```ts
 
-// @public
-export function run(): Promise<void>;
+import { ExecaChildProcess } from 'execa';
 
+// @public
+export function generateReport(projectPath?: string, reportPath?: string): Promise<void>;
+
+// @beta
+export class Project {
+    constructor(projectPath: string, spinner?: ISpinner | undefined);
+    // (undocumented)
+    get brotliOutPath(): string;
+    // (undocumented)
+    build(): Promise<void>;
+    // (undocumented)
+    get concatStatsPath(): string;
+    // (undocumented)
+    get distPath(): string;
+    static emberNewInTemp(appName: string, spinner?: ISpinner): Promise<Project>;
+    // (undocumented)
+    getAllBundles(): {
+        bundle: Bundle;
+        name: string;
+    }[];
+    // (undocumented)
+    readonly projectPath: string;
+    // Warning: (ae-forgotten-export) The symbol "ISpinner" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    spinner?: ISpinner | undefined;
+    }
+
+// @beta
+export class ReportGenerator {
+    constructor(project: Project, reportPath: string);
+    // (undocumented)
+    analyze(): Promise<void>;
+    // Warning: (ae-forgotten-export) The symbol "StatsCsv" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    protected csv: StatsCsv;
+    // (undocumented)
+    protected project: Project;
+    // (undocumented)
+    protected reportPath: string;
+    // (undocumented)
+    save(): Promise<void>;
+    // (undocumented)
+    protected get spinner(): ISpinner | undefined;
+}
+
+// @beta
+export class Spinner implements ISpinner {
+    constructor();
+    // (undocumented)
+    info(text: string): this;
+    // (undocumented)
+    render(): this;
+    // (undocumented)
+    spinAndPipeOutput(pr: ExecaChildProcess<string>): void;
+    // (undocumented)
+    spinAndPipeOutputToStream(from: NodeJS.ReadableStream, to: NodeJS.WritableStream): void;
+    // (undocumented)
+    start(text: string): this;
+    // (undocumented)
+    succeed(text: string): this;
+    // (undocumented)
+    succeedAndStart(str: string): void;
+    // (undocumented)
+    get text(): string;
+    set text(txt: string);
+}
+
+
+// Warnings were encountered during analysis:
+//
+// dist/ember-project.d.ts:25:9 - (ae-forgotten-export) The symbol "Bundle" needs to be exported by the entry point index.d.ts
+
+// (No @packageDocumentation comment for this package)
 
 ```

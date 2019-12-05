@@ -4,11 +4,17 @@
 
 ## ember-asset-size-report package
 
-Asset size report generator
+## Classes
+
+|  Class | Description |
+|  --- | --- |
+|  [Project](./ember-asset-size-report.project.md) | <b><i>(BETA)</i></b> A "controller" for an ember-cli project |
+|  [ReportGenerator](./ember-asset-size-report.reportgenerator.md) | <b><i>(BETA)</i></b> Report generation utility |
+|  [Spinner](./ember-asset-size-report.spinner.md) | <b><i>(BETA)</i></b> Loading spinner |
 
 ## Functions
 
 |  Function | Description |
 |  --- | --- |
-|  [run()](./ember-asset-size-report.run.md) | Run the asset size report generator |
+|  [generateReport(projectPath, reportPath)](./ember-asset-size-report.generatereport.md) | Generate the report |
 

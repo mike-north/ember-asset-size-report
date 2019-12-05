@@ -1,52 +1,81 @@
 import * as fs from "fs-extra";
 import * as path from "path";
-import { BROT_OUT_DIR } from "./paths";
-import { SPIN, spinnerSucceedAndStart } from "./spinner";
-import { minify, brotliCompress, gzipCompress } from "./compression";
-import { toKB } from "./formatting";
+import { brotliCompress, gzipCompress, minify } from "./compression";
+import EmberProject from "./ember-project";
 import File from "./file";
+import { toKB } from "./formatting";
 import StatsCsv from "./stats-csv";
+import { ISpinner } from "./spinner";
+
+class BundleStats {
+  public contents = fs.readJsonSync(
+    path.join(this.project.concatStatsPath, this.bundleName)
+  );
+  public constructor(
+    private project: EmberProject,
+    private bundleName: string
+  ) {}
+
+  public get sizes(): { [k: string]: number } {
+    return this.contents.sizes;
+  }
+}
+
+interface BundleSizes {
+  minSize: number;
+  brSize: number;
+  gzSize: number;
+  size: number;
+
+  sum: number;
+  minSum: number;
+  gzSum: number;
+  brSum: number;
+}
 
 /**
  * Asset size stats relating to a specific client-side JS bundle
  */
 class Bundle {
-  workingDir: string;
-  statsPath: string;
-  minSize: number = 0;
-  _minifiedSize?: number;
-  brSize: number = 0;
-  gzSize: number = 0;
-  statsFileContents: any;
-  bundleFiles: File[] = [];
-  _hasGathered = false;
-  /**
-   * @param statsFolder path to the concat-stats folder
-   * @param bundleName bundle filename
-   */
-  constructor(statsFolder: string, public bundleName: string) {
-    this.statsPath = path.join(statsFolder, bundleName);
+  private stats = new BundleStats(this.project, this.bundleName);
+  private bundleFiles: File[] = Object.keys(this.stats.sizes).map(
+    fileName =>
+      new File(this.project, this, fileName, this.stats.sizes[fileName])
+  );
 
-    // strip trailing .json extension
-    this.workingDir = this.statsPath.slice(0, -5);
+  public workingDir = this.project.concatStatsPath.slice(0, -5);
 
-    // read the stats data
-    this.statsFileContents = fs.readJsonSync(this.statsPath);
-
-    for (let fileName in this.statsFileContents.sizes) {
-      this.bundleFiles.push(
-        new File(this, fileName, this.statsFileContents.sizes[fileName])
+  private _sizes?: BundleSizes;
+  public get sizes(): BundleSizes {
+    if (!this._sizes)
+      throw new Error(
+        "Attempted to access bundle sizes before they were calculated"
       );
-    }
+    return this._sizes;
+  }
+  /**
+   * Create a new bundle
+   *
+   * @param project - ember-cli project
+   * @param bundleName - bundle filename
+   */
+  public constructor(
+    private project: EmberProject,
+    public bundleName: string
+  ) {}
 
-    this.minSize = 0;
-    this.brSize = 0;
+  public get name(): string {
+    return this.bundleName.split(/^[0-9]+-/)[1].replace(".json", "");
+  }
+
+  protected get spinner(): ISpinner | undefined {
+    return this.project.spinner;
   }
 
   /**
    * The contents of the entire bundle
    */
-  get contents() {
+  public get contents(): string {
     return this.bundleFiles.map(f => f.contents).join(";\n");
   }
 
@@ -55,109 +84,146 @@ class Bundle {
    * such that the summation of the bundle's contents add up to the total
    * size of the bundle.
    */
-  async calculateMinifiedSizes() {
-    if (this._hasGathered) {
+  public async calculateMinifiedSizes(): Promise<void> {
+    if (this._sizes) {
       // don't re-run
       return;
     }
-    SPIN.text += " - measuring overall bundle size";
-    SPIN.render();
-    const resultDir = path.join(BROT_OUT_DIR, "bundles", this.bundleName);
 
-    if (process.env.WRITE_MODULE_VARIANTS) {
-      // write "original" asset
-      fs.ensureDirSync(resultDir);
-      const originalFilePath = path.join(
-        resultDir,
-        "original" + path.extname(this.bundleName.replace(".json", ""))
-      );
-      fs.writeFileSync(originalFilePath, this.contents, "utf8");
-      SPIN.info(
-        `Original - ${originalFilePath} (${toKB(
-          fs.statSync(originalFilePath).size
-        )} KB)`
-      ).start();
-    }
-    let minifiedResult = minify(this.contents);
+    if (this.spinner) this.spinner.text += " - measuring overall bundle size";
+    this.spinner?.render();
+
+    const bundleResultsDir = path.join(
+      this.project.brotliOutPath,
+      "bundles",
+      this.bundleName
+    );
+
+    // write "original" asset
+    fs.ensureDirSync(bundleResultsDir);
+    const originalFilePath = path.join(
+      bundleResultsDir,
+      "original" + path.extname(this.name)
+    );
+
+    fs.writeFileSync(originalFilePath, this.contents, "utf8");
+    const size = fs.statSync(originalFilePath).size;
+
+    this.spinner
+      ?.info(`Original - ${originalFilePath} (${toKB(size)} KB)`)
+      .start();
+
+    const minifiedResult = minify(this.contents);
     if (!minifiedResult)
       throw new Error("No minified result code from " + this.contents);
 
-    this._minifiedSize = Buffer.byteLength(minifiedResult);
-    if (process.env.WRITE_MODULE_VARIANTS) {
-      // write "minified" asset
-      const minFilePath = path.join(
-        resultDir,
-        "minified.min" + path.extname(this.bundleName.replace(".json", ""))
-      );
-      fs.writeFileSync(minFilePath, minifiedResult, "utf8");
-      SPIN.info(
+    const minSize = Buffer.byteLength(minifiedResult);
+    // write "minified" asset
+    const minFilePath = path.join(
+      bundleResultsDir,
+      "minified.min" + path.extname(this.name)
+    );
+    fs.writeFileSync(minFilePath, minifiedResult, "utf8");
+    this.spinner
+      ?.info(
         `Minified - ${minFilePath} (${toKB(fs.statSync(minFilePath).size)} KB)`
-      ).start();
-    }
-    SPIN.succeed(
-      `Gathering minified bundle sizes: measured bundle (${toKB(
-        this._minifiedSize
-      )}Kb)`
-    ).start("Gathering minified bundle sizes: measuring individual files...");
+      )
+      .start();
+    this.spinner
+      ?.succeed(
+        `Gathering minified bundle sizes: measured bundle (${toKB(minSize)}Kb)`
+      )
+      .start("Gathering minified bundle sizes: measuring individual files...");
 
-    SPIN.text = `Gathering minified bundle sizes: measuring individual files...${this.bundleName}`;
-    let gzResult = await gzipCompress(minifiedResult);
-    this.gzSize = Buffer.byteLength(gzResult);
-    if (process.env.WRITE_MODULE_VARIANTS) {
-      const gzFilePath = path.join(
-        resultDir,
-        "compressed.gz" + path.extname(this.bundleName.replace(".json", ""))
-      );
-      fs.writeFileSync(gzFilePath, gzResult, "utf8");
-      SPIN.info(
-        `Gzip - ${gzFilePath} (${toKB(fs.statSync(gzFilePath).size)} KB)`
-      ).start();
-    }
+    if (this.spinner)
+      this.spinner.text = `Gathering minified bundle sizes: measuring individual files...${this.bundleName}`;
+    const gzResult = await gzipCompress(minifiedResult);
+    const gzSize = Buffer.byteLength(gzResult);
+    const gzFilePath = path.join(
+      bundleResultsDir,
+      "compressed.gz" + path.extname(this.bundleName.replace(".json", ""))
+    );
+    fs.writeFileSync(gzFilePath, gzResult, "utf8");
+    this.spinner
+      ?.info(`Gzip - ${gzFilePath} (${toKB(fs.statSync(gzFilePath).size)} KB)`)
+      .start();
 
-    let brResult = await brotliCompress(minifiedResult);
-    this.brSize = Buffer.byteLength(brResult);
-    if (process.env.WRITE_MODULE_VARIANTS) {
-      const brFilePath = path.join(
-        resultDir,
-        "compressed.br" + path.extname(this.bundleName.replace(".json", ""))
-      );
-      fs.writeFileSync(brFilePath, brResult, "utf8");
-      SPIN.info(
-        `Brotli ${brFilePath} (${toKB(fs.statSync(brFilePath).size)} KB)`
-      ).start();
-    }
-    SPIN.start(
+    const brResult = await brotliCompress(minifiedResult);
+    const brSize = Buffer.byteLength(brResult);
+    const brFilePath = path.join(
+      bundleResultsDir,
+      "compressed.br" + path.extname(this.bundleName.replace(".json", ""))
+    );
+    fs.writeFileSync(brFilePath, brResult, "utf8");
+    this.spinner
+      ?.info(`Brotli ${brFilePath} (${toKB(fs.statSync(brFilePath).size)} KB)`)
+      .start();
+
+    this.spinner?.start(
       `Gathering minified bundle sizes: measuring individual files...`
     );
-    for (let file of this.bundleFiles) {
-      let oldtxt = SPIN.text;
-      SPIN.text += file.fileName;
-      SPIN.render();
-      await file.gatherMinifiedSize();
-      SPIN.text = oldtxt;
-    }
-
-    this.minSize = this.bundleFiles.reduce(
-      (total, file) => (total += file.minSize),
-      0
+    await Promise.all(
+      this.bundleFiles.map(async file => {
+        const oldtxt = this.spinner?.text;
+        if (this.spinner) this.spinner.text += file.fileName;
+        this.spinner?.render();
+        try {
+          await file.gatherSizes();
+        } catch (e) {
+          console.error(
+            "Problem gathering minified size of file: " +
+              file.fileName +
+              "\n" +
+              e
+          );
+        }
+        if (this.spinner) this.spinner.text = "" + oldtxt;
+      })
     );
-    this._hasGathered = true;
-    this._minifiedSize = Buffer.byteLength(minifiedResult);
-    spinnerSucceedAndStart(
+
+    const sums = this.bundleFiles.reduce(
+      ({ sum, minSum, brSum, gzSum }, file) => {
+        return {
+          sum: sum + file.sizes.size,
+          minSum: minSum + file.sizes.minSize,
+          brSum: brSum + file.sizes.brSize,
+          gzSum: gzSum + file.sizes.gzSize
+        };
+      },
+      {
+        sum: 0,
+        minSum: 0,
+        gzSum: 0,
+        brSum: 0
+      }
+    );
+    this._sizes = {
+      ...sums,
+      gzSize,
+      minSize,
+      size,
+      brSize
+    };
+    console.log(this.name, this._sizes);
+    this.spinner?.succeedAndStart(
       `Gathering minified bundle sizes: measured minified bundle (${toKB(
-        this.minSize
-      )}Kb)`
+        brSize
+      )}KB br+min)`
     );
   }
 
-  async addFile(file: File) {
+  public addFile(file: File): void {
     this.bundleFiles.push(file);
   }
-  async prepareCSV(file: StatsCsv) {
-    SPIN.start("Gathering minified bundle sizes");
+  public async prepareCSV(csv: StatsCsv): Promise<void> {
+    this.spinner?.start("Gathering minified bundle sizes");
     await this.calculateMinifiedSizes();
-    SPIN.succeed("Gathered minified bundle sizes");
-    this.bundleFiles.forEach(f => file.addRow(f.fileName, f));
+    if (!this._sizes) throw new Error("Bundle sizes could not be calculated");
+    this.spinner?.succeed("Gathered minified bundle sizes");
+    this.bundleFiles.forEach(f =>
+      csv.addFileRow(f.fileName, f.bundleName, f.sizes)
+    );
+    csv.addBundleRow(this.name, this._sizes);
   }
 }
 

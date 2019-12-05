@@ -1,71 +1,124 @@
-// @ts-check
-"use strict";
-
 import * as fs from "fs-extra";
 import * as path from "path";
 
-import { BROT_OUT_DIR, PROJECT_PATH } from "./paths";
-
-import { minify } from "./compression";
+import { minify, gzipCompress, brotliCompress } from "./compression";
 import Bundle from "./bundle";
+import EmberProject from "./ember-project";
 
+interface FileSizes {
+  size: number;
+  minSize: number;
+  brSize: number;
+  gzSize: number;
+
+  bundlePortion: number;
+
+  individualGzSize: number;
+  individualBrSize: number;
+}
+
+/**
+ * File within a bundle, within a project
+ *
+ * @alpha
+ */
 export default class File {
-  _realpath: string;
-  minSize: number = 0;
-  contents: string;
-  fileSamplesDir: string;
+  public _realpath: string = path.join(this.bundle.workingDir, this.fileName);
+  public contents: string = fs.readFileSync(this._realpath, "utf8");
+  public fileSamplesDir: string = path.join(
+    this.project.brotliOutPath,
+    this._realpath.replace(this.project.projectPath, "")
+  );
+  private _sizes?: FileSizes;
+  public get sizes(): FileSizes {
+    if (!this._sizes)
+      throw new Error(
+        "Attempted to access file sizes before they were calculated"
+      );
+    return this._sizes;
+  }
+  public get bundlePortion(): number {
+    return this.sizes.minSize / this.bundle.sizes.minSize;
+  }
+
   /**
-   *
-   * @param  bundle
-   * @param  fileName
-   * @param  size
+   * @param bundle - bundle that this file belongs to
+   * @param fileName - name of this file
+   * @param size - size reported by broccoli-concat-stats
    */
-  constructor(
+  public constructor(
+    protected project: EmberProject,
     protected bundle: Bundle,
     public fileName: string,
-    public size: number = 0
+    private reportedSize: number
   ) {
-    this._realpath = path.join(bundle.workingDir, fileName);
-
-    this.minSize = 0;
-
-    this.contents = fs.readFileSync(this._realpath, "utf8");
-    this.fileSamplesDir = path.join(
-      BROT_OUT_DIR,
-      this._realpath.replace(PROJECT_PATH, "")
-    );
     fs.ensureDirSync(this.fileSamplesDir);
-    if (process.env.WRITE_MODULE_VARIANTS) {
-      const originalPath = path.join(
-        this.fileSamplesDir,
-        "original" + path.extname(this._realpath)
-      );
-      fs.writeFileSync(originalPath, this.contents, "utf8");
-    }
+    const originalPath = path.join(
+      this.fileSamplesDir,
+      "original" + path.extname(this._realpath)
+    );
+    fs.writeFileSync(originalPath, this.contents, "utf8");
+  }
+  public get bundleName(): string {
+    return this.bundle.name;
   }
 
-  async gatherMinifiedSize() {
-    let minifiedResult = minify(this.contents);
+  public async gatherSizes(): Promise<void> {
+    const size = new Buffer(this.contents).length;
+    const trimmedContents = this.contents.trim();
+
+    // minified
+    const minifiedResult =
+      trimmedContents.length === 0 ? new Buffer("") : minify(trimmedContents);
     if (!minifiedResult)
-      throw new Error("No minified result code from " + this.contents);
-    this.minSize = Buffer.byteLength(minifiedResult);
-    if (process.env.WRITE_MODULE_VARIANTS) {
-      const minifiedPath = path.join(
-        this.fileSamplesDir,
-        "minified.min" + path.extname(this._realpath)
+      throw new Error(
+        "No minified result code from: " +
+          this.fileName +
+          "\n---" +
+          trimmedContents +
+          "\n---"
       );
-      fs.writeFileSync(minifiedPath, minifiedResult, "utf8");
-    }
-  }
 
-  get brSize() {
-    let percentageOfBundle = this.minSize / this.bundle.minSize;
+    const minSize = Buffer.byteLength(minifiedResult);
 
-    return this.bundle.brSize * percentageOfBundle;
-  }
-  get gzSize() {
-    let percentageOfBundle = this.minSize / this.bundle.minSize;
+    // gzip
+    const pGzippedContents = gzipCompress(minifiedResult);
+    // brotli
+    const pBrotliContents = brotliCompress(minifiedResult);
 
-    return this.bundle.gzSize * percentageOfBundle;
+    const [gzippedContents, brotliContents] = await Promise.all([
+      pGzippedContents,
+      pBrotliContents
+    ]);
+    const individualGzSize = Buffer.byteLength(gzippedContents);
+    const individualBrSize = Buffer.byteLength(gzippedContents);
+    // minified
+    const minifiedPath = path.join(
+      this.fileSamplesDir,
+      "min" + path.extname(this._realpath)
+    );
+    fs.writeFileSync(minifiedPath, minifiedResult, "utf8");
+    // gzip
+    const gzPath = path.join(
+      this.fileSamplesDir,
+      "min.gz" + path.extname(this._realpath)
+    );
+    fs.writeFileSync(gzPath, gzippedContents, "utf8");
+    // brotli
+    const brPath = path.join(
+      this.fileSamplesDir,
+      "min.br" + path.extname(this._realpath)
+    );
+    fs.writeFileSync(brPath, brotliContents, "utf8");
+    const bundlePct = this.sizes.minSize / this.bundle.sizes.minSize;
+    this._sizes = {
+      size,
+      bundlePortion: bundlePct,
+      brSize: this.bundle.sizes.brSize * bundlePct,
+      gzSize: this.bundle.sizes.gzSize * bundlePct,
+      minSize,
+      individualBrSize,
+      individualGzSize
+    };
   }
 }

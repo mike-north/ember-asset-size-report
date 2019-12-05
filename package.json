@@ -24,23 +24,29 @@
     "@types/node": "12",
     "@types/ora": "^3.2.0",
     "@types/pkg-up": "^3.1.0",
+    "@types/qunit": "^2.9.0",
     "@types/rimraf": "^2.0.3",
     "@types/terser": "^3.12.0",
+    "@types/tmp": "^0.1.0",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.6.0",
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.19.1",
+    "qunit": "^2.9.3",
     "scripty": "^1.9.1",
     "tsd": "^0.11.0",
     "typescript": "^3.7.2"
   },
   "scripts": {
     "build": "scripty",
-    "build:docs": "scripty"
+    "build:docs": "scripty",
+    "pretest": "yarn rimraf test-js && yarn tsc -p test",
+    "test": "yarn qunit 'test-js/**/*.test.js'"
   },
   "dependencies": {
+    "ember-cli": "^3.14.0",
     "execa": "^3.4.0",
     "fs-extra": "^8.1.0",
     "ora": "^4.0.3",
@@ -48,7 +54,8 @@
     "rimraf": "^3.0.0",
     "terser": "^4.4.2",
     "walk-sync": "^2.0.2",
-    "zlib": "^1.0.5"
+    "zlib": "^1.0.5",
+    "tmp": "^0.1.0"
   },
   "volta": {
     "node": "12.13.1",
