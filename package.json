@@ -6,7 +6,7 @@
   "repository": "https://github.com/mike-north/ember-asset-size-report",
   "author": "Mike North <michael.l.north@gmail.com>",
   "license": "BSD-2-Clause",
-  "types": "dist/index.d.ts",
+  "types": "dist/ember-asset-size-report.d.ts",
   "files": [
     "dist",
     "etc",

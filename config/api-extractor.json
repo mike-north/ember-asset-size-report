@@ -182,9 +182,9 @@
      * (REQUIRED) Whether to generate the .d.ts rollup file.
      */
     "enabled": true,
-    "untrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>.d.ts",
+    "untrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>-untrimmed.d.ts",
     "betaTrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>-beta.d.ts",
-    "publicTrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>-public.d.ts"
+    "publicTrimmedFilePath": "<projectFolder>/dist/<unscopedPackageName>.d.ts"
     /**
      * Specifies the output path for a .d.ts rollup file to be generated without any trimming.
      * This file will include all declarations that are exported by the main entry point.
