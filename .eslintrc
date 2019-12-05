@@ -10,6 +10,8 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+
+  "env": { "node": true, "es6": true },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": 2,
@@ -29,7 +31,7 @@
     },
     {
       "files": ["bin/**/*"],
-      "parser": "babel",
+      "parser": "babel-eslint",
       "parserOptions": {
         "extraFileExtensions": ""
       },
