@@ -6,7 +6,8 @@
     "strict": true,
     "declaration": true,
     "sourceMap": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "stripInternal": true
   },
   "include": ["src"]
 }

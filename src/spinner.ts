@@ -1,18 +1,52 @@
-import * as ora from "ora";
 import { ExecaChildProcess } from "execa";
-import * as walkSync from "walk-sync";
-
-import Bundle from "./bundle";
+import * as ora from "ora";
 
 const PLEASE_WAIT_TEXT = "Please wait...";
 
-export interface ISpinner {
-  succeed(msg: string): ISpinner;
-  spinAndPipeOutput(child: ExecaChildProcess<string>): void;
-  start(msg?: string): ISpinner;
-  info(msg: string): ISpinner;
+/**
+ * A loading spinner
+ * @beta
+ */
+export interface SpinnerLike {
+  /**
+   * Print a success message to the console
+   * @param text - success message
+   */
+  succeed(msg: string): SpinnerLike;
+  /**
+   * Pipe output from a child process to the console, while
+   * continuing to spin
+   * @param pr - child process (i.e., from `execa`)
+   * @internal
+   */
+  spinAndPipeOutput(child: {
+    stdout: NodeJS.ReadableStream | null;
+    stderr: NodeJS.ReadableStream | null;
+  }): void;
+
+  /**
+   * Start spinning
+   * @param text - spinner text
+   */
+  start(msg?: string): SpinnerLike;
+  /**
+   * Print an info message to the console
+   * @param text - info message
+   */
+  info(msg: string): SpinnerLike;
+  /**
+   * Print a success message to the console, and resume spinning
+   * @param str - success message
+   */
   succeedAndStart(msg: string): void;
+  /**
+   * Paint a frame of the spinner
+   * @internal
+   */
   render(): void;
+  /**
+   * Spinner text
+   */
   text: string;
 }
 
@@ -21,26 +55,37 @@ export interface ISpinner {
  *
  * @beta
  */
-class Spinner implements ISpinner {
+class Spinner implements SpinnerLike {
   private _spin = ora();
-  constructor() {
+  public constructor() {
     this._spin.start(PLEASE_WAIT_TEXT);
   }
-  succeedAndStart(str: string) {
+
+  /** {@inheritDoc SpinnerLike.succeedAndStart} */
+  public succeedAndStart(str: string): void {
     this._spin.succeed(str).start(PLEASE_WAIT_TEXT);
   }
-  get text() {
+  /** {@inheritDoc SpinnerLike.text} */
+  public get text(): string {
     return this._spin.text;
   }
-  set text(txt: string) {
+  public set text(txt: string) {
     this._spin.text = txt;
   }
 
-  spinAndPipeOutputToStream(
+  /**
+   * Keep the spinner going, while piping data from one stream to another
+   *
+   * @param from - stream to read from
+   * @param to - stream to write to
+   *
+   * @internal
+   */
+  private spinAndPipeOutputToStream(
     from: NodeJS.ReadableStream,
     to: NodeJS.WritableStream
-  ) {
-    const listener = (data: string | Buffer) => {
+  ): void {
+    const listener = (data: string | Buffer): void => {
       this._spin.clear();
       to.write(data);
       this._spin.render();
@@ -48,23 +93,42 @@ class Spinner implements ISpinner {
     from.on("data", listener);
     from.on("close", () => from.off("data", listener));
   }
-  start(text: string) {
+
+  /** {@inheritDoc SpinnerLike.start} */
+  public start(text: string): Spinner {
     this._spin.start(text);
     return this;
   }
-  succeed(text: string) {
+
+  /** {@inheritDoc SpinnerLike.succeed} */
+  public succeed(text: string): Spinner {
     this._spin.succeed(text);
     return this;
   }
-  info(text: string) {
+
+  /** {@inheritDoc SpinnerLike.info} */
+  public info(text: string): Spinner {
     this._spin.info(text);
     return this;
   }
-  render() {
+
+  /**
+   * @internal
+   * {@inheritDoc SpinnerLike.render}
+   **/
+  public render(): Spinner {
     this._spin.render();
     return this;
   }
-  spinAndPipeOutput(pr: ExecaChildProcess<string>) {
+
+  /**
+   * @internal
+   * {@inheritDoc SpinnerLike.spinAndPipeOutput}
+   **/
+  public spinAndPipeOutput(pr: {
+    stdout: NodeJS.ReadableStream | null;
+    stderr: NodeJS.ReadableStream | null;
+  }): void {
     pr.stdout && this.spinAndPipeOutputToStream(pr.stdout, process.stdout);
     pr.stderr && this.spinAndPipeOutputToStream(pr.stderr, process.stderr);
   }

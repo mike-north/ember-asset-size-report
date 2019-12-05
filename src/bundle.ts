@@ -2,50 +2,104 @@ import * as fs from "fs-extra";
 import * as path from "path";
 import { brotliCompress, gzipCompress, minify } from "./compression";
 import EmberProject from "./ember-project";
-import File from "./file";
+import Module from "./module";
 import { toKB } from "./formatting";
-import StatsCsv from "./stats-csv";
-import { ISpinner } from "./spinner";
-
+import Stats from "./stats-csv";
+import { SpinnerLike } from "./spinner";
+import { BaseSize } from "./types";
+/**
+ * @internal
+ */
 class BundleStats {
+  /**
+   * @internal
+   */
   public contents = fs.readJsonSync(
     path.join(this.project.concatStatsPath, this.bundleName)
   );
+  /**
+   * Create a new bundle stats object
+   * @param project ember-cli project
+   * @param bundleName name of the bundle that these stats pertain to
+   *
+   * @beta
+   */
   public constructor(
     private project: EmberProject,
     private bundleName: string
   ) {}
 
+  /**
+   * Get module size information for the contents
+   * of this bundle
+   *
+   * @beta
+   */
   public get sizes(): { [k: string]: number } {
     return this.contents.sizes;
   }
 }
 
-interface BundleSizes {
-  minSize: number;
-  brSize: number;
-  gzSize: number;
-  size: number;
-
+/**
+ * Size information pertaining to a bundle
+ * @beta
+ */
+export interface BundleSizes extends BaseSize {
+  /**
+   * @internal
+   */
   sum: number;
+  /**
+   * @internal
+   */
   minSum: number;
+  /**
+   * @internal
+   */
   gzSum: number;
+  /**
+   * @internal
+   */
   brSum: number;
 }
 
 /**
  * Asset size stats relating to a specific client-side JS bundle
+ *
+ * @beta
  */
 class Bundle {
   private stats = new BundleStats(this.project, this.bundleName);
-  private bundleFiles: File[] = Object.keys(this.stats.sizes).map(
-    fileName =>
-      new File(this.project, this, fileName, this.stats.sizes[fileName])
+  private bundleFiles: Module[] = Object.keys(this.stats.sizes).map(
+    fileName => new Module(this, fileName, this.stats.sizes[fileName])
   );
 
+  /**
+   * @internal
+   */
   public workingDir = this.project.concatStatsPath.slice(0, -5);
 
   private _sizes?: BundleSizes;
+
+  /**
+   * Create a new bundle
+   *
+   * @param project - ember-cli project
+   * @param bundleName - bundle filename
+   */
+  public constructor(
+    /**
+     * The project that this bundle belongs to
+     */
+    public readonly project: EmberProject,
+    /**
+     * This bundle's raw name
+     */
+    private readonly bundleName: string
+  ) {}
+  /**
+   * Size information pertaining to this bundle
+   */
   public get sizes(): BundleSizes {
     if (!this._sizes)
       throw new Error(
@@ -54,21 +108,13 @@ class Bundle {
     return this._sizes;
   }
   /**
-   * Create a new bundle
-   *
-   * @param project - ember-cli project
-   * @param bundleName - bundle filename
+   * The name of this bundle
    */
-  public constructor(
-    private project: EmberProject,
-    public bundleName: string
-  ) {}
-
   public get name(): string {
     return this.bundleName.split(/^[0-9]+-/)[1].replace(".json", "");
   }
 
-  protected get spinner(): ISpinner | undefined {
+  private get spinner(): SpinnerLike | undefined {
     return this.project.spinner;
   }
 
@@ -80,11 +126,11 @@ class Bundle {
   }
 
   /**
-   * Determine the minified sizes of all of the files within the bundle,
+   * Determine the sizes of all of the files within the bundle,
    * such that the summation of the bundle's contents add up to the total
    * size of the bundle.
    */
-  public async calculateMinifiedSizes(): Promise<void> {
+  public async calculateSizes(): Promise<void> {
     if (this._sizes) {
       // don't re-run
       return;
@@ -165,16 +211,13 @@ class Bundle {
     await Promise.all(
       this.bundleFiles.map(async file => {
         const oldtxt = this.spinner?.text;
-        if (this.spinner) this.spinner.text += file.fileName;
+        if (this.spinner) this.spinner.text += file.name;
         this.spinner?.render();
         try {
-          await file.gatherSizes();
+          await file.calculateSizes();
         } catch (e) {
           console.error(
-            "Problem gathering minified size of file: " +
-              file.fileName +
-              "\n" +
-              e
+            "Problem gathering minified size of file: " + file.name + "\n" + e
           );
         }
         if (this.spinner) this.spinner.text = "" + oldtxt;
@@ -212,18 +255,31 @@ class Bundle {
     );
   }
 
-  public addFile(file: File): void {
+  /**
+   * Explicitly add a file to this bundle
+   *
+   * @param file - file to add to the bundle
+   *
+   * @beta
+   */
+  public addFile(file: Module): void {
     this.bundleFiles.push(file);
   }
-  public async prepareCSV(csv: StatsCsv): Promise<void> {
+  /**
+   * Prepare a stats report with asset size data pertaining to this module
+   * @param data - stats report
+   *
+   * @beta
+   */
+  public async prepareStats(data: Stats): Promise<void> {
     this.spinner?.start("Gathering minified bundle sizes");
-    await this.calculateMinifiedSizes();
+    await this.calculateSizes();
     if (!this._sizes) throw new Error("Bundle sizes could not be calculated");
     this.spinner?.succeed("Gathered minified bundle sizes");
     this.bundleFiles.forEach(f =>
-      csv.addFileRow(f.fileName, f.bundleName, f.sizes)
+      data.addFileRow(f.name, f.bundle.name, f.sizes)
     );
-    csv.addBundleRow(this.name, this._sizes);
+    data.addBundleRow(this.name, this._sizes);
   }
 }
 

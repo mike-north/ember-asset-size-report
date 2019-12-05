@@ -7,11 +7,25 @@
 > This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
 > 
 
+Run "ember build"
+
 <b>Signature:</b>
 
 ```typescript
-build(): Promise<void>;
+build(opts?: {
+        env: {
+            [k: string]: string;
+        };
+        flags: string[];
+    }): Promise<void>;
 ```
+
+## Parameters
+
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  opts | <code>{</code><br/><code>        env: {</code><br/><code>            [k: string]: string;</code><br/><code>        };</code><br/><code>        flags: string[];</code><br/><code>    }</code> | command options |
+
 <b>Returns:</b>
 
 `Promise<void>`

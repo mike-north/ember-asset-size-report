@@ -12,7 +12,7 @@ Loading spinner
 <b>Signature:</b>
 
 ```typescript
-declare class Spinner implements ISpinner 
+declare class Spinner implements SpinnerLike 
 ```
 
 ## Constructors
@@ -25,17 +25,14 @@ declare class Spinner implements ISpinner
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [text](./ember-asset-size-report.spinner.text.md) |  | <code>string</code> | <b><i>(BETA)</i></b> |
+|  [text](./ember-asset-size-report.spinner.text.md) |  | <code>string</code> | <b><i>(BETA)</i></b> Spinner text |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [info(text)](./ember-asset-size-report.spinner.info.md) |  | <b><i>(BETA)</i></b> |
-|  [render()](./ember-asset-size-report.spinner.render.md) |  | <b><i>(BETA)</i></b> |
-|  [spinAndPipeOutput(pr)](./ember-asset-size-report.spinner.spinandpipeoutput.md) |  | <b><i>(BETA)</i></b> |
-|  [spinAndPipeOutputToStream(from, to)](./ember-asset-size-report.spinner.spinandpipeoutputtostream.md) |  | <b><i>(BETA)</i></b> |
-|  [start(text)](./ember-asset-size-report.spinner.start.md) |  | <b><i>(BETA)</i></b> |
-|  [succeed(text)](./ember-asset-size-report.spinner.succeed.md) |  | <b><i>(BETA)</i></b> |
-|  [succeedAndStart(str)](./ember-asset-size-report.spinner.succeedandstart.md) |  | <b><i>(BETA)</i></b> |
+|  [info(text)](./ember-asset-size-report.spinner.info.md) |  | <b><i>(BETA)</i></b> Print an info message to the console |
+|  [start(text)](./ember-asset-size-report.spinner.start.md) |  | <b><i>(BETA)</i></b> Start spinning |
+|  [succeed(text)](./ember-asset-size-report.spinner.succeed.md) |  | <b><i>(BETA)</i></b> Print a success message to the console |
+|  [succeedAndStart(str)](./ember-asset-size-report.spinner.succeedandstart.md) |  | <b><i>(BETA)</i></b> Print a success message to the console, and resume spinning |
 

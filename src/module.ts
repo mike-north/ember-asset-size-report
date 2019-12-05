@@ -4,52 +4,79 @@ import * as path from "path";
 import { minify, gzipCompress, brotliCompress } from "./compression";
 import Bundle from "./bundle";
 import EmberProject from "./ember-project";
+import { BaseSize } from "./types";
+/**
+ * Size information pertaining to a module
+ *
+ * @beta
+ */
+export interface ModuleSizes extends BaseSize {
+  /**
+   * The portion of this module's bundle's size that this module is responsible for
+   */
+  minifiedBundlePortion: number;
 
-interface FileSizes {
-  size: number;
-  minSize: number;
-  brSize: number;
-  gzSize: number;
-
-  bundlePortion: number;
-
+  /**
+   * The gzipped size of this module _when compressed individually_
+   */
   individualGzSize: number;
+  /**
+   * The brotli'd size of this module _when compressed individually_
+   */
   individualBrSize: number;
 }
 
 /**
  * File within a bundle, within a project
  *
- * @alpha
+ * @beta
  */
-export default class File {
-  public _realpath: string = path.join(this.bundle.workingDir, this.fileName);
+export default class Module {
+  private _realpath: string = path.join(this.bundle.workingDir, this.name);
+  /**
+   * The contents of this module
+   */
   public contents: string = fs.readFileSync(this._realpath, "utf8");
-  public fileSamplesDir: string = path.join(
-    this.project.brotliOutPath,
-    this._realpath.replace(this.project.projectPath, "")
+  /**
+   * The folder in which "specimens" (minified and compressed variants of the file) will be written
+   */
+  private fileSamplesDir: string = path.join(
+    this.bundle.project.brotliOutPath,
+    this._realpath.replace(this.bundle.project.path, "")
   );
-  private _sizes?: FileSizes;
-  public get sizes(): FileSizes {
+  private _sizes?: ModuleSizes;
+
+  /**
+   * Size information pertaining to this module
+   */
+  public get sizes(): ModuleSizes {
     if (!this._sizes)
       throw new Error(
         "Attempted to access file sizes before they were calculated"
       );
     return this._sizes;
   }
-  public get bundlePortion(): number {
+  /**
+   * The percentage of size that this module contributes to its minified bundle
+   */
+  public get minifiedBundlePortion(): number {
     return this.sizes.minSize / this.bundle.sizes.minSize;
   }
 
   /**
    * @param bundle - bundle that this file belongs to
-   * @param fileName - name of this file
-   * @param size - size reported by broccoli-concat-stats
+   * @param name - name of this file
+   * @param reportedSize - size reported by broccoli-concat-stats
    */
   public constructor(
-    protected project: EmberProject,
-    protected bundle: Bundle,
-    public fileName: string,
+    /**
+     * The bundle that this module belongs to
+     */
+    public readonly bundle: Bundle,
+    /**
+     * This module's name
+     */
+    public readonly name: string,
     private reportedSize: number
   ) {
     fs.ensureDirSync(this.fileSamplesDir);
@@ -59,11 +86,11 @@ export default class File {
     );
     fs.writeFileSync(originalPath, this.contents, "utf8");
   }
-  public get bundleName(): string {
-    return this.bundle.name;
-  }
 
-  public async gatherSizes(): Promise<void> {
+  /**
+   * Determinze size information for this module
+   */
+  public async calculateSizes(): Promise<void> {
     const size = new Buffer(this.contents).length;
     const trimmedContents = this.contents.trim();
 
@@ -73,7 +100,7 @@ export default class File {
     if (!minifiedResult)
       throw new Error(
         "No minified result code from: " +
-          this.fileName +
+          this.name +
           "\n---" +
           trimmedContents +
           "\n---"
@@ -113,7 +140,7 @@ export default class File {
     const bundlePct = this.sizes.minSize / this.bundle.sizes.minSize;
     this._sizes = {
       size,
-      bundlePortion: bundlePct,
+      minifiedBundlePortion: bundlePct,
       brSize: this.bundle.sizes.brSize * bundlePct,
       gzSize: this.bundle.sizes.gzSize * bundlePct,
       minSize,

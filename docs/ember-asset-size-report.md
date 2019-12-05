@@ -8,13 +8,25 @@
 
 |  Class | Description |
 |  --- | --- |
+|  [Bundle](./ember-asset-size-report.bundle.md) | <b><i>(BETA)</i></b> Asset size stats relating to a specific client-side JS bundle |
+|  [Module](./ember-asset-size-report.module.md) | <b><i>(BETA)</i></b> File within a bundle, within a project |
 |  [Project](./ember-asset-size-report.project.md) | <b><i>(BETA)</i></b> A "controller" for an ember-cli project |
 |  [ReportGenerator](./ember-asset-size-report.reportgenerator.md) | <b><i>(BETA)</i></b> Report generation utility |
 |  [Spinner](./ember-asset-size-report.spinner.md) | <b><i>(BETA)</i></b> Loading spinner |
+|  [Stats](./ember-asset-size-report.stats.md) | <b><i>(BETA)</i></b> |
 
 ## Functions
 
 |  Function | Description |
 |  --- | --- |
 |  [generateReport(projectPath, reportPath)](./ember-asset-size-report.generatereport.md) | Generate the report |
+
+## Interfaces
+
+|  Interface | Description |
+|  --- | --- |
+|  [BaseSize](./ember-asset-size-report.basesize.md) | <b><i>(BETA)</i></b> Bundle or module size information |
+|  [BundleSizes](./ember-asset-size-report.bundlesizes.md) | <b><i>(BETA)</i></b> Size information pertaining to a bundle |
+|  [ModuleSizes](./ember-asset-size-report.modulesizes.md) | <b><i>(BETA)</i></b> Size information pertaining to a module |
+|  [SpinnerLike](./ember-asset-size-report.spinnerlike.md) | <b><i>(BETA)</i></b> A loading spinner |
 

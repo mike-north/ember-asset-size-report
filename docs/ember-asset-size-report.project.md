@@ -19,23 +19,19 @@ declare class EmberProject
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(projectPath, spinner)](./ember-asset-size-report.project._constructor_.md) |  | <b><i>(BETA)</i></b> Setup a preexisting project |
+|  [(constructor)(path, spinner)](./ember-asset-size-report.project._constructor_.md) |  | <b><i>(BETA)</i></b> Setup a preexisting project |
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [brotliOutPath](./ember-asset-size-report.project.brotlioutpath.md) |  | <code>string</code> | <b><i>(BETA)</i></b> |
-|  [concatStatsPath](./ember-asset-size-report.project.concatstatspath.md) |  | <code>string</code> | <b><i>(BETA)</i></b> |
-|  [distPath](./ember-asset-size-report.project.distpath.md) |  | <code>string</code> | <b><i>(BETA)</i></b> |
-|  [projectPath](./ember-asset-size-report.project.projectpath.md) |  | <code>string</code> | <b><i>(BETA)</i></b> |
-|  [spinner](./ember-asset-size-report.project.spinner.md) |  | <code>ISpinner &#124; undefined</code> | <b><i>(BETA)</i></b> |
+|  [path](./ember-asset-size-report.project.path.md) |  | <code>string</code> | <b><i>(BETA)</i></b> Path on disk to the root of the project |
+|  [spinner](./ember-asset-size-report.project.spinner.md) |  | <code>SpinnerLike &#124; undefined</code> | <b><i>(BETA)</i></b> Optional loading spinner to report progress |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [build()](./ember-asset-size-report.project.build.md) |  | <b><i>(BETA)</i></b> |
+|  [build(opts)](./ember-asset-size-report.project.build.md) |  | <b><i>(BETA)</i></b> Run "ember build" |
 |  [emberNewInTemp(appName, spinner)](./ember-asset-size-report.project.embernewintemp.md) | <code>static</code> | <b><i>(BETA)</i></b> Create a new app via <code>ember new</code> in a temporary folder |
-|  [getAllBundles()](./ember-asset-size-report.project.getallbundles.md) |  | <b><i>(BETA)</i></b> |
 

@@ -6,8 +6,18 @@ import * as tmp from "tmp";
 import * as rimraf from "rimraf";
 import * as walkSync from "walk-sync";
 
-import { ISpinner } from "./spinner";
+import { SpinnerLike } from "./spinner";
 import Bundle from "./bundle";
+
+export interface CommandOptions {
+  env: { [k: string]: string };
+  flags: string[];
+}
+
+const DEFAULT_EMBER_BUILD_OPTIONS: CommandOptions = {
+  env: { EMBER_DATA_ROLLUP_PRIVATE: "false" },
+  flags: ["-prod"]
+};
 
 /**
  * A "controller" for an ember-cli project
@@ -20,10 +30,12 @@ class EmberProject {
    *
    * @param appName - name of the ember app
    * @param spinner - optional loading spinner
+   *
+   * @beta
    */
-  static async emberNewInTemp(
+  public static async emberNewInTemp(
     appName: string,
-    spinner?: ISpinner
+    spinner?: SpinnerLike
   ): Promise<EmberProject> {
     const folder = tmp.dirSync();
     const pkgJsonPath = pkgUp.sync();
@@ -56,45 +68,108 @@ class EmberProject {
 
   /**
    * Setup a preexisting project
-   * @param projectPath - path to the ember-cli project
+   * @param path - path to the ember-cli project
    * @param spinner - optional loading spinner to report progress
+   *
+   * @beta
    */
-  constructor(public readonly projectPath: string, public spinner?: ISpinner) {
+  public constructor(
+    /**
+     * Path on disk to the root of the project
+     */
+    public readonly path: string,
+    /**
+     * Optional loading spinner to report progress
+     */
+    public readonly spinner?: SpinnerLike
+  ) {
     rimraf.sync(this.brotliOutPath);
     fs.ensureDirSync(this.brotliOutPath);
   }
 
-  getAllBundles() {
+  /**
+   * Get a list of (optionally filtered) bundles available in this
+   * ember app's build
+   *
+   * @param filter - optional filtering function
+   *
+   * @internal
+   */
+  public getAllBundles(
+    filter: (s: string) => boolean = (): boolean => true
+  ): { name: string; bundle: Bundle }[] {
     return walkSync(this.concatStatsPath, {
       directories: false,
       globs: ["*.js.json"]
-    }).map(s => ({
-      bundle: new Bundle(this, s),
-      name: s.split(/^[0-9]+\-/)[1].replace(".json", "")
-    }));
+    })
+      .map(s => ({
+        statsFolderName: s,
+        name: s.split(/^[0-9]+-/)[1].replace(".json", "")
+      }))
+      .filter(({ name }) => filter(name))
+      .map(({ statsFolderName, name }) => ({
+        bundle: new Bundle(this, statsFolderName),
+        name
+      }));
   }
 
-  private get emberBinPath() {
-    return path.join(this.projectPath, "node_modules", ".bin", "ember");
+  /**
+   * @internal
+   */
+  private get emberBinPath(): string {
+    return path.join(this.path, "node_modules", ".bin", "ember");
   }
-  public get brotliOutPath() {
-    return path.join(this.projectPath, ".brotli-out");
+  /**
+   * @internal
+   */
+  public get brotliOutPath(): string {
+    return path.join(this.path, ".brotli-out");
   }
 
-  public get concatStatsPath() {
-    return path.join(this.projectPath, "concat-stats-for");
+  /**
+   * @internal
+   */
+  public get concatStatsPath(): string {
+    return path.join(this.path, "concat-stats-for");
   }
-  public get distPath() {
-    return path.join(this.projectPath, "dist");
+  /**
+   * @internal
+   */
+  public get distPath(): string {
+    return path.join(this.path, "dist");
   }
 
-  async build() {
+  /**
+   * Run "ember build"
+   * @param opts - command options
+   */
+  public async build(opts?: {
+    env: { [k: string]: string };
+    flags: string[];
+  }): Promise<void> {
+    const { env, flags } = {
+      ...DEFAULT_EMBER_BUILD_OPTIONS,
+      ...(opts ?? {}),
+      env: { ...DEFAULT_EMBER_BUILD_OPTIONS.env, ...((opts ?? {}).env ?? {}) }
+    };
     if (process.env.SKIP_BUILD === undefined) {
       // delete old concat-stats data
-      let child = execa("rm", ["-rf", this.concatStatsPath]);
+      const child = execa("rm", ["-rf", this.concatStatsPath]);
       this.spinner?.spinAndPipeOutput(child);
       await child;
-      await this.maybeCreateEmberProdBuild(this.emberBinPath, this.projectPath); // ember build -prod
+
+      this.spinner?.start(
+        "Creating production build. This will take a minute or two..."
+      );
+      if (this.path !== process.cwd()) {
+        this.spinner?.info("Using working directory: " + this.path);
+      }
+      await this.cmd(this.emberBinPath, ["build", ...flags], {
+        ...env,
+        CONCAT_STATS: "true"
+      });
+
+      this.spinner?.succeedAndStart("Completed production build.");
     }
   }
 
@@ -102,9 +177,9 @@ class EmberProject {
     command: string,
     args: string[],
     env: { [k: string]: string }
-  ) {
+  ): Promise<void> {
     const child = execa(command, args, {
-      cwd: this.projectPath,
+      cwd: this.path,
       env: {
         ...process.env,
         ...env
@@ -117,38 +192,64 @@ class EmberProject {
     this.spinner?.spinAndPipeOutput(child);
     await child;
   }
-  private async ember(args: string[], env: { [k: string]: string } = {}) {
+  /**
+   * Run an ember-cli command, in the working directory of this project
+   *
+   * @param args  - arguments to pass to the command
+   * @param env - environment variables
+   *
+   * @internal
+   */
+  private async ember(
+    args: string[],
+    env: { [k: string]: string } = {}
+  ): Promise<void> {
     return this.cmd("ember", args, env);
   }
-  private async yarn(args: string[], env: { [k: string]: string } = {}) {
+  /**
+   * Run a `yarn` command in the working directory of this project
+   *
+   * @param args - arguments to pass to the command
+   * @param env - environment variables
+   *
+   * @internal
+   */
+  private async yarn(
+    args: string[],
+    env: { [k: string]: string } = {}
+  ): Promise<void> {
     return this.cmd("yarn", args, env);
   }
-  private async installAddon(name: string) {
+  /**
+   * Install an ember addon to this project
+   * @param name - addon to install
+   *
+   * @internal
+   */
+  private async installAddon(name: string): Promise<void> {
     await this.ember(["install", name]);
   }
-  private async installDevDep(name: string) {
-    await this.yarn(["add", "-D", name]);
-  }
-  private async installDep(name: string) {
-    await this.yarn(["add", name]);
-  }
-
   /**
-   * Create a production build of the ember app
+   * Install a devDependency via yarn
+   *
+   * @param name - npm package name to install as a devDependency
+   * @param target - version target of the package
+   *
+   * @internal
    */
-  private async maybeCreateEmberProdBuild(emberPath: string, cwd: string) {
-    this.spinner?.start(
-      "Creating production build. This will take a minute or two..."
-    );
-    if (cwd !== process.cwd()) {
-      this.spinner?.info("Using working directory: " + cwd);
-    }
-    await this.cmd(this.emberBinPath, ["build", "-prod"], {
-      CONCAT_STATS: "true",
-      EMBER_DATA_ROLLUP_PRIVATE: "false"
-    });
-
-    this.spinner?.succeedAndStart("Completed production build.");
+  private async installDevDep(name: string, target = "latest"): Promise<void> {
+    await this.yarn(["add", "-D", `${name}@${target}`]);
+  }
+  /**
+   * Install a dependency via yarn
+   *
+   * @param name - npm package name to install as a devDependency
+   * @param target - version target of the package
+   *
+   * @internal
+   */
+  private async installDep(name: string, target = "latest"): Promise<void> {
+    await this.yarn(["add", `${name}@${target}`]);
   }
 }
 

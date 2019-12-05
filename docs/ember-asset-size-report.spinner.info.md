@@ -7,19 +7,21 @@
 > This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
 > 
 
+Print an info message to the console
+
 <b>Signature:</b>
 
 ```typescript
-info(text: string): this;
+info(text: string): Spinner;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  text | <code>string</code> |  |
+|  text | <code>string</code> | info message |
 
 <b>Returns:</b>
 
-`this`
+`Spinner`
 

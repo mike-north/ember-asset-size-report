@@ -12,7 +12,7 @@ Create a new app via `ember new` in a temporary folder
 <b>Signature:</b>
 
 ```typescript
-static emberNewInTemp(appName: string, spinner?: ISpinner): Promise<EmberProject>;
+static emberNewInTemp(appName: string, spinner?: SpinnerLike): Promise<EmberProject>;
 ```
 
 ## Parameters
@@ -20,7 +20,7 @@ static emberNewInTemp(appName: string, spinner?: ISpinner): Promise<EmberProject
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  appName | <code>string</code> | name of the ember app |
-|  spinner | <code>ISpinner</code> | optional loading spinner |
+|  spinner | <code>SpinnerLike</code> | optional loading spinner |
 
 <b>Returns:</b>
 

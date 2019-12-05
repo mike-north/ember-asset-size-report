@@ -5,8 +5,8 @@ import Bundle from "./bundle";
 import { brotliCompress, gzipCompress } from "./compression";
 import EmberProject from "./ember-project";
 import { toKB } from "./formatting";
-import Spinner, { ISpinner } from "./spinner";
-import StatsCsv from "./stats-csv";
+import Spinner, { SpinnerLike } from "./spinner";
+import Stats from "./stats-csv";
 
 /**
  * Report generation utility
@@ -15,19 +15,20 @@ import StatsCsv from "./stats-csv";
  */
 class ReportGenerator {
   public constructor(
-    protected project: EmberProject,
-    protected reportPath: string
+    private project: EmberProject,
+    private reportPath: string = "module-size-report.csv"
   ) {}
 
+  /**
+   * Save the report to disk
+   */
   public async save(): Promise<void> {
     await this.csv.save(this.project);
   }
   // create a container to hold Csv data
-  protected csv = new StatsCsv(
-    path.join(process.cwd(), "module-size-report.csv")
-  );
+  private csv = new Stats(path.join(process.cwd(), this.reportPath));
 
-  protected get spinner(): ISpinner | undefined {
+  private get spinner(): SpinnerLike | undefined {
     return this.project.spinner;
   }
   /**
@@ -42,7 +43,7 @@ class ReportGenerator {
     const en_US = fs.readFileSync(assetPath);
     const brSize = Buffer.byteLength(await brotliCompress(en_US));
     const gzSize = Buffer.byteLength(await gzipCompress(en_US, { level: 9 }));
-    const bundlePortion = 1;
+    const minifiedBundlePortion = 1;
     this.spinner?.succeedAndStart(
       `determined bundle size of asset: ${assetPath} (${toKB(
         brSize
@@ -53,12 +54,15 @@ class ReportGenerator {
       minSize,
       brSize: brSize,
       gzSize: gzSize,
-      bundlePortion,
+      minifiedBundlePortion,
       individualGzSize: gzSize,
       individualBrSize: brSize
     });
   }
 
+  /**
+   * Analyze the entire project, calculating bundle and module sizes
+   */
   public async analyze(): Promise<void> {
     const bundles = this.project.getAllBundles();
     await Promise.all(bundles.map(b => this.analyzeBundle(b.bundle)));
@@ -71,7 +75,7 @@ class ReportGenerator {
     );
 
     // populate the csv container with data from the venor bundle
-    await bundle.prepareCSV(this.csv);
+    await bundle.prepareStats(this.csv);
 
     this.spinner?.succeed(`Done analyzing bundle: ${bundle.name}
 Total min + br: ${toKB(bundle.sizes.brSize)}`);

@@ -1,7 +1,7 @@
 {
-  "eslint.validate": [
-    "javascript",
-    "typescript"
-  ],
-  "eslint.enable": true
+  "eslint.validate": ["javascript", "typescript"],
+  "eslint.enable": true,
+  "files.associations": {
+    "config/api-extractor.json": "jsonc"
+  }
 }

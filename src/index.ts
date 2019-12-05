@@ -42,6 +42,10 @@ export async function generateReport(
   await rptBuilder.save();
 }
 
-export { default as Spinner } from "./spinner";
+export { default as Spinner, SpinnerLike } from "./spinner";
+export { default as Bundle, BundleSizes } from "./bundle";
+export { default as Module, ModuleSizes } from "./module";
+export { default as Stats } from "./stats-csv";
 export { default as Project } from "./ember-project";
 export { default as ReportGenerator } from "./report-generator";
+export { BaseSize } from "./types";

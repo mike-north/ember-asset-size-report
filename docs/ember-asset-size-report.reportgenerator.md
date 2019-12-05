@@ -21,19 +21,10 @@ declare class ReportGenerator
 |  --- | --- | --- |
 |  [(constructor)(project, reportPath)](./ember-asset-size-report.reportgenerator._constructor_.md) |  | <b><i>(BETA)</i></b> Constructs a new instance of the <code>ReportGenerator</code> class |
 
-## Properties
-
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [csv](./ember-asset-size-report.reportgenerator.csv.md) |  | <code>StatsCsv</code> | <b><i>(BETA)</i></b> |
-|  [project](./ember-asset-size-report.reportgenerator.project.md) |  | <code>EmberProject</code> | <b><i>(BETA)</i></b> |
-|  [reportPath](./ember-asset-size-report.reportgenerator.reportpath.md) |  | <code>string</code> | <b><i>(BETA)</i></b> |
-|  [spinner](./ember-asset-size-report.reportgenerator.spinner.md) |  | <code>ISpinner &#124; undefined</code> | <b><i>(BETA)</i></b> |
-
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [analyze()](./ember-asset-size-report.reportgenerator.analyze.md) |  | <b><i>(BETA)</i></b> |
-|  [save()](./ember-asset-size-report.reportgenerator.save.md) |  | <b><i>(BETA)</i></b> |
+|  [analyze()](./ember-asset-size-report.reportgenerator.analyze.md) |  | <b><i>(BETA)</i></b> Analyze the entire project, calculating bundle and module sizes |
+|  [save()](./ember-asset-size-report.reportgenerator.save.md) |  | <b><i>(BETA)</i></b> Save the report to disk |
 

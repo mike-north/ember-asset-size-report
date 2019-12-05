@@ -7,19 +7,21 @@
 > This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
 > 
 
+Print a success message to the console
+
 <b>Signature:</b>
 
 ```typescript
-succeed(text: string): this;
+succeed(text: string): Spinner;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  text | <code>string</code> |  |
+|  text | <code>string</code> | success message |
 
 <b>Returns:</b>
 
-`this`
+`Spinner`
 

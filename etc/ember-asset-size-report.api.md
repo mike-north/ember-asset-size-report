@@ -4,81 +4,111 @@
 
 ```ts
 
-import { ExecaChildProcess } from 'execa';
+// @beta
+export interface BaseSize {
+    brSize: number;
+    gzSize: number;
+    minSize: number;
+    size: number;
+}
+
+// @beta
+export class Bundle {
+    constructor(
+    project: Project,
+    bundleName: string);
+    addFile(file: Module): void;
+    calculateSizes(): Promise<void>;
+    get contents(): string;
+    get name(): string;
+    prepareStats(data: Stats): Promise<void>;
+    readonly project: Project;
+    get sizes(): BundleSizes;
+    }
+
+// @beta
+export interface BundleSizes extends BaseSize {
+}
 
 // @public
 export function generateReport(projectPath?: string, reportPath?: string): Promise<void>;
 
 // @beta
-export class Project {
-    constructor(projectPath: string, spinner?: ISpinner | undefined);
-    // (undocumented)
-    get brotliOutPath(): string;
-    // (undocumented)
-    build(): Promise<void>;
-    // (undocumented)
-    get concatStatsPath(): string;
-    // (undocumented)
-    get distPath(): string;
-    static emberNewInTemp(appName: string, spinner?: ISpinner): Promise<Project>;
-    // (undocumented)
-    getAllBundles(): {
-        bundle: Bundle;
-        name: string;
-    }[];
-    // (undocumented)
-    readonly projectPath: string;
-    // Warning: (ae-forgotten-export) The symbol "ISpinner" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    spinner?: ISpinner | undefined;
+export class Module {
+    constructor(
+    bundle: Bundle,
+    name: string, reportedSize: number);
+    readonly bundle: Bundle;
+    calculateSizes(): Promise<void>;
+    contents: string;
+    get minifiedBundlePortion(): number;
+    readonly name: string;
+    get sizes(): ModuleSizes;
     }
 
 // @beta
-export class ReportGenerator {
-    constructor(project: Project, reportPath: string);
-    // (undocumented)
-    analyze(): Promise<void>;
-    // Warning: (ae-forgotten-export) The symbol "StatsCsv" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    protected csv: StatsCsv;
-    // (undocumented)
-    protected project: Project;
-    // (undocumented)
-    protected reportPath: string;
-    // (undocumented)
-    save(): Promise<void>;
-    // (undocumented)
-    protected get spinner(): ISpinner | undefined;
+export interface ModuleSizes extends BaseSize {
+    individualBrSize: number;
+    individualGzSize: number;
+    minifiedBundlePortion: number;
 }
 
 // @beta
-export class Spinner implements ISpinner {
+export class Project {
+    constructor(
+    path: string,
+    spinner?: SpinnerLike | undefined);
+    build(opts?: {
+        env: {
+            [k: string]: string;
+        };
+        flags: string[];
+    }): Promise<void>;
+    static emberNewInTemp(appName: string, spinner?: SpinnerLike): Promise<Project>;
+    readonly path: string;
+    readonly spinner?: SpinnerLike | undefined;
+}
+
+// @beta
+export class ReportGenerator {
+    constructor(project: Project, reportPath?: string);
+    analyze(): Promise<void>;
+    save(): Promise<void>;
+    }
+
+// @beta
+export class Spinner implements SpinnerLike {
     constructor();
-    // (undocumented)
-    info(text: string): this;
-    // (undocumented)
-    render(): this;
-    // (undocumented)
-    spinAndPipeOutput(pr: ExecaChildProcess<string>): void;
-    // (undocumented)
-    spinAndPipeOutputToStream(from: NodeJS.ReadableStream, to: NodeJS.WritableStream): void;
-    // (undocumented)
-    start(text: string): this;
-    // (undocumented)
-    succeed(text: string): this;
-    // (undocumented)
+    info(text: string): Spinner;
+    start(text: string): Spinner;
+    succeed(text: string): Spinner;
     succeedAndStart(str: string): void;
-    // (undocumented)
     get text(): string;
     set text(txt: string);
 }
 
+// @beta
+export interface SpinnerLike {
+    info(msg: string): SpinnerLike;
+    start(msg?: string): SpinnerLike;
+    succeed(msg: string): SpinnerLike;
+    succeedAndStart(msg: string): void;
+    text: string;
+}
 
-// Warnings were encountered during analysis:
-//
-// dist/ember-project.d.ts:25:9 - (ae-forgotten-export) The symbol "Bundle" needs to be exported by the entry point index.d.ts
+// @beta (undocumented)
+export class Stats {
+    constructor(csvFileName: string);
+    // (undocumented)
+    addBundleRow(bundleName: string, sizes: BundleSizes): void;
+    // (undocumented)
+    addFileRow(bundleName: string, fileName: string, sizes: ModuleSizes): void;
+    // (undocumented)
+    protected csvFileName: string;
+    // (undocumented)
+    save(project: Project, spinner?: SpinnerLike): Promise<void>;
+}
+
 
 // (No @packageDocumentation comment for this package)
 

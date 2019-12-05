@@ -1,7 +1,8 @@
 import * as fs from "fs";
-import File from "./file";
-import { ISpinner } from "./spinner";
+import { SpinnerLike } from "./spinner";
 import EmberProject from "./ember-project";
+import { ModuleSizes } from "./module";
+import { BundleSizes } from "./bundle";
 
 const DATA_VERSION = 2;
 
@@ -9,7 +10,7 @@ const pWriteFile = (
   contents: Buffer | string,
   fileName: string,
   options: string | fs.WriteFileOptions
-) =>
+): Promise<void> =>
   new Promise<void>((res, rej) => {
     fs.writeFile(fileName, contents, options, err => {
       if (err) rej(err);
@@ -17,9 +18,13 @@ const pWriteFile = (
     });
   });
 
-class StatsCsv {
-  bundleRows: [string, string, number, number, number, number][] = [];
-  moduleRows: [
+/**
+ *
+ * @beta
+ */
+class Stats {
+  private bundleRows: [string, string, number, number, number, number][] = [];
+  private moduleRows: [
     string,
     string,
     string,
@@ -31,7 +36,7 @@ class StatsCsv {
     number,
     number
   ][] = [];
-  isSaved = false;
+  private isSaved = false;
   private headers = [
     ["schema-version", DATA_VERSION],
     [
@@ -48,14 +53,11 @@ class StatsCsv {
     ],
     ["type", "bundleName", "size", "minSize", "gzipSize", "brSize"]
   ];
-  constructor(protected csvFileName: string) {
+  public constructor(protected csvFileName: string) {
     this.csvFileName = csvFileName;
   }
 
-  addBundleRow(
-    bundleName: string,
-    sizes: Record<"brSize" | "gzSize" | "minSize" | "size", number>
-  ) {
+  public addBundleRow(bundleName: string, sizes: BundleSizes): void {
     this.bundleRows.push([
       "bundle",
       bundleName,
@@ -65,15 +67,11 @@ class StatsCsv {
       sizes.brSize
     ]);
   }
-  addFileRow(
+  public addFileRow(
     bundleName: string,
     fileName: string,
-    sizes: Record<
-      "brSize" | "gzSize" | "minSize" | "size" | "bundlePortion",
-      number
-    > &
-      Record<"individualGzSize" | "individualBrSize", number | undefined>
-  ) {
+    sizes: ModuleSizes
+  ): void {
     this.moduleRows.push([
       "module",
       bundleName,
@@ -82,13 +80,16 @@ class StatsCsv {
       sizes.minSize,
       sizes.gzSize,
       sizes.brSize,
-      sizes.bundlePortion,
+      sizes.minifiedBundlePortion,
       sizes.individualGzSize ?? -1,
       sizes.individualBrSize ?? -1
     ]);
   }
 
-  async save(project: EmberProject, spinner?: ISpinner) {
+  public async save(
+    project: EmberProject,
+    spinner?: SpinnerLike
+  ): Promise<void> {
     if (this.isSaved)
       throw new Error(`CSV file ${this.csvFileName} is already saved`);
     this.isSaved = true;
@@ -97,12 +98,12 @@ class StatsCsv {
       [
         ...this.headers,
         ...this.moduleRows.map(([, name, bundleName, ...rest]) => [
-          name.replace(project.projectPath, ""),
-          bundleName.replace(project.projectPath, ""),
+          name.replace(project.path, ""),
+          bundleName.replace(project.path, ""),
           ...rest
         ]),
         ...this.bundleRows.map(([, name, ...rest]) => [
-          name.replace(project.projectPath, ""),
+          name.replace(project.path, ""),
           ...rest
         ])
       ]
@@ -115,4 +116,4 @@ class StatsCsv {
   }
 }
 
-export default StatsCsv;
+export default Stats;

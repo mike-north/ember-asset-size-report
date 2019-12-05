@@ -321,16 +321,17 @@
      */
     "extractorMessageReporting": {
       "default": {
-        "logLevel": "warning"
-        // "addToApiReportFile": false
+        "logLevel": "warning",
+        "addToApiReportFile": true
       },
       "ae-extra-release-tag": {
-        "logLevel": "warning",
-        "addToApiReportFile": true
+        "logLevel": "error"
       },
       "ae-forgotten-export": {
-        "logLevel": "warning",
-        "addToApiReportFile": true
+        "logLevel": "error"
+      },
+      "ae-missing-release-tag": {
+        "logLevel": "error"
       }
       //
       // . . .

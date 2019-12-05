@@ -12,13 +12,15 @@ Setup a preexisting project
 <b>Signature:</b>
 
 ```typescript
-constructor(projectPath: string, spinner?: ISpinner | undefined);
+constructor(
+    path: string, 
+    spinner?: SpinnerLike | undefined);
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  projectPath | <code>string</code> | path to the ember-cli project |
-|  spinner | <code>ISpinner &#124; undefined</code> | optional loading spinner to report progress |
+|  path | <code>string</code> | path to the ember-cli project |
+|  spinner | <code>SpinnerLike &#124; undefined</code> | optional loading spinner to report progress |
 
