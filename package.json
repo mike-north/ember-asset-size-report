@@ -1,6 +1,6 @@
 {
   "name": "ember-asset-size-report",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Asset size report generation for Ember.js apps",
   "main": "dist/index.js",
   "repository": "https://github.com/mike-north/ember-asset-size-report",
