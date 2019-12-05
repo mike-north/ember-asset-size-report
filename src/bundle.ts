@@ -274,7 +274,7 @@ class Bundle {
     if (!this._sizes) throw new Error("Bundle sizes could not be calculated");
     this.spinner?.succeed("Gathered minified bundle sizes");
     this.bundleFiles.forEach(f =>
-      data.addFileRow(f.name, f.bundle.name, f.sizes)
+      data.addFileRow(f.bundle.name, f.name, f.sizes)
     );
     data.addBundleRow(this.name, this._sizes);
   }
