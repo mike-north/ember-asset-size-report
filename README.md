@@ -18,6 +18,8 @@ and after the command is done, you'll find a `module-size-report.csv` in your wo
 
 ### As a library
 
+Check out our [api documentation](https://github.com/mike-north/ember-asset-size-report/blob/master/docs/ember-asset-size-report.md)
+
 ```ts
 import { generateReport } from "ember-asset-size-report";
 
