@@ -31,9 +31,3 @@ export default class Module
 |  [name](./ember-asset-size-report.module.name.md) |  | <code>string</code> | <b><i>(BETA)</i></b> This module's name |
 |  [sizes](./ember-asset-size-report.module.sizes.md) |  | <code>ModuleSizes</code> | <b><i>(BETA)</i></b> Size information pertaining to this module |
 
-## Methods
-
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [calculateSizes()](./ember-asset-size-report.module.calculatesizes.md) |  | <b><i>(BETA)</i></b> Determinze size information for this module |
-

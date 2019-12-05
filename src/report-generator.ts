@@ -26,7 +26,7 @@ class ReportGenerator {
     await this.csv.save(this.project);
   }
   // create a container to hold Csv data
-  private csv = new Stats(path.join(process.cwd(), this.reportPath));
+  private csv = new Stats(this.reportPath);
 
   private get spinner(): SpinnerLike | undefined {
     return this.project.spinner;
@@ -34,8 +34,10 @@ class ReportGenerator {
   /**
    * Add asset size data relating to a file within the ./public folder, to the
    * csv container
+   *
+   * @beta
    */
-  private async addPublicFiles(assetPath: string): Promise<void> {
+  public async addPublicFile(assetPath: string): Promise<void> {
     this.spinner?.start(
       `determining bundle size of 'public' asset: ${assetPath}`
     );

@@ -35,9 +35,9 @@ export async function generateReport(
   await project.build();
   await rptBuilder.analyze();
 
-  // // add other files from the ./public folder to the csv data
-  // await this.addPublicFiles(
-  //   path.join(this.project.distPath, "assets", "i18n", "support_en_US.js")
+  // add other files from the ./public folder to the csv data
+  // await rptBuilder.addPublicFile(
+  //   path.join(project.distPath, "assets", "i18n", "support_en_US.js")
   // );
   await rptBuilder.save();
 }

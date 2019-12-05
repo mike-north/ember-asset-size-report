@@ -39,7 +39,6 @@ export class Module {
     bundle: Bundle,
     name: string, reportedSize: number);
     readonly bundle: Bundle;
-    calculateSizes(): Promise<void>;
     contents: string;
     get minifiedBundlePortion(): number;
     readonly name: string;
@@ -72,6 +71,7 @@ export class Project {
 // @beta
 export class ReportGenerator {
     constructor(project: Project, reportPath?: string);
+    addPublicFile(assetPath: string): Promise<void>;
     analyze(): Promise<void>;
     save(): Promise<void>;
     }

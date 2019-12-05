@@ -54,13 +54,13 @@ class EmberProject {
       ecliBin,
       ["new", appName, "--skip-git", "--no-welcome", "--yarn"],
       {
-        cwd: path.join(folder.name, ".."),
+        cwd: folder.name,
         stdout: process.stdout,
         stderr: process.stderr
       }
     );
     await emberCmd;
-    const project = new EmberProject(folder.name, spinner);
+    const project = new EmberProject(path.join(folder.name, appName), spinner);
     await project.installDevDep("broccoli-concat-analyser");
 
     return project;

@@ -70,14 +70,17 @@ export interface BundleSizes extends BaseSize {
  */
 class Bundle {
   private stats = new BundleStats(this.project, this.bundleName);
-  private bundleFiles: Module[] = Object.keys(this.stats.sizes).map(
-    fileName => new Module(this, fileName, this.stats.sizes[fileName])
-  );
 
   /**
    * @internal
    */
-  public workingDir = this.project.concatStatsPath.slice(0, -5);
+  public workingDir: string = path.join(
+    this.project.concatStatsPath,
+    this.bundleName.slice(0, -5)
+  );
+  private bundleFiles: Module[] = Object.keys(this.stats.sizes).map(
+    fileName => new Module(this, fileName, this.stats.sizes[fileName])
+  );
 
   private _sizes?: BundleSizes;
 
@@ -155,10 +158,6 @@ class Bundle {
     fs.writeFileSync(originalFilePath, this.contents, "utf8");
     const size = fs.statSync(originalFilePath).size;
 
-    this.spinner
-      ?.info(`Original - ${originalFilePath} (${toKB(size)} KB)`)
-      .start();
-
     const minifiedResult = minify(this.contents);
     if (!minifiedResult)
       throw new Error("No minified result code from " + this.contents);
@@ -170,11 +169,7 @@ class Bundle {
       "minified.min" + path.extname(this.name)
     );
     fs.writeFileSync(minFilePath, minifiedResult, "utf8");
-    this.spinner
-      ?.info(
-        `Minified - ${minFilePath} (${toKB(fs.statSync(minFilePath).size)} KB)`
-      )
-      .start();
+
     this.spinner
       ?.succeed(
         `Gathering minified bundle sizes: measured bundle (${toKB(minSize)}Kb)`
@@ -190,9 +185,6 @@ class Bundle {
       "compressed.gz" + path.extname(this.bundleName.replace(".json", ""))
     );
     fs.writeFileSync(gzFilePath, gzResult, "utf8");
-    this.spinner
-      ?.info(`Gzip - ${gzFilePath} (${toKB(fs.statSync(gzFilePath).size)} KB)`)
-      .start();
 
     const brResult = await brotliCompress(minifiedResult);
     const brSize = Buffer.byteLength(brResult);
@@ -201,23 +193,32 @@ class Bundle {
       "compressed.br" + path.extname(this.bundleName.replace(".json", ""))
     );
     fs.writeFileSync(brFilePath, brResult, "utf8");
-    this.spinner
-      ?.info(`Brotli ${brFilePath} (${toKB(fs.statSync(brFilePath).size)} KB)`)
-      .start();
 
     this.spinner?.start(
       `Gathering minified bundle sizes: measuring individual files...`
     );
+    const sizes = {
+      gzSize,
+      minSize,
+      size,
+      brSize
+    };
     await Promise.all(
       this.bundleFiles.map(async file => {
         const oldtxt = this.spinner?.text;
-        if (this.spinner) this.spinner.text += file.name;
+        if (this.spinner)
+          `Gathering minified bundle sizes: measuring individual files...${file.name}`;
         this.spinner?.render();
         try {
-          await file.calculateSizes();
+          await file.calculateSizes(sizes);
         } catch (e) {
           console.error(
-            "Problem gathering minified size of file: " + file.name + "\n" + e
+            "Problem gathering minified size of file: " +
+              file.name +
+              "\n" +
+              e +
+              "\n" +
+              (e instanceof Error ? e.stack : "")
           );
         }
         if (this.spinner) this.spinner.text = "" + oldtxt;
@@ -241,13 +242,9 @@ class Bundle {
       }
     );
     this._sizes = {
-      ...sums,
-      gzSize,
-      minSize,
-      size,
-      brSize
+      ...sizes,
+      ...sums
     };
-    console.log(this.name, this._sizes);
     this.spinner?.succeedAndStart(
       `Gathering minified bundle sizes: measured minified bundle (${toKB(
         brSize

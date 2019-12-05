@@ -11,7 +11,7 @@ QUnit.module("acceptance tests", _hooks => {
 
   QUnit.test("create + build", async assert => {
     const project = await EmberProject.emberNewInTemp("my-app");
-    await generateReport(project.projectPath);
+    await generateReport(project.path);
     assert.ok(true);
   });
 });

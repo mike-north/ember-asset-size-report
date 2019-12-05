@@ -25,6 +25,7 @@ declare class ReportGenerator
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [addPublicFile(assetPath)](./ember-asset-size-report.reportgenerator.addpublicfile.md) |  | <b><i>(BETA)</i></b> Add asset size data relating to a file within the ./public folder, to the csv container |
 |  [analyze()](./ember-asset-size-report.reportgenerator.analyze.md) |  | <b><i>(BETA)</i></b> Analyze the entire project, calculating bundle and module sizes |
 |  [save()](./ember-asset-size-report.reportgenerator.save.md) |  | <b><i>(BETA)</i></b> Save the report to disk |
 

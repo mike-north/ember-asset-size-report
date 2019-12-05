@@ -32,18 +32,15 @@ export interface ModuleSizes extends BaseSize {
  * @beta
  */
 export default class Module {
-  private _realpath: string = path.join(this.bundle.workingDir, this.name);
+  private _realpath: string;
   /**
    * The contents of this module
    */
-  public contents: string = fs.readFileSync(this._realpath, "utf8");
+  public contents: string;
   /**
    * The folder in which "specimens" (minified and compressed variants of the file) will be written
    */
-  private fileSamplesDir: string = path.join(
-    this.bundle.project.brotliOutPath,
-    this._realpath.replace(this.bundle.project.path, "")
-  );
+  private fileSamplesDir: string;
   private _sizes?: ModuleSizes;
 
   /**
@@ -79,6 +76,12 @@ export default class Module {
     public readonly name: string,
     private reportedSize: number
   ) {
+    this._realpath = path.join(this.bundle.workingDir, this.name);
+    this.contents = fs.readFileSync(this._realpath, "utf8");
+    this.fileSamplesDir = path.join(
+      this.bundle.project.brotliOutPath,
+      this._realpath.replace(this.bundle.project.path, "")
+    );
     fs.ensureDirSync(this.fileSamplesDir);
     const originalPath = path.join(
       this.fileSamplesDir,
@@ -89,8 +92,9 @@ export default class Module {
 
   /**
    * Determinze size information for this module
+   * @internal
    */
-  public async calculateSizes(): Promise<void> {
+  public async calculateSizes(bundleSizes: BaseSize): Promise<void> {
     const size = new Buffer(this.contents).length;
     const trimmedContents = this.contents.trim();
 
@@ -137,12 +141,12 @@ export default class Module {
       "min.br" + path.extname(this._realpath)
     );
     fs.writeFileSync(brPath, brotliContents, "utf8");
-    const bundlePct = this.sizes.minSize / this.bundle.sizes.minSize;
+    const bundlePct = minSize / bundleSizes.minSize;
     this._sizes = {
       size,
       minifiedBundlePortion: bundlePct,
-      brSize: this.bundle.sizes.brSize * bundlePct,
-      gzSize: this.bundle.sizes.gzSize * bundlePct,
+      brSize: bundleSizes.brSize * bundlePct,
+      gzSize: bundleSizes.gzSize * bundlePct,
       minSize,
       individualBrSize,
       individualGzSize

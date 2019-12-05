@@ -97,12 +97,14 @@ class Stats {
     await pWriteFile(
       [
         ...this.headers,
-        ...this.moduleRows.map(([, name, bundleName, ...rest]) => [
+        ...this.moduleRows.map(([typ, name, bundleName, ...rest]) => [
+          typ,
           name.replace(project.path, ""),
           bundleName.replace(project.path, ""),
           ...rest
         ]),
-        ...this.bundleRows.map(([, name, ...rest]) => [
+        ...this.bundleRows.map(([typ, name, ...rest]) => [
+          typ,
           name.replace(project.path, ""),
           ...rest
         ])
