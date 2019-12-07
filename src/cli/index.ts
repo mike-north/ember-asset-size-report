@@ -5,7 +5,10 @@ import * as cliui from "cliui";
 import chalk from "chalk";
 
 import { generateReport, GenerateReportOptions } from "../index";
-import { findDefaultProjectLocation } from "../path-utils";
+import {
+  findDefaultProjectLocation,
+  findDefaultReportOutputLocation
+} from "../path-utils";
 
 function printArgSummary(args: Partial<GenerateReportOptions>): void {
   const ui = cliui({ width: 80 });
@@ -16,7 +19,7 @@ function printArgSummary(args: Partial<GenerateReportOptions>): void {
     padding: [0, 0, 2, 0],
     text: chalk.dim("arguments received were as follows...")
   });
-  ["build", "project", "out", "extra-js-file"].forEach(arg => {
+  ["build", "project", "out", "extraJsFiles"].forEach(arg => {
     const key = arg as keyof GenerateReportOptions;
     ui.div(
       {
@@ -33,10 +36,11 @@ function printArgSummary(args: Partial<GenerateReportOptions>): void {
   console.log(ui.toString());
 }
 
-export async function main(): Promise<void> {
-  const configPath = await findUp([".asset-report", ".asset-report.json"]);
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function createProgram(argv = process.argv) {
+  const configPath = findUp.sync([".asset-report", ".asset-report.json"]);
   const config = configPath ? fs.readJSONSync(configPath) : {};
-  const prog = yargs
+  return yargs
     .option("out", {
       type: "string",
       description: "report output path"
@@ -49,12 +53,17 @@ export async function main(): Promise<void> {
     .option("extra-js-file", { array: true, default: [] as string[] })
     .config(config)
     .pkgConf("asset-report")
-    .parse(process.argv);
+    .parse(argv);
+}
+
+export async function main(): Promise<void> {
+  const prog = createProgram();
+  console.log(prog);
   const opts: Partial<GenerateReportOptions> = {
     build: prog.build,
     extraJsFiles: [...(prog["extra-js-file"] ?? [])],
     project: prog.project || findDefaultProjectLocation(),
-    out: prog.out || findDefaultProjectLocation()
+    out: prog.out || findDefaultReportOutputLocation()
   };
   printArgSummary(opts);
 
