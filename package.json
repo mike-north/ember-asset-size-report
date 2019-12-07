@@ -20,6 +20,7 @@
     "@microsoft/api-documenter": "^7.5.4",
     "@microsoft/api-extractor": "^7.5.2",
     "@types/execa": "^2.0.0",
+    "@types/find-up": "^4.0.0",
     "@types/fs-extra": "^8.0.1",
     "@types/node": "12",
     "@types/ora": "^3.2.0",
@@ -28,6 +29,7 @@
     "@types/rimraf": "^2.0.3",
     "@types/terser": "^3.12.0",
     "@types/tmp": "^0.1.0",
+    "@types/yargs": "^13.0.3",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "babel-eslint": "^10.0.3",
@@ -36,6 +38,7 @@
     "eslint-plugin-eslint-comments": "^3.1.2",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
+    "node2docfx": "^1.0.45",
     "prettier": "^1.19.1",
     "qunit": "^2.9.3",
     "scripty": "^1.9.1",
@@ -43,24 +46,31 @@
     "typescript": "^3.7.2"
   },
   "scripts": {
+    "build:ts": "scripty",
     "build": "scripty",
-    "build:docs": "scripty",
+    "build:code": "scripty",
+    "build:extract-api": "scripty",
+    "build:generate-md": "scripty",
     "lint": "yarn eslint .  --ext ts,js",
     "pretest": "yarn rimraf test-js && yarn tsc -p test",
     "test": "yarn qunit 'test-js/**/*.test.js'",
-    "prepublish": "yarn rimraf dist && yarn build && yarn test"
+    "clean": "yarn rimraf test-js dist"
   },
   "dependencies": {
     "cliui": "^6.0.0",
     "ember-cli": "^3.14.0",
     "execa": "^3.4.0",
+    "find-up": "^4.1.0",
     "fs-extra": "^8.1.0",
+    "import-local": "^3.0.2",
     "ora": "^4.0.3",
     "pkg-up": "^3.1.0",
     "rimraf": "^3.0.0",
     "terser": "^4.4.2",
     "tmp": "^0.1.0",
     "walk-sync": "^2.0.2",
+    "yam": "^1.0.0",
+    "yargs": "^15.0.2",
     "zlib": "^1.0.5"
   },
   "volta": {

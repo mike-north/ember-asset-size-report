@@ -28,14 +28,6 @@
       "rules": {
         "@typescript-eslint/no-misused-promises": 0
       }
-    },
-    {
-      "files": ["bin/**/*"],
-      "parser": "babel-eslint",
-      "parserOptions": {
-        "extraFileExtensions": ""
-      },
-      "env": { "commonjs": true, "node": true }
     }
   ]
 }
