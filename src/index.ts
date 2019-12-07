@@ -1,5 +1,7 @@
 import * as pkgUp from "pkg-up";
 import * as path from "path";
+import chalk from "chalk";
+
 import EmberProject from "./ember-project";
 import ReportGenerator from "./report-generator";
 import Spinner from "./spinner";
@@ -7,6 +9,8 @@ import {
   findDefaultProjectLocation,
   findDefaultReportOutputLocation
 } from "./path-utils";
+import { existsSync } from "fs-extra";
+import cliui = require("cliui");
 
 /**
  * Options to pass to the {@link (generateReport:2) | generateReport() function}
@@ -101,19 +105,31 @@ export async function generateReport(
   };
   const spinner = new Spinner();
   const proj = new EmberProject(project, spinner);
+  const includedFilePaths = includeFiles.map(p => path.join(proj.distPath, p));
+
   const rptBuilder = new ReportGenerator(proj, out);
   if (build) {
     await proj.build();
   }
+  if (includedFilePaths.length > 0) {
+    spinner.start("validating presence of included files");
+    includedFilePaths.forEach(p => {
+      if (!existsSync(p)) throw new Error("not found: " + chalk.cyan(p));
+      spinner.succeed("found included JS file: " + chalk.cyan(p));
+    });
+  }
+  spinner.start("analyzing bundles...");
   await rptBuilder.analyze();
 
   // add other files from the ./public folder to the csv data
   await Promise.all(
-    includeFiles.map(filePath =>
-      rptBuilder.addPublicFile(path.join(proj.distPath, filePath))
-    )
+    includedFilePaths.map(filePath => rptBuilder.addPublicFile(filePath))
   );
   await rptBuilder.save();
+  const ui = cliui();
+  spinner.succeed(
+    chalk.bold("done! Your report is here --> " + chalk.greenBright(out))
+  );
 }
 
 export { default as Spinner, SpinnerLike } from "./spinner";

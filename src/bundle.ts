@@ -174,13 +174,13 @@ class Bundle {
 
     if (this.spinner)
       this.spinner.text = `Gathering minified bundle sizes: measuring individual files...${chalk.cyan(
-        this.bundleName
+        this.name
       )}`;
     const gzResult = await gzipCompress(minifiedResult);
     const gzSize = Buffer.byteLength(gzResult);
     const gzFilePath = path.join(
       bundleResultsDir,
-      "compressed.gz" + path.extname(this.bundleName.replace(".json", ""))
+      "compressed.gz" + path.extname(this.name)
     );
     fs.writeFileSync(gzFilePath, gzResult, "utf8");
 
@@ -188,7 +188,7 @@ class Bundle {
     const brSize = Buffer.byteLength(brResult);
     const brFilePath = path.join(
       bundleResultsDir,
-      "compressed.br" + path.extname(this.bundleName.replace(".json", ""))
+      "compressed.br" + path.extname(this.name)
     );
     fs.writeFileSync(brFilePath, brResult, "utf8");
 

@@ -2,18 +2,9 @@
 // @ts-check
 "use strict";
 
-const pkgUp = require("pkg-up");
-const fs = require("fs-extra");
 const resolve = require("resolve");
 const log = require("debug")("ember-asset-size-report");
 const basedir = process.cwd();
-const PKG_JSON_PATH = pkgUp.sync();
-
-function isDev() {
-  if (!PKG_JSON_PATH) return false;
-  const pkgData = fs.readJSONSync(PKG_JSON_PATH);
-  return pkgData.name === "ember-asset-size-report";
-}
 
 async function main() {
   let projectLocalCli;

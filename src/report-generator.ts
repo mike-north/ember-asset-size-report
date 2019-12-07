@@ -46,8 +46,8 @@ class ReportGenerator {
     const gzSize = Buffer.byteLength(await gzipCompress(en_US, { level: 9 }));
     const minifiedBundlePortion = 1;
     this.spinner?.succeedAndStart(
-      `determined bundle size of asset: ${assetPath}: ${chalk.yellow(
-        `${toKB(brSize)} KB min+br}`
+      `determined size of extra JS asset: ${assetPath}: ${chalk.yellow(
+        `${toKB(brSize)} KB min+br`
       )}`
     );
     this.csv.addFileRow(assetPath, assetPath, {

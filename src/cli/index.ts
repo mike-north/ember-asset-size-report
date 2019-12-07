@@ -10,15 +10,10 @@ import {
   findDefaultReportOutputLocation
 } from "../path-utils";
 
-function printArgSummary(args: Partial<GenerateReportOptions>): void {
-  const ui = cliui({ width: 80 });
-
-  ui.div({ padding: [2, 0, 0, 0], text: "Ember-CLI Asset Size Report" });
-  ui.div({ text: "----------------------------------" });
-  ui.div({
-    padding: [0, 0, 2, 0],
-    text: chalk.dim("arguments received were as follows...")
-  });
+function printArgSummary(
+  ui: cliui.CLIUI,
+  args: Partial<GenerateReportOptions>
+): void {
   ["build", "project", "out", "extraJsFiles"].forEach(arg => {
     const key = arg as keyof GenerateReportOptions;
     ui.div(
@@ -31,9 +26,6 @@ function printArgSummary(args: Partial<GenerateReportOptions>): void {
       }
     );
   });
-  ui.div();
-
-  console.log(ui.toString());
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -58,14 +50,35 @@ function createProgram(argv = process.argv) {
 
 export async function main(): Promise<void> {
   const prog = createProgram();
-  console.log(prog);
-  const opts: Partial<GenerateReportOptions> = {
-    build: prog.build,
-    extraJsFiles: [...(prog["extra-js-file"] ?? [])],
-    project: prog.project || findDefaultProjectLocation(),
-    out: prog.out || findDefaultReportOutputLocation()
-  };
-  printArgSummary(opts);
+  const ui = cliui({ width: 80 });
 
-  await generateReport(opts);
+  ui.div({ padding: [2, 0, 0, 0], text: "Ember-CLI Asset Size Report" });
+  ui.div({ text: "----------------------------------" });
+  ui.div({
+    padding: [1, 0, 1, 0],
+    text: chalk.dim("arguments received were as follows...")
+  });
+  const receivedOpts: Partial<GenerateReportOptions> = {
+    build: prog.build,
+    extraJsFiles: prog["extra-js-file"] ?? [],
+    project: prog.project,
+    out: prog.out
+  };
+  printArgSummary(ui, receivedOpts);
+  ui.div({
+    padding: [1, 0, 1, 0],
+    text: chalk.dim(
+      "taking defaults and context into account, the following values will be used..."
+    )
+  });
+  const resolvedOpts: Partial<GenerateReportOptions> = {
+    build: receivedOpts.build,
+    extraJsFiles: receivedOpts.extraJsFiles,
+    project: receivedOpts.project ?? findDefaultProjectLocation(),
+    out: receivedOpts.out ?? findDefaultReportOutputLocation()
+  };
+  printArgSummary(ui, resolvedOpts);
+  ui.div();
+  console.log(ui.toString());
+  await generateReport(resolvedOpts);
 }

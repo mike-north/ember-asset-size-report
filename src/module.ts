@@ -95,12 +95,12 @@ export default class Module {
    * @internal
    */
   public async calculateSizes(bundleSizes: BaseSize): Promise<void> {
-    const size = new Buffer(this.contents).length;
+    const size = Buffer.from(this.contents).length;
     const trimmedContents = this.contents.trim();
 
     // minified
     const minifiedResult =
-      trimmedContents.length === 0 ? new Buffer("") : minify(trimmedContents);
+      trimmedContents.length === 0 ? Buffer.from("") : minify(trimmedContents);
     if (!minifiedResult)
       throw new Error(
         "No minified result code from: " +
