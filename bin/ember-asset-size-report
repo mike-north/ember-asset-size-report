@@ -5,8 +5,8 @@
 const pkgUp = require("pkg-up");
 const fs = require("fs-extra");
 const resolve = require("resolve");
+const log = require("debug")("ember-asset-size-report");
 const basedir = process.cwd();
-
 const PKG_JSON_PATH = pkgUp.sync();
 
 function isDev() {
@@ -18,12 +18,12 @@ function isDev() {
 async function main() {
   let projectLocalCli;
   try {
-    projectLocalCli = resolve.sync("ember-asset-size-report/cli/index", {
+    projectLocalCli = resolve.sync("ember-asset-size-report/dist/cli/index", {
       basedir: basedir
     });
   } catch (ignored) {}
   const cli = require(projectLocalCli || "../dist/cli/index");
-
+  log("Running from: " + cli);
   await require(cli).main();
 }
 main();
