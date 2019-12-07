@@ -1,6 +1,6 @@
 {
   "name": "ember-asset-size-report",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "Asset size report generation for Ember.js apps",
   "main": "dist/index.js",
   "repository": "https://github.com/mike-north/ember-asset-size-report",
@@ -47,7 +47,8 @@
     "build:docs": "scripty",
     "lint": "yarn eslint .  --ext ts,js",
     "pretest": "yarn rimraf test-js && yarn tsc -p test",
-    "test": "yarn qunit 'test-js/**/*.test.js'"
+    "test": "yarn qunit 'test-js/**/*.test.js'",
+    "prepublish": "yarn rimraf dist && yarn build && yarn test"
   },
   "dependencies": {
     "cliui": "^6.0.0",
