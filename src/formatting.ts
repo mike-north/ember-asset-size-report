@@ -1,3 +1,7 @@
+import { BundleSizes } from "./bundle";
+import * as cliui from "cliui";
+import chalk from "chalk";
+import { BaseSize } from "./types";
 /**
  * Format a number of bytes as KB
  *
@@ -7,4 +11,43 @@
  */
 export function toKB(bytes: number): string {
   return (bytes / 1024).toFixed(2);
+}
+
+const SIZE_LABELS: { [K in keyof BaseSize]: string } = {
+  minSize: "minified",
+  brSize: "brotli",
+  size: "original",
+  gzSize: "gzip"
+};
+
+const SIZE_SORT = (a: string, b: string): number => {
+  const aSum = a.toLowerCase().includes("sum");
+  const bSum = b.toLowerCase().includes("sum");
+  if (aSum && !bSum) return 1;
+  else if (!aSum && bSum) return -1;
+  else {
+    return a.localeCompare(b);
+  }
+};
+
+export function sizeSummaryString(sizes: BaseSize): string {
+  const ui = cliui({ width: 80 });
+
+  for (const sz of Object.keys(sizes)
+    .filter(s => Object.keys(SIZE_LABELS).includes(s))
+    .sort(SIZE_SORT)) {
+    const s = sz as keyof BaseSize;
+    ui.div(
+      {
+        text: SIZE_LABELS[s] ?? s,
+        padding: [0, 0, 0, 5],
+        width: 40
+      },
+      {
+        text: chalk.yellow(`${toKB(sizes[s])} KB`)
+      }
+    );
+  }
+
+  return ui.toString();
 }

@@ -97,27 +97,33 @@ bundle, ember.js, 1951427, 490714, 126574, 106521
 bundle, vendor.js, 2855105, 731260, 183679, 152473
 ```
 
+### Sections
+
 There are several sections
 
-### schema-version (1 row)
+#### schema-version (1 row)
 
 This numeric version allows us to introduce breaking changes to the output format, while preserving the ability to parse both old and new data
 
-### module data headers (1 row)
+#### module data headers (1 row)
 
 a single row of headers corresponding to module data
 
-### bundle data headers (1 row)
+#### bundle data headers (1 row)
 
 a single row of headers corresponding to bundle data
 
-### module data (many rows)
+#### module data (many rows)
 
 these rows always begin with "module" in the first column
 
-### bundle data (many rows)
+#### bundle data (many rows)
 
 these rows always begin with "bundle" in the first column
+
+### Extracting multiple tables from the CSV
+
+Multiple tables (i.e., "modules" and "bundles" can be extracted from the single `.csv` file, using the conventions described above). [Here is an example](https://docs.google.com/spreadsheets/d/1vhor2qAQtWnTu_GNI4LaLZeu9Li0lZVi-koseZG2tTg/edit?usp=sharing) of Google Sheets being used to analyze CSV data pulled directly from this github repo
 
 ## Legal
 
