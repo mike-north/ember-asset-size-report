@@ -3,18 +3,64 @@ import * as path from "path";
 import EmberProject from "./ember-project";
 import ReportGenerator from "./report-generator";
 import Spinner from "./spinner";
+import {
+  findDefaultProjectLocation,
+  findDefaultReportOutputLocation
+} from "./path-utils";
 
-function findDefaultProjectLocation(): string {
-  const pkgJsonPath = pkgUp.sync();
-  if (!pkgJsonPath)
-    throw new Error(
-      `Could not find a package.json in the working directory or any parent folder\nthe command was run in: ${process.cwd()}`
-    );
-  return path.join(pkgJsonPath, "..");
+/**
+ * Options to pass to the {@link (generateReport:2) | generateReport() function}
+ *
+ * @beta
+ */
+export interface GenerateReportOptions {
+  /**
+   *  path to ember-cli project
+   */
+  project: string;
+  /**
+   *  path to write CSV output to
+   */
+  out: string;
+  /**
+   * should we make a prod build of the ember-cli app?
+   */
+  build: boolean;
+  /**
+   * any extra JS files we should include?
+   */
+  extraJsFiles: string[];
 }
 
-function findDefaultReportOutputLocation(): string {
-  return path.join(process.cwd(), "module-size-report.csv");
+const DEFAULT_OPTIONS: GenerateReportOptions = {
+  project: findDefaultProjectLocation(),
+  out: findDefaultReportOutputLocation(),
+  build: true,
+  extraJsFiles: []
+};
+
+function buildOptions(
+  optionsOrProjectPath?: Partial<GenerateReportOptions> | string,
+  reportPath?: string
+): Partial<GenerateReportOptions> {
+  if (optionsOrProjectPath && typeof optionsOrProjectPath === "string") {
+    // two string signature
+    const result: Partial<GenerateReportOptions> = {};
+    if (optionsOrProjectPath) result.project = optionsOrProjectPath;
+    if (reportPath) result.out = reportPath;
+
+    return result;
+  } else if (typeof optionsOrProjectPath !== "string" && !reportPath) {
+    // options object signature
+    return optionsOrProjectPath ?? {};
+  } else
+    throw new Error(
+      `Invalid arguments passed to 'generateReport'
+${
+  // eslint-disable-next-line prefer-rest-params
+  JSON.stringify(arguments)
+}`
+    );
 }
 
 /**
@@ -26,19 +72,47 @@ function findDefaultReportOutputLocation(): string {
  * @public
  */
 export async function generateReport(
-  projectPath = findDefaultProjectLocation(),
-  reportPath = findDefaultReportOutputLocation()
+  projectPath?: string,
+  reportPath?: string
+): Promise<void>;
+/**
+ * Generate the report
+ *
+ * @param options - {@link GenerateReportOptions | options}
+ *
+ * @beta
+ */
+export async function generateReport(
+  options?: Partial<GenerateReportOptions>
+): Promise<void>;
+export async function generateReport(
+  optionsOrProjectPath?: Partial<GenerateReportOptions> | string,
+  reportPath?: string
 ): Promise<void> {
+  const options = buildOptions(optionsOrProjectPath, reportPath);
+  const {
+    build,
+    extraJsFiles: includeFiles,
+    project,
+    out
+  }: GenerateReportOptions = {
+    ...DEFAULT_OPTIONS,
+    ...options
+  };
   const spinner = new Spinner();
-  const project = new EmberProject(projectPath, spinner);
-  const rptBuilder = new ReportGenerator(project, reportPath);
-  await project.build();
+  const proj = new EmberProject(project, spinner);
+  const rptBuilder = new ReportGenerator(proj, out);
+  if (build) {
+    await proj.build();
+  }
   await rptBuilder.analyze();
 
   // add other files from the ./public folder to the csv data
-  // await rptBuilder.addPublicFile(
-  //   path.join(project.distPath, "assets", "i18n", "support_en_US.js")
-  // );
+  await Promise.all(
+    includeFiles.map(filePath =>
+      rptBuilder.addPublicFile(path.join(proj.distPath, filePath))
+    )
+  );
   await rptBuilder.save();
 }
 

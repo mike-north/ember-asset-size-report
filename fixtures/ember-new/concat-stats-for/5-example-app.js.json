@@ -1,0 +1,30 @@
+{
+  "outputFile": "/var/folders/cp/k70xj4x97g50lyfn30hnk4_c000qqz/T/broccoli-220979yyUF5vCXBL2/out-202-source_map_concat_packaged_application_javascript/assets/example-app.js",
+  "sizes": {
+    "vendor/ember-cli/app-prefix.js": 16,
+    "example-app/adapters/-json-api.js": 345,
+    "example-app/app.js": 965,
+    "example-app/components/welcome-page.js": 372,
+    "example-app/helpers/app-version.js": 1142,
+    "example-app/helpers/pluralize.js": 317,
+    "example-app/helpers/singularize.js": 325,
+    "example-app/initializers/app-version.js": 612,
+    "example-app/initializers/container-debug-adapter.js": 631,
+    "example-app/initializers/ember-data.js": 594,
+    "example-app/initializers/export-application-global.js": 1434,
+    "example-app/instance-initializers/ember-data.js": 402,
+    "example-app/resolver.js": 293,
+    "example-app/router.js": 753,
+    "example-app/serializers/-default.js": 340,
+    "example-app/serializers/-json-api.js": 351,
+    "example-app/serializers/-rest.js": 337,
+    "example-app/templates/application.js": 534,
+    "example-app/transforms/boolean.js": 357,
+    "example-app/transforms/date.js": 351,
+    "example-app/transforms/number.js": 355,
+    "example-app/transforms/string.js": 355,
+    "vendor/ember-cli/app-suffix.js": 1,
+    "vendor/ember-cli/app-config.js": 535,
+    "vendor/ember-cli/app-boot.js": 163
+  }
+}

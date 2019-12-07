@@ -20,6 +20,7 @@
 |  Function | Description |
 |  --- | --- |
 |  [generateReport(projectPath, reportPath)](./ember-asset-size-report.generatereport.md) | Generate the report |
+|  [generateReport(options)](./ember-asset-size-report.generatereport_1.md) | <b><i>(BETA)</i></b> Generate the report |
 
 ## Interfaces
 
@@ -27,6 +28,7 @@
 |  --- | --- |
 |  [BaseSize](./ember-asset-size-report.basesize.md) | <b><i>(BETA)</i></b> Bundle or module size information |
 |  [BundleSizes](./ember-asset-size-report.bundlesizes.md) | <b><i>(BETA)</i></b> Size information pertaining to a bundle |
+|  [GenerateReportOptions](./ember-asset-size-report.generatereportoptions.md) | <b><i>(BETA)</i></b> Options to pass to the [generateReport() function](./ember-asset-size-report.generatereport_1.md) |
 |  [ModuleSizes](./ember-asset-size-report.modulesizes.md) | <b><i>(BETA)</i></b> Size information pertaining to a module |
 |  [SpinnerLike](./ember-asset-size-report.spinnerlike.md) | <b><i>(BETA)</i></b> A loading spinner |
 

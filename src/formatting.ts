@@ -1,6 +1,6 @@
-import { BundleSizes } from "./bundle";
-import * as cliui from "cliui";
 import chalk from "chalk";
+import * as cliui from "cliui";
+import * as leftPad from "left-pad";
 import { BaseSize } from "./types";
 /**
  * Format a number of bytes as KB
@@ -10,7 +10,7 @@ import { BaseSize } from "./types";
  * @private
  */
 export function toKB(bytes: number): string {
-  return (bytes / 1024).toFixed(2);
+  return leftPad((bytes / 1024).toFixed(2), 8);
 }
 
 const SIZE_LABELS: { [K in keyof BaseSize]: string } = {
@@ -41,10 +41,14 @@ export function sizeSummaryString(sizes: BaseSize): string {
       {
         text: SIZE_LABELS[s] ?? s,
         padding: [0, 0, 0, 5],
-        width: 40
+        width: 20
       },
       {
-        text: chalk.yellow(`${toKB(sizes[s])} KB`)
+        text: chalk.yellow(toKB(sizes[s])),
+        width: 8
+      },
+      {
+        text: chalk.yellow(`KB`)
       }
     );
   }

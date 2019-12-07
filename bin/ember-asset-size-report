@@ -1,10 +1,22 @@
 #!/usr/bin/env node
-const rpt = require("ember-asset-size-report");
+"use strict";
 
-async function main() {
-  await rpt.build();
-  const csv = await rpt.analyze();
-  await rpt.saveReportToFile(csv);
+const pkgUp = require("pkg-up");
+const fs = require("fs-extra");
+
+const PKG_JSON_PATH = pkgUp.sync();
+
+function isDev() {
+  if (!PKG_JSON_PATH) return false;
+  const pkgData = fs.readJSONSync(PKG_JSON_PATH);
+  return pkgData.name === "ember-asset-size-report";
 }
 
+async function main() {
+  if (isDev()) {
+    await require("../dist/cli/index").main();
+  } else {
+    await require("ember-asset-size-report/cli/index").main();
+  }
+}
 main();

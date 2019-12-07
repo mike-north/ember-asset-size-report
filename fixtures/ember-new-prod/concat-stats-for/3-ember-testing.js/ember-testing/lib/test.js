@@ -1,0 +1,71 @@
+define("ember-testing/lib/test", ["exports", "ember-testing/lib/test/helpers", "ember-testing/lib/test/on_inject_helpers", "ember-testing/lib/test/promise", "ember-testing/lib/test/waiters", "ember-testing/lib/test/adapter"], function (_exports, _helpers, _on_inject_helpers, _promise, _waiters, _adapter) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  /**
+    @module ember
+  */
+
+  /**
+    This is a container for an assortment of testing related functionality:
+  
+    * Choose your default test adapter (for your framework of choice).
+    * Register/Unregister additional test helpers.
+    * Setup callbacks to be fired when the test helpers are injected into
+      your application.
+  
+    @class Test
+    @namespace Ember
+    @public
+  */
+  var Test = {
+    /**
+      Hash containing all known test helpers.
+       @property _helpers
+      @private
+      @since 1.7.0
+    */
+    _helpers: _helpers.helpers,
+    registerHelper: _helpers.registerHelper,
+    registerAsyncHelper: _helpers.registerAsyncHelper,
+    unregisterHelper: _helpers.unregisterHelper,
+    onInjectHelpers: _on_inject_helpers.onInjectHelpers,
+    Promise: _promise.default,
+    promise: _promise.promise,
+    resolve: _promise.resolve,
+    registerWaiter: _waiters.registerWaiter,
+    unregisterWaiter: _waiters.unregisterWaiter,
+    checkWaiters: _waiters.checkWaiters
+  };
+  /**
+   Used to allow ember-testing to communicate with a specific testing
+   framework.
+  
+   You can manually set it before calling `App.setupForTesting()`.
+  
+   Example:
+  
+   ```javascript
+   Ember.Test.adapter = MyCustomAdapter.create()
+   ```
+  
+   If you do not set it, ember-testing will default to `Ember.Test.QUnitAdapter`.
+  
+   @public
+   @for Ember.Test
+   @property adapter
+   @type {Class} The adapter to be used.
+   @default Ember.Test.QUnitAdapter
+  */
+
+  Object.defineProperty(Test, 'adapter', {
+    get: _adapter.getAdapter,
+    set: _adapter.setAdapter
+  });
+  var _default = Test;
+  _exports.default = _default;
+});

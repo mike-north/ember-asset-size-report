@@ -1,12 +1,14 @@
+import chalk from "chalk";
 import * as fs from "fs-extra";
 import * as path from "path";
 import { brotliCompress, gzipCompress, minify } from "./compression";
 import EmberProject from "./ember-project";
+import { sizeSummaryString } from "./formatting";
 import Module from "./module";
-import { toKB, sizeSummaryString } from "./formatting";
-import Stats from "./stats-csv";
 import { SpinnerLike } from "./spinner";
+import Stats from "./stats-csv";
 import { BaseSize } from "./types";
+
 /**
  * @internal
  */
@@ -171,7 +173,9 @@ class Bundle {
     fs.writeFileSync(minFilePath, minifiedResult, "utf8");
 
     if (this.spinner)
-      this.spinner.text = `Gathering minified bundle sizes: measuring individual files...${this.bundleName}`;
+      this.spinner.text = `Gathering minified bundle sizes: measuring individual files...${chalk.cyan(
+        this.bundleName
+      )}`;
     const gzResult = await gzipCompress(minifiedResult);
     const gzSize = Buffer.byteLength(gzResult);
     const gzFilePath = path.join(
@@ -197,7 +201,9 @@ class Bundle {
     await Promise.all(
       this.bundleFiles.map(async file => {
         if (this.spinner)
-          `Gathering minified bundle sizes: measuring individual files within ${this.name} - ${file.name}`;
+          `Gathering minified bundle sizes: measuring individual files within ${chalk.cyan(
+            this.name
+          )} - ${chalk.blue(file.name)}`;
         this.spinner?.render();
         try {
           await file.calculateSizes(sizes);
@@ -235,7 +241,7 @@ class Bundle {
       ...sums
     };
     this.spinner?.succeedAndStart(
-      `Gathering minified bundle sizes: ${this.name}
+      `Gathering minified bundle sizes: ${chalk.cyan(this.name)}
 ${sizeSummaryString(this._sizes)}`
     );
   }

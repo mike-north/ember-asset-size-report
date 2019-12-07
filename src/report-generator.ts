@@ -1,11 +1,10 @@
+import chalk from "chalk";
 import * as fs from "fs";
-import * as path from "path";
-import * as walkSync from "walk-sync";
 import Bundle from "./bundle";
 import { brotliCompress, gzipCompress } from "./compression";
 import EmberProject from "./ember-project";
 import { toKB } from "./formatting";
-import Spinner, { SpinnerLike } from "./spinner";
+import { SpinnerLike } from "./spinner";
 import Stats from "./stats-csv";
 
 /**
@@ -47,9 +46,9 @@ class ReportGenerator {
     const gzSize = Buffer.byteLength(await gzipCompress(en_US, { level: 9 }));
     const minifiedBundlePortion = 1;
     this.spinner?.succeedAndStart(
-      `determined bundle size of asset: ${assetPath} (${toKB(
-        brSize
-      )} KB brotli)`
+      `determined bundle size of asset: ${assetPath}: ${chalk.yellow(
+        `${toKB(brSize)} KB min+br}`
+      )}`
     );
     this.csv.addFileRow(assetPath, assetPath, {
       size: 0,
@@ -73,14 +72,19 @@ class ReportGenerator {
   private async analyzeBundle(bundle: Bundle): Promise<void> {
     // find the "vendor.js" bundle
     this.spinner?.succeedAndStart(
-      `Finished gathering raw concat-stats data from bundle ${bundle.name}.`
+      `Finished gathering raw concat-stats data from bundle ${chalk.cyan(
+        bundle.name
+      )}.`
     );
 
     // populate the csv container with data from the venor bundle
     await bundle.prepareStats(this.csv);
 
-    this.spinner?.succeed(`Done analyzing bundle: ${bundle.name}
-Total min + br: ${toKB(bundle.sizes.brSize)}`);
+    this.spinner?.succeed(
+      `Done analyzing bundle: ${chalk.cyan(
+        bundle.name
+      )}. total size: ${chalk.yellow(`${toKB(bundle.sizes.brSize)} KB min+br`)}`
+    );
   }
 }
 

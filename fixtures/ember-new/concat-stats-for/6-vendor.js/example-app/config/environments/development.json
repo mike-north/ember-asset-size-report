@@ -1,0 +1,1 @@
+{"modulePrefix":"example-app","environment":"development","rootURL":"/","locationType":"auto","EmberENV":{"FEATURES":{},"EXTEND_PROTOTYPES":{"Date":false},"_JQUERY_INTEGRATION":false},"APP":{"name":"example-app","version":"v1.0.2+86991e47"},"exportApplicationGlobal":true,"isModuleUnification":false}

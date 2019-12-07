@@ -3,3 +3,5 @@ temp
 etc
 test-js
 .brotli-out
+bin
+fixtures

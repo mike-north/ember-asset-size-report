@@ -34,6 +34,17 @@ export interface BundleSizes extends BaseSize {
 export function generateReport(projectPath?: string, reportPath?: string): Promise<void>;
 
 // @beta
+export function generateReport(options?: Partial<GenerateReportOptions>): Promise<void>;
+
+// @beta
+export interface GenerateReportOptions {
+    build: boolean;
+    extraJsFiles: string[];
+    out: string;
+    project: string;
+}
+
+// @beta
 export class Module {
     constructor(
     bundle: Bundle,

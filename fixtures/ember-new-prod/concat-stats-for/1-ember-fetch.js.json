@@ -1,0 +1,7 @@
+{
+  "outputFile": "ember-fetch.js",
+  "sizes": {
+    "abortcontroller.js": 4977,
+    "fetch.js": 14540
+  }
+}

@@ -3,5 +3,12 @@
   "eslint.enable": true,
   "files.associations": {
     "config/api-extractor.json": "jsonc"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/fixtures": true,
+    "**/dist": true,
+    "**/docs": true
   }
 }

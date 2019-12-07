@@ -1,0 +1,8 @@
+{
+  "outputFile": "/app.lint-test.js",
+  "sizes": {
+    "app.lint-test.js": 116,
+    "resolver.lint-test.js": 126,
+    "router.lint-test.js": 122
+  }
+}
