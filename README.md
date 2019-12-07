@@ -74,7 +74,9 @@ await rptBuilder.save();
 
 ## CSV Format
 
-The csv format is designed to be easy to parse with tools like Google Sheets.
+The csv format is designed to be easy to parse with tools like Google Sheets. To allow for easy backwards compatibility in parsing logic, data output is _versioned_. Please consult the [#Schema]
+
+###### Example output
 
 ```csv
 "schema-version", 2
@@ -83,12 +85,11 @@ The csv format is designed to be easy to parse with tools like Google Sheets.
 
 "type", "bundleName", "size", "minSize", "gzipSize", "brSize"
 
-module, ember-fetch.js, abortcontroller.js, 4977, 1913, 637.4097502014504, 566.693493150685, 0.1926873489121676, 774, 774
-module, ember-fetch.js, fetch.js, 14540, 8015, 2670.5902497985494, 2374.3065068493147, 0.8073126510878323, 2687, 2687
-module, my-app.js, vendor/ember-cli/app-prefix.js, 16, 13, 3.0681440443213295, 2.6849861495844873, 0.0014404432132963988, 33, 33
-module, my-app.js, my-app/adapters/-json-api.js, 343, 242, 57.11468144044321, 49.982049861495845, 0.026814404432132965, 183, 183
-module, my-app.js, my-app/app.js, 3117, 1668, 393.66648199445984, 344.50437673130193, 0.18481994459833795, 755, 755
-module, my-app.js, my-app/helpers/app-version.js, 1206, 566, 133.58227146814406, 116.90016620498616, 0.06271468144044322, 359, 359
+module, ember-fetch.js, abortcontroller.js, 4977, 1913, 637.4097502014504, 566.693493150685, 0.1926873489121676, 774, 655
+module, ember-fetch.js, fetch.js, 14540, 8015, 2670.5902497985494, 2374.3065068493147, 0.8073126510878323, 2687, 2390
+module, my-app.js, vendor/ember-cli/app-prefix.js, 16, 13, 3.0681440443213295, 2.6849861495844873, 0.0014404432132963988, 33, 17
+module, my-app.js, my-app/adapters/-json-api.js, 343, 242, 57.11468144044321, 49.982049861495845, 0.026814404432132965, 183, 159
+module, my-app.js, my-app/app.js, 3117, 1668, 393.66648199445984, 344.50437673130193, 0.18481994459833795, 755, 656
 
 bundle, ember-fetch.js, 19519, 9928, 3308, 2941
 bundle, my-app.js, 15861, 9025, 2130, 1864
@@ -97,33 +98,35 @@ bundle, ember.js, 1951427, 490714, 126574, 106521
 bundle, vendor.js, 2855105, 731260, 183679, 152473
 ```
 
-### Sections
-
-There are several sections
-
-#### schema-version (1 row)
-
-This numeric version allows us to introduce breaking changes to the output format, while preserving the ability to parse both old and new data
-
-#### module data headers (1 row)
-
-a single row of headers corresponding to module data
-
-#### bundle data headers (1 row)
-
-a single row of headers corresponding to bundle data
-
-#### module data (many rows)
-
-these rows always begin with "module" in the first column
-
-#### bundle data (many rows)
-
-these rows always begin with "bundle" in the first column
-
 ### Extracting multiple tables from the CSV
 
 Multiple tables (i.e., "modules" and "bundles" can be extracted from the single `.csv` file, using the conventions described above). [Here is an example](https://docs.google.com/spreadsheets/d/1vhor2qAQtWnTu_GNI4LaLZeu9Li0lZVi-koseZG2tTg/edit?usp=sharing) of Google Sheets being used to analyze CSV data pulled directly from this github repo
+
+### Schema
+
+##### schema-version (1 row)
+
+This numeric version allows us to introduce breaking changes to the output format, while preserving the ability to parse both old and new data
+
+#### Version 2
+
+There are several sections
+
+##### module data headers (1 row)
+
+a single row of headers corresponding to module data
+
+##### bundle data headers (1 row)
+
+a single row of headers corresponding to bundle data
+
+##### module data (many rows)
+
+these rows always begin with "module" in the first column
+
+##### bundle data (many rows)
+
+these rows always begin with "bundle" in the first column
 
 ## Legal
 
