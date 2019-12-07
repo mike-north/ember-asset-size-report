@@ -22,8 +22,10 @@ async function main() {
       basedir: basedir
     });
   } catch (ignored) {}
-  const cli = require(projectLocalCli || "../dist/cli/index");
-  log("Running from: " + cli);
-  await require(cli).main();
+  const cliPath = projectLocalCli || "../dist/cli/index";
+  log("Running from: " + cliPath);
+  const cliModule = require(cliPath);
+  log("Running: " + cliModule.main);
+  await cliModule.main();
 }
 main();
