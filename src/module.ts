@@ -144,9 +144,9 @@ export default class Module {
     const bundlePct = minSize / bundleSizes.minSize;
     this._sizes = {
       size,
-      minifiedBundlePortion: bundlePct,
-      brSize: bundleSizes.brSize * bundlePct,
-      gzSize: bundleSizes.gzSize * bundlePct,
+      minifiedBundlePortion: Math.round(bundlePct * 10000) / 10000,
+      brSize: Math.round(bundleSizes.brSize * bundlePct),
+      gzSize: Math.round(bundleSizes.gzSize * bundlePct),
       minSize,
       individualBrSize,
       individualGzSize
