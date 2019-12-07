@@ -1,8 +1,11 @@
 #!/usr/bin/env node
+// @ts-check
 "use strict";
 
 const pkgUp = require("pkg-up");
 const fs = require("fs-extra");
+const resolve = require("resolve");
+const basedir = process.cwd();
 
 const PKG_JSON_PATH = pkgUp.sync();
 
@@ -13,10 +16,14 @@ function isDev() {
 }
 
 async function main() {
-  if (isDev()) {
-    await require("../dist/cli/index").main();
-  } else {
-    await require("ember-asset-size-report/cli/index").main();
-  }
+  let projectLocalCli;
+  try {
+    projectLocalCli = resolve.sync("ember-asset-size-report/cli/index", {
+      basedir: basedir
+    });
+  } catch (ignored) {}
+  const cli = require(projectLocalCli || "../dist/cli/index");
+
+  await require(cli).main();
 }
 main();
