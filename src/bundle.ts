@@ -3,7 +3,7 @@ import * as path from "path";
 import { brotliCompress, gzipCompress, minify } from "./compression";
 import EmberProject from "./ember-project";
 import Module from "./module";
-import { toKB } from "./formatting";
+import { toKB, sizeSummaryString } from "./formatting";
 import Stats from "./stats-csv";
 import { SpinnerLike } from "./spinner";
 import { BaseSize } from "./types";
@@ -170,12 +170,6 @@ class Bundle {
     );
     fs.writeFileSync(minFilePath, minifiedResult, "utf8");
 
-    this.spinner
-      ?.succeed(
-        `Gathering minified bundle sizes: measured bundle (${toKB(minSize)}Kb)`
-      )
-      .start("Gathering minified bundle sizes: measuring individual files...");
-
     if (this.spinner)
       this.spinner.text = `Gathering minified bundle sizes: measuring individual files...${this.bundleName}`;
     const gzResult = await gzipCompress(minifiedResult);
@@ -194,9 +188,6 @@ class Bundle {
     );
     fs.writeFileSync(brFilePath, brResult, "utf8");
 
-    this.spinner?.start(
-      `Gathering minified bundle sizes: measuring individual files...`
-    );
     const sizes = {
       gzSize,
       minSize,
@@ -205,9 +196,8 @@ class Bundle {
     };
     await Promise.all(
       this.bundleFiles.map(async file => {
-        const oldtxt = this.spinner?.text;
         if (this.spinner)
-          `Gathering minified bundle sizes: measuring individual files...${file.name}`;
+          `Gathering minified bundle sizes: measuring individual files within ${this.name} - ${file.name}`;
         this.spinner?.render();
         try {
           await file.calculateSizes(sizes);
@@ -221,7 +211,6 @@ class Bundle {
               (e instanceof Error ? e.stack : "")
           );
         }
-        if (this.spinner) this.spinner.text = "" + oldtxt;
       })
     );
 
@@ -246,9 +235,8 @@ class Bundle {
       ...sums
     };
     this.spinner?.succeedAndStart(
-      `Gathering minified bundle sizes: measured minified bundle (${toKB(
-        brSize
-      )}KB br+min)`
+      `Gathering minified bundle sizes: ${this.name}
+${sizeSummaryString(this._sizes)}`
     );
   }
 

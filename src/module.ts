@@ -122,7 +122,7 @@ export default class Module {
       pBrotliContents
     ]);
     const individualGzSize = Buffer.byteLength(gzippedContents);
-    const individualBrSize = Buffer.byteLength(gzippedContents);
+    const individualBrSize = Buffer.byteLength(brotliContents);
     // minified
     const minifiedPath = path.join(
       this.fileSamplesDir,

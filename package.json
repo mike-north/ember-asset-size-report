@@ -50,6 +50,7 @@
     "test": "yarn qunit 'test-js/**/*.test.js'"
   },
   "dependencies": {
+    "cliui": "^6.0.0",
     "ember-cli": "^3.14.0",
     "execa": "^3.4.0",
     "fs-extra": "^8.1.0",

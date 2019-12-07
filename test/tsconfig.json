@@ -1,9 +1,12 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ES2017",
     "outDir": "../test-js",
-    "baseUrl": ".."
+    "baseUrl": "..",
+    "strict": true,
+    "strictNullChecks": true
   },
   "include": ["."]
 }
