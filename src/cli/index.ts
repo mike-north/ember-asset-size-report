@@ -5,6 +5,7 @@ import * as cliui from "cliui";
 import chalk from "chalk";
 
 import { generateReport, GenerateReportOptions } from "../index";
+import { findDefaultProjectLocation } from "../path-utils";
 
 function printArgSummary(args: Partial<GenerateReportOptions>): void {
   const ui = cliui({ width: 80 });
@@ -45,15 +46,15 @@ export async function main(): Promise<void> {
       description: "path to the root of the ember-cli project"
     })
     .option("build", { type: "boolean", default: true })
-    .option("extra-js-file", { array: true, default: [] })
+    .option("extra-js-file", { array: true, default: [] as string[] })
     .config(config)
     .pkgConf("asset-report")
     .parse(process.argv);
   const opts: Partial<GenerateReportOptions> = {
     build: prog.build,
-    extraJsFiles: prog["extra-js-file"],
-    project: prog.project,
-    out: prog.out
+    extraJsFiles: [...(prog["extra-js-file"] ?? [])],
+    project: prog.project || findDefaultProjectLocation(),
+    out: prog.out || findDefaultProjectLocation()
   };
   printArgSummary(opts);
 
