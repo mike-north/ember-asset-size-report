@@ -109,3 +109,6 @@ test-js/
 
 # tsdoc metadata
 tsdoc-metadata.json
+
+# fixture generated files
+**/*.brotli-out/
