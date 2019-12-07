@@ -1,0 +1,12 @@
+{
+  "outputFile": "/var/folders/cp/k70xj4x97g50lyfn30hnk4_c000qqz/T/broccoli-220979yyUF5vCXBL2/out-224-source_map_concat_concat_app_tests/assets/tests.js",
+  "sizes": {
+    "vendor/ember-cli/tests-prefix.js": 14,
+    "example-app/tests/lint/app.lint-test.js": 508,
+    "example-app/tests/lint/templates.template.lint-test.js": 326,
+    "example-app/tests/lint/tests.lint-test.js": 262,
+    "example-app/tests/test-helper.js": 323,
+    "vendor/ember-cli/app-config.js": 535,
+    "vendor/ember-cli/tests-suffix.js": 77
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "outputFile": "/assets/example-app.js",
+  "sizes": {
+    "vendor/ember-cli/app-prefix.js": 16,
+    "example-app/adapters/-json-api.js": 348,
+    "example-app/app.js": 3132,
+    "example-app/helpers/app-version.js": 1216,
+    "example-app/helpers/pluralize.js": 317,
+    "example-app/helpers/singularize.js": 325,
+    "example-app/initializers/app-version.js": 612,
+    "example-app/initializers/container-debug-adapter.js": 650,
+    "example-app/initializers/ember-data.js": 594,
+    "example-app/initializers/export-application-global.js": 1445,
+    "example-app/instance-initializers/ember-data.js": 402,
+    "example-app/resolver.js": 293,
+    "example-app/router.js": 2900,
+    "example-app/serializers/-default.js": 343,
+    "example-app/serializers/-json-api.js": 354,
+    "example-app/serializers/-rest.js": 340,
+    "example-app/templates/application.js": 534,
+    "example-app/transforms/boolean.js": 360,
+    "example-app/transforms/date.js": 354,
+    "example-app/transforms/number.js": 358,
+    "example-app/transforms/string.js": 358,
+    "vendor/ember-cli/app-suffix.js": 1,
+    "vendor/ember-cli/app-config.js": 535,
+    "vendor/ember-cli/app-boot.js": 163
+  }
+}

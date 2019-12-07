@@ -1,0 +1,6 @@
+{
+  "outputFile": "/templates.template.lint-test.js",
+  "sizes": {
+    "example-app/templates/application.template.lint-test.js": 185
+  }
+}

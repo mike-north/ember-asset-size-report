@@ -1,0 +1,18 @@
+define("ember-welcome-page/templates/components/welcome-page", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.HTMLBars.template({
+    "id": "V/eG6mVb",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"div\",true],[10,\"id\",\"ember-welcome-page-id-selector\"],[11,\"data-ember-version\",[29,[[22,\"emberVersion\"]]]],[8],[0,\"\\n  \"],[7,\"div\",true],[10,\"class\",\"columns\"],[8],[0,\"\\n    \"],[7,\"div\",true],[10,\"class\",\"tomster\"],[8],[0,\"\\n      \"],[7,\"img\",true],[10,\"src\",\"ember-welcome-page/images/construction.png\"],[10,\"alt\",\"Under construction\"],[8],[9],[0,\"\\n    \"],[9],[0,\"\\n    \"],[7,\"div\",true],[10,\"class\",\"welcome\"],[8],[0,\"\\n      \"],[7,\"h2\",true],[10,\"id\",\"title\"],[8],[0,\"Congratulations, you made it!\"],[9],[0,\"\\n\\n      \"],[7,\"p\",true],[8],[0,\"You’ve officially spun up your very first Ember app :-)\"],[9],[0,\"\\n      \"],[7,\"p\",true],[8],[0,\"You’ve got one more decision to make: what do you want to do next? We’d suggest one of the following to help you get going:\"],[9],[0,\"\\n      \"],[7,\"ol\",true],[8],[0,\"\\n        \"],[7,\"li\",true],[8],[7,\"a\",true],[11,\"href\",[29,[\"https://guides.emberjs.com/v\",[22,\"emberVersion\"],\"/getting-started/quick-start/\"]]],[8],[0,\"Quick Start\"],[9],[0,\" - a quick introduction to how Ember works. Learn about defining your first route, writing a UI component and deploying your application.\"],[9],[0,\"\\n        \"],[7,\"li\",true],[8],[7,\"a\",true],[11,\"href\",[29,[\"https://guides.emberjs.com/v\",[22,\"emberVersion\"],\"/tutorial/ember-cli/\"]]],[8],[0,\"Ember Guides\"],[9],[0,\" - this is our more thorough, hands-on intro to Ember. Your crash course in Ember philosophy, background and some in-depth discussion of how things work (and why they work the way they do).\"],[9],[0,\"\\n      \"],[9],[0,\"\\n      \"],[7,\"p\",true],[8],[0,\"If you run into problems, you can check \"],[7,\"a\",true],[10,\"href\",\"http://stackoverflow.com/questions/tagged/ember.js\"],[8],[0,\"Stack Overflow\"],[9],[0,\" or \"],[7,\"a\",true],[10,\"href\",\"http://discuss.emberjs.com/\"],[8],[0,\"our forums\"],[9],[0,\"  for ideas and answers—someone’s probably been through the same thing and already posted an answer.  If not, you can post your \"],[7,\"strong\",true],[8],[0,\"own\"],[9],[0,\" question. People love to help new Ember developers get started, and our \"],[7,\"a\",true],[10,\"href\",\"https://emberjs.com/community/\"],[8],[0,\"Ember Community\"],[9],[0,\" is incredibly supportive.\"],[9],[0,\"\\n    \"],[9],[0,\"\\n  \"],[9],[0,\"\\n  \"],[7,\"p\",true],[10,\"class\",\"postscript\"],[8],[0,\"To remove this welcome message, remove the\\n    \"],[7,\"code\",true],[8],[0,\"\\n\"],[4,\"if\",[[24,[\"canAngleBracket\"]]],null,{\"statements\":[[0,\"        <WelcomePage />\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"        \"],[0,\"{{welcome-page}}\\n\"]],\"parameters\":[]}],[0,\"    \"],[9],[0,\"\\n    component from your\\n    \"],[7,\"code\",true],[8],[0,\"\\n\"],[4,\"if\",[[24,[\"isModuleUnification\"]]],null,{\"statements\":[[0,\"        src/ui/routes/application/template.hbs\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"        app/templates/application.hbs\\n\"]],\"parameters\":[]}],[0,\"    \"],[9],[0,\"\\n     file.\"],[7,\"br\",true],[8],[9],[0,\"You'll see this page update soon after!\\n  \"],[9],[0,\"\\n\"],[9],[0,\"\\n\"]],\"hasEval\":false}",
+    "meta": {
+      "moduleName": "ember-welcome-page/templates/components/welcome-page.hbs"
+    }
+  });
+
+  _exports.default = _default;
+});
