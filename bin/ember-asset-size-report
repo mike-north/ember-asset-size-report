@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-const rpt = require("ember-asset-size-report");
+
+const { generateReport } = require("ember-asset-size-report");
 
 async function main() {
-  await rpt.build();
-  const csv = await rpt.analyze();
-  await rpt.saveReportToFile(csv);
+  await generateReport();
 }
 
 main();
