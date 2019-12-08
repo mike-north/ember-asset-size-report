@@ -81,23 +81,22 @@ The csv format is designed to be easy to parse with tools like Google Sheets. To
 ###### Example output
 
 ```csv
-"schema-version", 2
+schema-version, 3
 
-"type","bundleName","moduleName","size","minSize","gzipSize","brSize","bundleRatio","soloGzSize","soloBrSize"
+type, dataset, bundleName, moduleName, size, minSize, gzipSize, brSize, bundleRatio, soloGzSize, soloBrSize
 
-"type", "bundleName", "size", "minSize", "gzipSize", "brSize"
+type, dataset, bundleName, size, minSize, gzipSize, brSize
 
-module, ember-fetch.js, abortcontroller.js, 4977, 1913, 637.4097502014504, 566.693493150685, 0.1926873489121676, 774, 655
-module, ember-fetch.js, fetch.js, 14540, 8015, 2670.5902497985494, 2374.3065068493147, 0.8073126510878323, 2687, 2390
-module, my-app.js, vendor/ember-cli/app-prefix.js, 16, 13, 3.0681440443213295, 2.6849861495844873, 0.0014404432132963988, 33, 17
-module, my-app.js, my-app/adapters/-json-api.js, 343, 242, 57.11468144044321, 49.982049861495845, 0.026814404432132965, 183, 159
-module, my-app.js, my-app/app.js, 3117, 1668, 393.66648199445984, 344.50437673130193, 0.18481994459833795, 755, 656
+module, experiment: drop ie11, ember-fetch.js, abortcontroller.js, 4977, 1913, 637, 567, 0.1927, 774, 655
+module, experiment: drop ie11, ember-fetch.js, fetch.js, 14540, 8015, 2671, 2374, 0.8073, 2687, 2390
+module, experiment: drop ie11, example-app.js, vendor/ember-cli/app-prefix.js, 16, 13, 3, 3, 0.0014, 33, 17
+module, experiment: drop ie11, example-app.js, example-app/adapters/-json-api.js, 348, 247, 57, 50, 0.027, 185, 155
 
-bundle, ember-fetch.js, 19519, 9928, 3308, 2941
-bundle, my-app.js, 15861, 9025, 2130, 1864
-bundle, ember-testing.js, 81182, 22122, 5569, 4962
-bundle, ember.js, 1951427, 490714, 126574, 106521
-bundle, vendor.js, 2855105, 731260, 183679, 152473
+bundle, experiment: drop ie11, ember-fetch.js, 19519, 9928, 3308, 2941
+bundle, experiment: drop ie11, example-app.js, 15996, 9164, 2127, 1862
+bundle, experiment: drop ie11, ember-testing.js, 81182, 22122, 5569, 4962
+bundle, experiment: drop ie11, ember.js, 1951427, 490714, 126574, 106521
+bundle, experiment: drop ie11, vendor.js, 2855105, 731260, 183679, 152473
 ```
 
 ### Extracting multiple tables from the CSV
