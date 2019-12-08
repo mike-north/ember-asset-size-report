@@ -124,24 +124,25 @@ class Stats {
     spinner?.start(`Saving CSV file: ${this.csvFileName}`);
     const exists = fs.existsSync(this.csvFileName);
     await pWriteFile(
-      [
-        ...(exists ? [] : this.headers),
-        ...this.moduleRows.map(([typ, name, bundleName, ...rest]) => [
-          typ,
-          this.dataSetName,
-          name.replace(project.path, ""),
-          bundleName.replace(project.path, ""),
-          ...rest
-        ]),
-        ...this.bundleRows.map(([typ, name, ...rest]) => [
-          typ,
-          this.dataSetName,
-          name.replace(project.path, ""),
-          ...rest
-        ])
-      ]
-        .map(r => r.join(", "))
-        .join("\n"),
+      (exists ? "\n" : "") +
+        [
+          ...(exists ? [] : this.headers),
+          ...this.moduleRows.map(([typ, name, bundleName, ...rest]) => [
+            typ,
+            this.dataSetName,
+            name.replace(project.path, ""),
+            bundleName.replace(project.path, ""),
+            ...rest
+          ]),
+          ...this.bundleRows.map(([typ, name, ...rest]) => [
+            typ,
+            this.dataSetName,
+            name.replace(project.path, ""),
+            ...rest
+          ])
+        ]
+          .map(r => r.join(", "))
+          .join("\n"),
       this.csvFileName,
       {
         encoding: "utf8",
