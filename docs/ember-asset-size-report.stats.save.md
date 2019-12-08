@@ -7,6 +7,8 @@
 > This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
 > 
 
+Save this data set as a CSV file
+
 <b>Signature:</b>
 
 ```typescript
@@ -17,8 +19,8 @@ save(project: EmberProject, spinner?: SpinnerLike): Promise<void>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  project | <code>EmberProject</code> |  |
-|  spinner | <code>SpinnerLike</code> |  |
+|  project | <code>EmberProject</code> | ember-cli project |
+|  spinner | <code>SpinnerLike</code> | optional loading spinner |
 
 <b>Returns:</b>
 

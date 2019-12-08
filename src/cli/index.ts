@@ -42,6 +42,7 @@ function createProgram(argv = process.argv) {
       description: "path to the root of the ember-cli project"
     })
     .option("build", { type: "boolean", default: true })
+    .option("dataset-name", { type: "string" })
     .option("extra-js-file", { array: true, default: [] as string[] })
     .config(config)
     .pkgConf("asset-report")
@@ -62,6 +63,7 @@ export async function main(): Promise<void> {
     build: prog.build,
     extraJsFiles: prog["extra-js-file"] ?? [],
     project: prog.project,
+    datasetName: prog["dataset-name"],
     out: prog.out
   };
   printArgSummary(ui, receivedOpts);
@@ -75,7 +77,8 @@ export async function main(): Promise<void> {
     build: receivedOpts.build,
     extraJsFiles: receivedOpts.extraJsFiles,
     project: receivedOpts.project ?? findDefaultProjectLocation(),
-    out: receivedOpts.out ?? findDefaultReportOutputLocation()
+    out: receivedOpts.out ?? findDefaultReportOutputLocation(),
+    datasetName: receivedOpts.datasetName ?? findDefaultReportOutputLocation()
   };
   printArgSummary(ui, resolvedOpts);
   ui.div();

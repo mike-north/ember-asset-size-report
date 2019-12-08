@@ -12,7 +12,7 @@ Constructs a new instance of the `ReportGenerator` class
 <b>Signature:</b>
 
 ```typescript
-constructor(project: EmberProject, reportPath?: string);
+constructor(project: EmberProject, reportPath: string, datasetName: string);
 ```
 
 ## Parameters
@@ -21,4 +21,5 @@ constructor(project: EmberProject, reportPath?: string);
 |  --- | --- | --- |
 |  project | <code>EmberProject</code> |  |
 |  reportPath | <code>string</code> |  |
+|  datasetName | <code>string</code> |  |
 

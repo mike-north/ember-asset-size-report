@@ -4,7 +4,7 @@ import EmberProject from "./ember-project";
 import { ModuleSizes } from "./module";
 import { BundleSizes } from "./bundle";
 
-const DATA_VERSION = 2;
+const DATA_VERSION = 3;
 
 const pWriteFile = (
   contents: Buffer | string,
@@ -19,7 +19,7 @@ const pWriteFile = (
   });
 
 /**
- *
+ * Stats data store
  * @beta
  */
 class Stats {
@@ -41,6 +41,7 @@ class Stats {
     ["schema-version", DATA_VERSION],
     [
       "type",
+      "dataset",
       "bundleName",
       "moduleName",
       "size",
@@ -51,12 +52,24 @@ class Stats {
       "soloGzSize",
       "soloBrSize"
     ],
-    ["type", "bundleName", "size", "minSize", "gzipSize", "brSize"]
+    ["type", "dataset", "bundleName", "size", "minSize", "gzipSize", "brSize"]
   ];
-  public constructor(protected csvFileName: string) {
-    this.csvFileName = csvFileName;
-  }
+  public constructor(
+    /**
+     * Name of the CSV file
+     */
+    private csvFileName: string,
+    /**
+     * Name of the dataset
+     */
+    private dataSetName: string
+  ) {}
 
+  /**
+   * Add a bundle's size information to the data set
+   * @param bundleName - name of the bundle
+   * @param sizes - bundle asset sizes
+   */
   public addBundleRow(bundleName: string, sizes: BundleSizes): void {
     this.bundleRows.push([
       "bundle",
@@ -67,7 +80,13 @@ class Stats {
       sizes.brSize
     ]);
   }
-  public addFileRow(
+  /**
+   * Add a module's size information to the data set
+   * @param bundleName - name of the bundle that this module belongs to
+   * @param fileName - name of this module
+   * @param sizes - size information for this bundle
+   */
+  public addModuleRow(
     bundleName: string,
     fileName: string,
     sizes: ModuleSizes
@@ -86,6 +105,11 @@ class Stats {
     ]);
   }
 
+  /**
+   * Save this data set as a CSV file
+   * @param project - ember-cli project
+   * @param spinner - optional loading spinner
+   */
   public async save(
     project: EmberProject,
     spinner?: SpinnerLike
@@ -99,12 +123,14 @@ class Stats {
         ...this.headers,
         ...this.moduleRows.map(([typ, name, bundleName, ...rest]) => [
           typ,
+          this.dataSetName,
           name.replace(project.path, ""),
           bundleName.replace(project.path, ""),
           ...rest
         ]),
         ...this.bundleRows.map(([typ, name, ...rest]) => [
           typ,
+          this.dataSetName,
           name.replace(project.path, ""),
           ...rest
         ])

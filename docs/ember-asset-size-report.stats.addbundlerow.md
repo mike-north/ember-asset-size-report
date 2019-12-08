@@ -7,6 +7,8 @@
 > This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
 > 
 
+Add a bundle's size information to the data set
+
 <b>Signature:</b>
 
 ```typescript
@@ -17,8 +19,8 @@ addBundleRow(bundleName: string, sizes: BundleSizes): void;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  bundleName | <code>string</code> |  |
-|  sizes | <code>BundleSizes</code> |  |
+|  bundleName | <code>string</code> | name of the bundle |
+|  sizes | <code>BundleSizes</code> | bundle asset sizes |
 
 <b>Returns:</b>
 

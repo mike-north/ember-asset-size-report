@@ -46,7 +46,7 @@ QUnit.module("acceptance tests", hooks => {
       row => row[0] === "schema-version"
     );
     assert.equal(schemaVersionRows.length, 1, 'One "schema-version" row');
-    assert.equal(schemaVersionRows[0][1], 2, 'Current "schema version" is 2');
+    assert.equal(schemaVersionRows[0][1], 3, 'Current "schema version" is 3');
   });
 
   QUnit.test("two 'header' rows are present", assert => {
@@ -57,6 +57,7 @@ QUnit.module("acceptance tests", hooks => {
     assert.deepEqual(
       headerRows[0],
       [
+        "dataset",
         "type",
         "bundleName",
         "moduleName",
@@ -72,7 +73,15 @@ QUnit.module("acceptance tests", hooks => {
     );
     assert.deepEqual(
       headerRows[1],
-      ["type", "bundleName", "size", "minSize", "gzipSize", "brSize"],
+      [
+        "dataset",
+        "type",
+        "bundleName",
+        "size",
+        "minSize",
+        "gzipSize",
+        "brSize"
+      ],
       'Second header row is for "bundles"'
     );
   });

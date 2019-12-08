@@ -1,296 +1,296 @@
-schema-version, 2
-type, bundleName, moduleName, size, minSize, gzipSize, brSize, bundleRatio, soloGzSize, soloBrSize
-type, bundleName, size, minSize, gzipSize, brSize
-module, ember-fetch.js, abortcontroller.js, 4977, 1913, 637, 567, 0.1927, 774, 655
-module, ember-fetch.js, fetch.js, 14540, 8015, 2671, 2374, 0.8073, 2687, 2390
-module, my-app.js, vendor/ember-cli/app-prefix.js, 16, 13, 3, 3, 0.0014, 33, 17
-module, my-app.js, my-app/adapters/-json-api.js, 343, 242, 57, 50, 0.0268, 183, 159
-module, my-app.js, my-app/app.js, 3117, 1668, 394, 345, 0.1848, 755, 656
-module, my-app.js, my-app/helpers/app-version.js, 1206, 566, 134, 117, 0.0627, 359, 313
-module, my-app.js, my-app/helpers/pluralize.js, 312, 211, 50, 44, 0.0234, 173, 146
-module, my-app.js, my-app/helpers/singularize.js, 320, 215, 51, 44, 0.0238, 175, 147
-module, my-app.js, my-app/initializers/app-version.js, 602, 364, 86, 75, 0.0403, 249, 199
-module, my-app.js, my-app/initializers/container-debug-adapter.js, 645, 453, 107, 94, 0.0502, 266, 202
-module, my-app.js, my-app/initializers/ember-data.js, 589, 252, 59, 52, 0.0279, 187, 149
-module, my-app.js, my-app/initializers/export-application-global.js, 1435, 710, 168, 147, 0.0787, 402, 314
-module, my-app.js, my-app/instance-initializers/ember-data.js, 397, 255, 60, 53, 0.0283, 194, 150
-module, my-app.js, my-app/resolver.js, 288, 179, 42, 37, 0.0198, 158, 124
-module, my-app.js, my-app/router.js, 2890, 1551, 366, 320, 0.1719, 720, 640
-module, my-app.js, my-app/serializers/-default.js, 338, 243, 57, 50, 0.0269, 182, 154
-module, my-app.js, my-app/serializers/-json-api.js, 349, 248, 59, 51, 0.0275, 185, 159
-module, my-app.js, my-app/serializers/-rest.js, 335, 240, 57, 50, 0.0266, 182, 156
-module, my-app.js, my-app/templates/application.js, 554, 411, 97, 85, 0.0455, 305, 248
-module, my-app.js, my-app/transforms/boolean.js, 355, 254, 60, 52, 0.0281, 200, 161
-module, my-app.js, my-app/transforms/date.js, 349, 248, 59, 51, 0.0275, 194, 162
-module, my-app.js, my-app/transforms/number.js, 353, 252, 59, 52, 0.0279, 199, 158
-module, my-app.js, my-app/transforms/string.js, 353, 252, 59, 52, 0.0279, 199, 157
-module, my-app.js, vendor/ember-cli/app-suffix.js, 1, 0, 0, 0, 0, 20, 1
-module, my-app.js, vendor/ember-cli/app-config.js, 525, 350, 83, 72, 0.0388, 272, 203
-module, my-app.js, vendor/ember-cli/app-boot.js, 143, 84, 20, 17, 0.0093, 96, 64
-module, ember-testing.js, license.js, 389, 390, 98, 87, 0.0176, 252, 193
-module, ember-testing.js, loader.js, 2424, 1058, 266, 237, 0.0478, 540, 458
-module, ember-testing.js, @ember/debug/index.js, 10935, 1325, 334, 297, 0.0599, 504, 428
-module, ember-testing.js, @ember/debug/lib/capture-render-tree.js, 840, 317, 80, 71, 0.0143, 238, 182
-module, ember-testing.js, @ember/debug/lib/deprecate.js, 7136, 516, 130, 116, 0.0233, 267, 229
-module, ember-testing.js, @ember/debug/lib/handlers.js, 1019, 263, 66, 59, 0.0119, 199, 156
-module, ember-testing.js, @ember/debug/lib/testing.js, 371, 205, 52, 46, 0.0093, 175, 144
-module, ember-testing.js, @ember/debug/lib/warn.js, 4332, 413, 104, 93, 0.0187, 236, 195
-module, ember-testing.js, ember-testing/index.js, 1123, 772, 194, 173, 0.0349, 283, 238
-module, ember-testing.js, ember-testing/lib/adapters/adapter.js, 1452, 298, 75, 67, 0.0135, 230, 180
-module, ember-testing.js, ember-testing/lib/adapters/qunit.js, 1572, 633, 159, 142, 0.0286, 349, 301
-module, ember-testing.js, ember-testing/lib/events.js, 4079, 1714, 431, 384, 0.0775, 785, 681
-module, ember-testing.js, ember-testing/lib/ext/application.js, 6396, 1782, 449, 400, 0.0806, 696, 594
-module, ember-testing.js, ember-testing/lib/ext/rsvp.js, 894, 517, 130, 116, 0.0234, 315, 255
-module, ember-testing.js, ember-testing/lib/helpers.js, 1743, 1280, 322, 287, 0.0579, 343, 307
-module, ember-testing.js, ember-testing/lib/helpers/-is-form-control.js, 657, 279, 70, 63, 0.0126, 243, 182
-module, ember-testing.js, ember-testing/lib/helpers/and_then.js, 291, 191, 48, 43, 0.0086, 171, 130
-module, ember-testing.js, ember-testing/lib/helpers/click.js, 1052, 360, 91, 81, 0.0163, 239, 197
-module, ember-testing.js, ember-testing/lib/helpers/current_path.js, 777, 271, 68, 61, 0.0123, 221, 181
-module, ember-testing.js, ember-testing/lib/helpers/current_route_name.js, 836, 282, 71, 63, 0.0127, 228, 175
-module, ember-testing.js, ember-testing/lib/helpers/current_url.js, 749, 271, 68, 61, 0.0123, 225, 181
-module, ember-testing.js, ember-testing/lib/helpers/fill_in.js, 1295, 449, 113, 101, 0.0203, 299, 233
-module, ember-testing.js, ember-testing/lib/helpers/find.js, 1411, 295, 74, 66, 0.0133, 227, 175
-module, ember-testing.js, ember-testing/lib/helpers/find_with_assert.js, 1245, 268, 67, 60, 0.0121, 222, 199
-module, ember-testing.js, ember-testing/lib/helpers/key_event.js, 1208, 278, 70, 62, 0.0126, 230, 185
-module, ember-testing.js, ember-testing/lib/helpers/pause_test.js, 1661, 388, 98, 87, 0.0175, 278, 229
-module, ember-testing.js, ember-testing/lib/helpers/trigger_event.js, 2115, 435, 110, 98, 0.0197, 297, 244
-module, ember-testing.js, ember-testing/lib/helpers/visit.js, 1206, 460, 116, 103, 0.0208, 329, 264
-module, ember-testing.js, ember-testing/lib/helpers/wait.js, 2555, 611, 154, 137, 0.0276, 385, 322
-module, ember-testing.js, ember-testing/lib/initializers.js, 506, 279, 70, 63, 0.0126, 190, 163
-module, ember-testing.js, ember-testing/lib/setup_for_testing.js, 1579, 796, 200, 179, 0.036, 362, 302
-module, ember-testing.js, ember-testing/lib/support.js, 1976, 611, 154, 137, 0.0276, 382, 286
-module, ember-testing.js, ember-testing/lib/test.js, 2063, 736, 185, 165, 0.0333, 319, 286
-module, ember-testing.js, ember-testing/lib/test/adapter.js, 979, 467, 118, 105, 0.0211, 293, 237
-module, ember-testing.js, ember-testing/lib/test/helpers.js, 3334, 408, 103, 92, 0.0184, 243, 186
-module, ember-testing.js, ember-testing/lib/test/on_inject_helpers.js, 1185, 302, 76, 68, 0.0137, 222, 178
-module, ember-testing.js, ember-testing/lib/test/pending_requests.js, 877, 423, 106, 95, 0.0191, 262, 203
-module, ember-testing.js, ember-testing/lib/test/promise.js, 3263, 955, 240, 214, 0.0432, 537, 459
-module, ember-testing.js, ember-testing/lib/test/run.js, 364, 217, 55, 49, 0.0098, 191, 144
-module, ember-testing.js, ember-testing/lib/test/waiters.js, 3215, 607, 153, 136, 0.0274, 339, 279
-module, ember.js, license.js, 389, 390, 101, 85, 0.0008, 252, 193
-module, ember.js, loader.js, 2424, 1058, 273, 230, 0.0022, 540, 458
-module, ember.js, @ember/-internals/browser-environment/index.js, 1485, 957, 247, 208, 0.002, 451, 355
-module, ember.js, @ember/-internals/console/index.js, 5967, 700, 181, 152, 0.0014, 304, 273
-module, ember.js, @ember/-internals/container/index.js, 40165, 8435, 2176, 1831, 0.0172, 2440, 2176
-module, ember.js, @ember/-internals/environment/index.js, 9278, 2035, 525, 442, 0.0041, 943, 809
-module, ember.js, @ember/-internals/error-handling/index.js, 908, 361, 93, 78, 0.0007, 231, 190
-module, ember.js, @ember/-internals/extension-support/index.js, 658, 452, 117, 98, 0.0009, 226, 184
-module, ember.js, @ember/-internals/extension-support/lib/container_debug_adapter.js, 3016, 635, 164, 138, 0.0013, 413, 328
-module, ember.js, @ember/-internals/extension-support/lib/data_adapter.js, 14727, 3247, 838, 705, 0.0066, 1197, 1048
-module, ember.js, @ember/-internals/glimmer/index.js, 325056, 78456, 20237, 17031, 0.1599, 21022, 18507
-module, ember.js, @ember/-internals/meta/index.js, 1155, 754, 194, 164, 0.0015, 241, 196
-module, ember.js, @ember/-internals/meta/lib/meta.js, 28324, 6904, 1781, 1499, 0.0141, 2095, 1898
-module, ember.js, @ember/-internals/metal/index.js, 162162, 33635, 8676, 7301, 0.0685, 10722, 9776
-module, ember.js, @ember/-internals/owner/index.js, 2261, 279, 72, 61, 0.0006, 212, 174
-module, ember.js, @ember/-internals/routing/index.js, 3348, 2274, 587, 494, 0.0046, 430, 366
-module, ember.js, @ember/-internals/routing/lib/ext/controller.js, 8414, 927, 239, 201, 0.0019, 447, 377
-module, ember.js, @ember/-internals/routing/lib/location/api.js, 3469, 322, 83, 70, 0.0007, 235, 183
-module, ember.js, @ember/-internals/routing/lib/location/auto_location.js, 10352, 2285, 589, 496, 0.0047, 1055, 937
-module, ember.js, @ember/-internals/routing/lib/location/hash_location.js, 4975, 1385, 357, 301, 0.0028, 584, 493
-module, ember.js, @ember/-internals/routing/lib/location/history_location.js, 8292, 2615, 675, 568, 0.0053, 981, 837
-module, ember.js, @ember/-internals/routing/lib/location/none_location.js, 3804, 882, 228, 191, 0.0018, 471, 397
-module, ember.js, @ember/-internals/routing/lib/location/util.js, 3391, 856, 221, 186, 0.0017, 479, 406
-module, ember.js, @ember/-internals/routing/lib/services/router.js, 17446, 2190, 565, 475, 0.0045, 872, 750
-module, ember.js, @ember/-internals/routing/lib/services/routing.js, 3954, 1332, 344, 289, 0.0027, 651, 560
-module, ember.js, @ember/-internals/routing/lib/system/cache.js, 1273, 501, 129, 109, 0.001, 296, 250
-module, ember.js, @ember/-internals/routing/lib/system/controller_for.js, 504, 213, 55, 46, 0.0004, 184, 147
-module, ember.js, @ember/-internals/routing/lib/system/dsl.js, 7567, 2728, 704, 592, 0.0056, 1126, 1010
-module, ember.js, @ember/-internals/routing/lib/system/engines.js, 92, 73, 19, 16, 0.0001, 92, 69
-module, ember.js, @ember/-internals/routing/lib/system/generate_controller.js, 1572, 505, 130, 110, 0.001, 309, 246
-module, ember.js, @ember/-internals/routing/lib/system/query_params.js, 422, 246, 63, 53, 0.0005, 201, 171
-module, ember.js, @ember/-internals/routing/lib/system/route-info.js, 5964, 76, 20, 16, 0.0002, 92, 76
-module, ember.js, @ember/-internals/routing/lib/system/route.js, 83633, 12205, 3148, 2649, 0.0249, 4226, 3874
-module, ember.js, @ember/-internals/routing/lib/system/router.js, 57823, 15644, 4035, 3396, 0.0319, 5302, 4772
-module, ember.js, @ember/-internals/routing/lib/system/router_state.js, 1239, 616, 159, 134, 0.0013, 362, 301
-module, ember.js, @ember/-internals/routing/lib/system/transition.js, 5323, 76, 20, 16, 0.0002, 93, 70
-module, ember.js, @ember/-internals/routing/lib/utils.js, 6826, 2061, 532, 447, 0.0042, 1083, 949
-module, ember.js, @ember/-internals/runtime/index.js, 6409, 4254, 1097, 923, 0.0087, 683, 590
-module, ember.js, @ember/-internals/runtime/lib/compare.js, 4023, 1041, 269, 226, 0.0021, 532, 470
-module, ember.js, @ember/-internals/runtime/lib/copy.js, 3492, 887, 229, 193, 0.0018, 478, 417
-module, ember.js, @ember/-internals/runtime/lib/ext/function.js, 6221, 760, 196, 165, 0.0015, 333, 261
-module, ember.js, @ember/-internals/runtime/lib/ext/rsvp.js, 1716, 841, 217, 183, 0.0017, 466, 395
-module, ember.js, @ember/-internals/runtime/lib/is-equal.js, 1875, 304, 78, 66, 0.0006, 222, 180
-module, ember.js, @ember/-internals/runtime/lib/mixins/-proxy.js, 3465, 1322, 341, 287, 0.0027, 673, 582
-module, ember.js, @ember/-internals/runtime/lib/mixins/action_handler.js, 6457, 526, 136, 114, 0.0011, 345, 295
-module, ember.js, @ember/-internals/runtime/lib/mixins/array.js, 29708, 6992, 1804, 1518, 0.0142, 2183, 1970
-module, ember.js, @ember/-internals/runtime/lib/mixins/comparable.js, 1174, 241, 62, 52, 0.0005, 191, 157
-module, ember.js, @ember/-internals/runtime/lib/mixins/container_proxy.js, 4565, 638, 165, 138, 0.0013, 353, 307
-module, ember.js, @ember/-internals/runtime/lib/mixins/copyable.js, 1141, 236, 61, 51, 0.0005, 189, 160
-module, ember.js, @ember/-internals/runtime/lib/mixins/enumerable.js, 664, 227, 59, 49, 0.0005, 184, 153
-module, ember.js, @ember/-internals/runtime/lib/mixins/evented.js, 4579, 598, 154, 130, 0.0012, 334, 277
-module, ember.js, @ember/-internals/runtime/lib/mixins/mutable_enumerable.js, 749, 296, 76, 64, 0.0006, 201, 169
-module, ember.js, @ember/-internals/runtime/lib/mixins/observable.js, 17601, 1406, 363, 305, 0.0029, 535, 463
-module, ember.js, @ember/-internals/runtime/lib/mixins/promise_proxy.js, 5567, 1128, 291, 245, 0.0023, 511, 439
-module, ember.js, @ember/-internals/runtime/lib/mixins/registry_proxy.js, 8202, 713, 184, 155, 0.0015, 355, 301
-module, ember.js, @ember/-internals/runtime/lib/mixins/target_action_support.js, 4919, 1080, 279, 234, 0.0022, 502, 437
-module, ember.js, @ember/-internals/runtime/lib/system/array_proxy.js, 11576, 3593, 927, 780, 0.0073, 1098, 967
-module, ember.js, @ember/-internals/runtime/lib/system/core_object.js, 37566, 4594, 1185, 997, 0.0094, 1801, 1618
-module, ember.js, @ember/-internals/runtime/lib/system/namespace.js, 2148, 970, 250, 211, 0.002, 474, 432
-module, ember.js, @ember/-internals/runtime/lib/system/object.js, 4000, 1272, 328, 276, 0.0026, 548, 461
-module, ember.js, @ember/-internals/runtime/lib/system/object_proxy.js, 2845, 439, 113, 95, 0.0009, 271, 219
-module, ember.js, @ember/-internals/runtime/lib/type-of.js, 4123, 749, 193, 163, 0.0015, 407, 346
-module, ember.js, @ember/-internals/utils/index.js, 22954, 5115, 1319, 1110, 0.0104, 2023, 1852
-module, ember.js, @ember/-internals/views/index.js, 5662, 3738, 964, 811, 0.0076, 647, 554
-module, ember.js, @ember/-internals/views/lib/compat/attrs.js, 344, 242, 62, 53, 0.0005, 198, 165
-module, ember.js, @ember/-internals/views/lib/compat/fallback-view-registry.js, 339, 243, 63, 53, 0.0005, 200, 158
-module, ember.js, @ember/-internals/views/lib/component_lookup.js, 672, 383, 99, 83, 0.0008, 245, 207
-module, ember.js, @ember/-internals/views/lib/mixins/action_support.js, 6264, 984, 254, 214, 0.002, 551, 476
-module, ember.js, @ember/-internals/views/lib/mixins/child_views_support.js, 868, 450, 116, 98, 0.0009, 292, 250
-module, ember.js, @ember/-internals/views/lib/mixins/class_names_support.js, 3388, 414, 107, 90, 0.0008, 279, 226
-module, ember.js, @ember/-internals/views/lib/mixins/text_support.js, 11488, 1693, 437, 368, 0.0035, 780, 651
-module, ember.js, @ember/-internals/views/lib/mixins/view_state_support.js, 712, 384, 99, 83, 0.0008, 257, 214
-module, ember.js, @ember/-internals/views/lib/mixins/view_support.js, 14824, 1725, 445, 374, 0.0035, 759, 637
-module, ember.js, @ember/-internals/views/lib/system/action_manager.js, 426, 198, 51, 43, 0.0004, 178, 133
-module, ember.js, @ember/-internals/views/lib/system/event_dispatcher.js, 16624, 4305, 1110, 935, 0.0088, 1806, 1557
-module, ember.js, @ember/-internals/views/lib/system/jquery.js, 1319, 694, 179, 151, 0.0014, 399, 345
-module, ember.js, @ember/-internals/views/lib/system/jquery_event_deprecation.js, 3267, 301, 78, 65, 0.0006, 215, 169
-module, ember.js, @ember/-internals/views/lib/system/lookup_partial.js, 1835, 887, 229, 193, 0.0018, 432, 353
-module, ember.js, @ember/-internals/views/lib/system/utils.js, 6858, 2458, 634, 534, 0.005, 1047, 876
-module, ember.js, @ember/-internals/views/lib/views/core_view.js, 2533, 1057, 273, 229, 0.0022, 583, 461
-module, ember.js, @ember/-internals/views/lib/views/states.js, 1385, 491, 127, 107, 0.001, 245, 208
-module, ember.js, @ember/-internals/views/lib/views/states/default.js, 765, 403, 104, 87, 0.0008, 273, 202
-module, ember.js, @ember/-internals/views/lib/views/states/destroying.js, 753, 519, 134, 113, 0.0011, 287, 224
-module, ember.js, @ember/-internals/views/lib/views/states/has_element.js, 1284, 595, 153, 129, 0.0012, 343, 287
-module, ember.js, @ember/-internals/views/lib/views/states/in_dom.js, 1387, 438, 113, 95, 0.0009, 258, 222
-module, ember.js, @ember/-internals/views/lib/views/states/pre_render.js, 456, 306, 79, 66, 0.0006, 210, 169
-module, ember.js, @ember/application/globals-resolver.js, 14054, 3047, 786, 661, 0.0062, 1213, 1060
-module, ember.js, @ember/application/index.js, 1143, 744, 192, 162, 0.0015, 259, 223
-module, ember.js, @ember/application/instance.js, 17171, 3427, 884, 744, 0.007, 1242, 1071
-module, ember.js, @ember/application/lib/application.js, 37875, 4512, 1164, 979, 0.0092, 1619, 1428
-module, ember.js, @ember/application/lib/lazy_load.js, 2113, 547, 141, 119, 0.0011, 363, 310
-module, ember.js, @ember/application/lib/validate-type.js, 1021, 441, 114, 96, 0.0009, 275, 226
-module, ember.js, @ember/canary-features/index.js, 3683, 1439, 371, 312, 0.0029, 563, 479
-module, ember.js, @ember/component/index.js, 341, 240, 62, 52, 0.0005, 179, 146
-module, ember.js, @ember/component/template-only.js, 2460, 453, 117, 98, 0.0009, 261, 213
-module, ember.js, @ember/controller/index.js, 1880, 442, 114, 96, 0.0009, 288, 225
-module, ember.js, @ember/controller/lib/controller_mixin.js, 1721, 447, 115, 97, 0.0009, 290, 244
-module, ember.js, @ember/debug/index.js, 10935, 1325, 342, 288, 0.0027, 504, 428
-module, ember.js, @ember/debug/lib/capture-render-tree.js, 840, 317, 82, 69, 0.0006, 238, 182
-module, ember.js, @ember/debug/lib/deprecate.js, 7136, 516, 133, 112, 0.0011, 267, 229
-module, ember.js, @ember/debug/lib/handlers.js, 1019, 263, 68, 57, 0.0005, 199, 156
-module, ember.js, @ember/debug/lib/testing.js, 371, 205, 53, 45, 0.0004, 175, 144
-module, ember.js, @ember/debug/lib/warn.js, 4332, 413, 107, 90, 0.0008, 236, 195
-module, ember.js, @ember/deprecated-features/index.js, 1726, 634, 164, 138, 0.0013, 346, 284
-module, ember.js, @ember/engine/index.js, 18109, 3809, 982, 827, 0.0078, 1297, 1162
-module, ember.js, @ember/engine/instance.js, 7531, 2813, 726, 611, 0.0057, 1096, 945
-module, ember.js, @ember/engine/lib/engine-parent.js, 1064, 278, 72, 60, 0.0006, 219, 173
-module, ember.js, @ember/error/index.js, 431, 159, 41, 35, 0.0003, 151, 119
-module, ember.js, @ember/instrumentation/index.js, 6595, 1630, 420, 354, 0.0033, 870, 753
-module, ember.js, @ember/modifier/index.js, 513, 358, 92, 78, 0.0007, 211, 172
-module, ember.js, @ember/object/compat.js, 2446, 604, 156, 131, 0.0012, 367, 305
-module, ember.js, @ember/object/computed.js, 4664, 2627, 678, 570, 0.0054, 422, 400
-module, ember.js, @ember/object/index.js, 5175, 764, 197, 166, 0.0016, 431, 365
-module, ember.js, @ember/object/lib/computed/computed_macros.js, 34295, 1979, 510, 430, 0.004, 600, 538
-module, ember.js, @ember/object/lib/computed/reduce_computed_macros.js, 47890, 3638, 938, 790, 0.0074, 1223, 1113
-module, ember.js, @ember/polyfills/index.js, 915, 564, 145, 122, 0.0011, 269, 233
-module, ember.js, @ember/polyfills/lib/assign.js, 1523, 340, 88, 74, 0.0007, 250, 199
-module, ember.js, @ember/polyfills/lib/merge.js, 1435, 282, 73, 61, 0.0006, 227, 189
-module, ember.js, @ember/polyfills/lib/weak_set.js, 760, 418, 108, 91, 0.0009, 265, 218
-module, ember.js, @ember/runloop/index.js, 25834, 1897, 489, 412, 0.0039, 748, 646
-module, ember.js, @ember/service/index.js, 2061, 421, 109, 91, 0.0009, 291, 221
-module, ember.js, @ember/string/index.js, 12919, 2854, 736, 620, 0.0058, 987, 857
-module, ember.js, @ember/string/lib/string_registry.js, 616, 243, 63, 53, 0.0005, 179, 139
-module, ember.js, @glimmer/encoder.js, 1796, 964, 249, 209, 0.002, 460, 376
-module, ember.js, @glimmer/low-level.js, 1984, 940, 242, 204, 0.0019, 409, 364
-module, ember.js, @glimmer/node.js, 5745, 2578, 665, 560, 0.0053, 965, 827
-module, ember.js, @glimmer/opcode-compiler.js, 80923, 30963, 7987, 6721, 0.0631, 8118, 7263
-module, ember.js, @glimmer/program.js, 14755, 6159, 1589, 1337, 0.0126, 1738, 1560
-module, ember.js, @glimmer/reference.js, 18159, 7291, 1881, 1583, 0.0149, 2382, 2195
-module, ember.js, @glimmer/runtime.js, 174001, 69546, 17939, 15097, 0.1417, 18130, 15992
-module, ember.js, @glimmer/util.js, 6364, 2982, 769, 647, 0.0061, 1081, 953
-module, ember.js, @glimmer/vm.js, 1335, 320, 83, 69, 0.0007, 228, 190
-module, ember.js, @glimmer/wire-format.js, 3003, 1644, 424, 357, 0.0034, 668, 581
-module, ember.js, backburner.js, 35662, 12577, 3244, 2730, 0.0256, 4024, 3637
-module, ember.js, dag-map.js, 5989, 2442, 630, 530, 0.005, 940, 842
-module, ember.js, ember-babel.js, 4179, 1080, 279, 234, 0.0022, 547, 471
-module, ember.js, ember/index.js, 18238, 8910, 2298, 1934, 0.0182, 3061, 2756
-module, ember.js, ember/version.js, 238, 149, 38, 32, 0.0003, 147, 118
-module, ember.js, node-module/index.js, 689, 347, 90, 75, 0.0007, 222, 185
-module, ember.js, route-recognizer.js, 22968, 7704, 1987, 1672, 0.0157, 3073, 2746
-module, ember.js, router_js.js, 80431, 25213, 6503, 5473, 0.0514, 7530, 6828
-module, ember.js, rsvp.js, 71239, 12375, 3192, 2686, 0.0252, 4184, 3764
-module, vendor.js, vendor/ember-cli/vendor-prefix.js, 266, 171, 43, 36, 0.0002, 167, 142
-module, vendor.js, vendor/loader/loader.js, 8964, 4355, 1094, 908, 0.006, 1631, 1491
-module, vendor.js, vendor/regenerator-runtime/runtime.js, 21975, 5735, 1441, 1196, 0.0078, 2156, 1975
-module, vendor.js, vendor/ember/ember.js, 1951356, 489939, 123064, 102156, 0.67, 126529, 106447
-module, vendor.js, vendor/ember-fetch.js, 27012, 12511, 3143, 2609, 0.0171, 4216, 3728
-module, vendor.js, addon-tree-output/@ember-data/adapter/-private.js, 17539, 3760, 944, 784, 0.0051, 1521, 1347
-module, vendor.js, addon-tree-output/@ember-data/adapter/error.js, 11763, 1718, 432, 358, 0.0023, 699, 587
-module, vendor.js, addon-tree-output/@ember-data/adapter/index.js, 21579, 804, 202, 168, 0.0011, 377, 322
-module, vendor.js, addon-tree-output/@ember-data/adapter/json-api.js, 6663, 882, 222, 184, 0.0012, 489, 421
-module, vendor.js, addon-tree-output/@ember-data/adapter/rest.js, 43787, 8081, 2030, 1685, 0.0111, 3054, 2692
-module, vendor.js, addon-tree-output/@ember-data/adapter/version.js, 252, 163, 41, 34, 0.0002, 157, 126
-module, vendor.js, addon-tree-output/@ember-data/canary-features/default-features.js, 918, 307, 77, 64, 0.0004, 243, 187
-module, vendor.js, addon-tree-output/@ember-data/canary-features/index.js, 1880, 1081, 272, 225, 0.0015, 515, 427
-module, vendor.js, addon-tree-output/@ember-data/model/-private.js, 14024, 2063, 518, 430, 0.0028, 856, 729
-module, vendor.js, addon-tree-output/@ember-data/model/index.js, 791, 517, 130, 108, 0.0007, 226, 186
-module, vendor.js, addon-tree-output/@ember-data/model/version.js, 250, 161, 40, 34, 0.0002, 156, 124
-module, vendor.js, addon-tree-output/@ember-data/serializer/-private.js, 31627, 5856, 1471, 1221, 0.008, 1722, 1566
-module, vendor.js, addon-tree-output/@ember-data/serializer/index.js, 4470, 258, 65, 54, 0.0004, 201, 165
-module, vendor.js, addon-tree-output/@ember-data/serializer/json-api.js, 20029, 4111, 1033, 857, 0.0056, 1332, 1187
-module, vendor.js, addon-tree-output/@ember-data/serializer/json.js, 48708, 7983, 2005, 1665, 0.0109, 2135, 1939
-module, vendor.js, addon-tree-output/@ember-data/serializer/rest.js, 26331, 3080, 774, 642, 0.0042, 1242, 1133
-module, vendor.js, addon-tree-output/@ember-data/serializer/transform.js, 359, 215, 54, 45, 0.0003, 175, 133
-module, vendor.js, addon-tree-output/@ember-data/serializer/version.js, 255, 166, 42, 35, 0.0002, 159, 129
-module, vendor.js, addon-tree-output/@ember-data/store/-private.js, 497242, 135523, 34041, 28258, 0.1853, 31980, 27233
-module, vendor.js, addon-tree-output/@ember-data/store/index.js, 1361, 936, 235, 195, 0.0013, 270, 227
-module, vendor.js, addon-tree-output/@ember-data/store/version.js, 250, 161, 40, 34, 0.0002, 156, 124
-module, vendor.js, addon-tree-output/@ember/ordered-set/index.js, 3493, 1379, 346, 288, 0.0019, 606, 515
-module, vendor.js, addon-tree-output/ember-cli-app-version/initializer-factory.js, 540, 282, 71, 59, 0.0004, 226, 189
-module, vendor.js, addon-tree-output/ember-cli-app-version/utils/regexp.js, 676, 252, 63, 53, 0.0003, 197, 176
-module, vendor.js, addon-tree-output/ember-data/-private.js, 10327, 4098, 1029, 854, 0.0056, 1193, 1033
-module, vendor.js, addon-tree-output/ember-data/adapter.js, 327, 226, 57, 47, 0.0003, 170, 128
-module, vendor.js, addon-tree-output/ember-data/adapters/errors.js, 1839, 1222, 307, 255, 0.0017, 304, 254
-module, vendor.js, addon-tree-output/ember-data/adapters/json-api.js, 346, 245, 62, 51, 0.0003, 179, 150
-module, vendor.js, addon-tree-output/ember-data/adapters/rest.js, 332, 237, 60, 49, 0.0003, 175, 143
-module, vendor.js, addon-tree-output/ember-data/attr.js, 315, 218, 55, 45, 0.0003, 171, 138
-module, vendor.js, addon-tree-output/ember-data/index.js, 3613, 2441, 613, 509, 0.0033, 909, 766
-module, vendor.js, addon-tree-output/ember-data/initialize-store-service.js, 726, 207, 52, 43, 0.0003, 177, 129
-module, vendor.js, addon-tree-output/ember-data/model.js, 319, 222, 56, 46, 0.0003, 169, 137
-module, vendor.js, addon-tree-output/ember-data/relationships.js, 467, 318, 80, 66, 0.0004, 195, 151
-module, vendor.js, addon-tree-output/ember-data/serializer.js, 339, 232, 58, 48, 0.0003, 171, 139
-module, vendor.js, addon-tree-output/ember-data/serializers/embedded-records-mixin.js, 369, 274, 69, 57, 0.0004, 200, 173
-module, vendor.js, addon-tree-output/ember-data/serializers/json-api.js, 352, 251, 63, 52, 0.0003, 180, 153
-module, vendor.js, addon-tree-output/ember-data/serializers/json.js, 338, 243, 61, 51, 0.0003, 177, 151
-module, vendor.js, addon-tree-output/ember-data/serializers/rest.js, 338, 243, 61, 51, 0.0003, 177, 148
-module, vendor.js, addon-tree-output/ember-data/setup-container.js, 2400, 643, 162, 134, 0.0009, 325, 263
-module, vendor.js, addon-tree-output/ember-data/store.js, 319, 222, 56, 46, 0.0003, 168, 137
-module, vendor.js, addon-tree-output/ember-data/transform.js, 346, 241, 61, 50, 0.0003, 178, 148
-module, vendor.js, addon-tree-output/ember-data/version.js, 243, 154, 39, 32, 0.0002, 150, 121
-module, vendor.js, addon-tree-output/ember-fetch/ajax.js, 446, 229, 58, 48, 0.0003, 185, 151
-module, vendor.js, addon-tree-output/ember-fetch/errors.js, 2059, 639, 161, 133, 0.0009, 282, 233
-module, vendor.js, addon-tree-output/ember-fetch/mixins/adapter-fetch.js, 5562, 1621, 407, 338, 0.0022, 749, 649
-module, vendor.js, addon-tree-output/ember-fetch/types.js, 320, 206, 52, 43, 0.0003, 176, 160
-module, vendor.js, addon-tree-output/ember-fetch/utils/determine-body-promise.js, 1266, 419, 105, 87, 0.0006, 327, 255
-module, vendor.js, addon-tree-output/ember-fetch/utils/mung-options-for-fetch.js, 2008, 579, 145, 121, 0.0008, 382, 319
-module, vendor.js, addon-tree-output/ember-fetch/utils/serialize-query-params.js, 2559, 957, 240, 200, 0.0013, 518, 436
-module, vendor.js, addon-tree-output/ember-inflector/index.js, 1611, 1187, 298, 247, 0.0016, 386, 334
-module, vendor.js, addon-tree-output/ember-inflector/lib/ext/string.js, 1344, 809, 203, 169, 0.0011, 336, 285
-module, vendor.js, addon-tree-output/ember-inflector/lib/helpers/pluralize.js, 891, 523, 131, 109, 0.0007, 341, 287
-module, vendor.js, addon-tree-output/ember-inflector/lib/helpers/singularize.js, 392, 271, 68, 57, 0.0004, 200, 168
-module, vendor.js, addon-tree-output/ember-inflector/lib/system.js, 671, 452, 114, 94, 0.0006, 231, 199
-module, vendor.js, addon-tree-output/ember-inflector/lib/system/inflections.js, 1803, 1610, 404, 336, 0.0022, 690, 649
-module, vendor.js, addon-tree-output/ember-inflector/lib/system/inflector.js, 7773, 3100, 779, 646, 0.0042, 1147, 1014
-module, vendor.js, addon-tree-output/ember-inflector/lib/system/string.js, 619, 365, 92, 76, 0.0005, 226, 191
-module, vendor.js, addon-tree-output/ember-inflector/lib/utils/make-helper.js, 483, 308, 77, 64, 0.0004, 210, 181
-module, vendor.js, addon-tree-output/ember-load-initializers/index.js, 2135, 787, 198, 164, 0.0011, 430, 365
-module, vendor.js, addon-tree-output/ember-resolver/features.js, 239, 52, 13, 11, 0.0001, 70, 52
-module, vendor.js, addon-tree-output/ember-resolver/index.js, 336, 241, 61, 50, 0.0003, 177, 134
-module, vendor.js, addon-tree-output/ember-resolver/resolver.js, 339, 244, 61, 51, 0.0003, 173, 141
-module, vendor.js, addon-tree-output/ember-resolver/resolvers/classic/container-debug-adapter.js, 3009, 846, 212, 176, 0.0012, 478, 388
-module, vendor.js, addon-tree-output/ember-resolver/resolvers/classic/index.js, 16006, 5917, 1486, 1234, 0.0081, 2081, 1854
-module, vendor.js, addon-tree-output/ember-resolver/utils/class-factory.js, 457, 233, 59, 49, 0.0003, 183, 138
-module, vendor.js, addon-tree-output/ember-resolver/utils/make-dictionary.js, 351, 221, 56, 46, 0.0003, 181, 136
-module, vendor.js, addon-tree-output/ember-test-waiters/build-waiter.js, 1174, 243, 61, 51, 0.0003, 174, 145
-module, vendor.js, addon-tree-output/ember-test-waiters/index.js, 1733, 1103, 277, 230, 0.0015, 305, 261
-module, vendor.js, addon-tree-output/ember-test-waiters/noop-test-waiter.js, 1680, 717, 180, 149, 0.001, 412, 339
-module, vendor.js, addon-tree-output/ember-test-waiters/test-waiter.js, 5219, 1761, 442, 367, 0.0024, 801, 696
-module, vendor.js, addon-tree-output/ember-test-waiters/types/index.js, 78, 59, 15, 12, 0.0001, 79, 60
-module, vendor.js, addon-tree-output/ember-test-waiters/wait-for-promise.js, 1311, 246, 62, 51, 0.0003, 181, 141
-module, vendor.js, addon-tree-output/ember-test-waiters/waiter-manager.js, 3057, 932, 234, 194, 0.0013, 524, 438
-module, vendor.js, vendor/ember-cli/vendor-suffix.js, 1, 0, 0, 0, 0, 20, 1
-bundle, ember-fetch.js, 19519, 9928, 3308, 2941
-bundle, my-app.js, 15861, 9025, 2130, 1864
-bundle, ember-testing.js, 81182, 22122, 5569, 4962
-bundle, ember.js, 1951427, 490714, 126574, 106521
-bundle, vendor.js, 2855105, 731260, 183679, 152473
+schema-version, 3
+type, dataset, bundleName, moduleName, size, minSize, gzipSize, brSize, bundleRatio, soloGzSize, soloBrSize
+type, dataset, bundleName, size, minSize, gzipSize, brSize
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-fetch.js, abortcontroller.js, 4977, 1913, 637, 567, 0.1927, 774, 655
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-fetch.js, fetch.js, 14540, 8015, 2671, 2374, 0.8073, 2687, 2390
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, vendor/ember-cli/app-prefix.js, 16, 13, 3, 3, 0.0014, 33, 17
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/adapters/-json-api.js, 343, 242, 57, 50, 0.0268, 183, 159
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/app.js, 3117, 1668, 394, 345, 0.1848, 755, 656
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/helpers/app-version.js, 1206, 566, 134, 117, 0.0627, 359, 313
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/helpers/pluralize.js, 312, 211, 50, 44, 0.0234, 173, 146
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/helpers/singularize.js, 320, 215, 51, 44, 0.0238, 175, 147
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/initializers/app-version.js, 602, 364, 86, 75, 0.0403, 249, 199
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/initializers/container-debug-adapter.js, 645, 453, 107, 94, 0.0502, 266, 202
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/initializers/ember-data.js, 589, 252, 59, 52, 0.0279, 187, 149
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/initializers/export-application-global.js, 1435, 710, 168, 147, 0.0787, 402, 314
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/instance-initializers/ember-data.js, 397, 255, 60, 53, 0.0283, 194, 150
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/resolver.js, 288, 179, 42, 37, 0.0198, 158, 124
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/router.js, 2890, 1551, 366, 320, 0.1719, 720, 640
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/serializers/-default.js, 338, 243, 57, 50, 0.0269, 182, 154
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/serializers/-json-api.js, 349, 248, 59, 51, 0.0275, 185, 159
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/serializers/-rest.js, 335, 240, 57, 50, 0.0266, 182, 156
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/templates/application.js, 554, 411, 97, 85, 0.0455, 305, 248
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/transforms/boolean.js, 355, 254, 60, 52, 0.0281, 200, 161
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/transforms/date.js, 349, 248, 59, 51, 0.0275, 194, 162
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/transforms/number.js, 353, 252, 59, 52, 0.0279, 199, 158
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, my-app/transforms/string.js, 353, 252, 59, 52, 0.0279, 199, 157
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, vendor/ember-cli/app-suffix.js, 1, 0, 0, 0, 0, 20, 1
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, vendor/ember-cli/app-config.js, 525, 350, 83, 72, 0.0388, 272, 203
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, vendor/ember-cli/app-boot.js, 143, 84, 20, 17, 0.0093, 96, 64
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, license.js, 389, 390, 98, 87, 0.0176, 252, 193
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, loader.js, 2424, 1058, 266, 237, 0.0478, 540, 458
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, @ember/debug/index.js, 10935, 1325, 334, 297, 0.0599, 504, 428
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, @ember/debug/lib/capture-render-tree.js, 840, 317, 80, 71, 0.0143, 238, 182
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, @ember/debug/lib/deprecate.js, 7136, 516, 130, 116, 0.0233, 267, 229
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, @ember/debug/lib/handlers.js, 1019, 263, 66, 59, 0.0119, 199, 156
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, @ember/debug/lib/testing.js, 371, 205, 52, 46, 0.0093, 175, 144
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, @ember/debug/lib/warn.js, 4332, 413, 104, 93, 0.0187, 236, 195
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/index.js, 1123, 772, 194, 173, 0.0349, 283, 238
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/adapters/adapter.js, 1452, 298, 75, 67, 0.0135, 230, 180
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/adapters/qunit.js, 1572, 633, 159, 142, 0.0286, 349, 301
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/events.js, 4079, 1714, 431, 384, 0.0775, 785, 681
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/ext/application.js, 6396, 1782, 449, 400, 0.0806, 696, 594
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/ext/rsvp.js, 894, 517, 130, 116, 0.0234, 315, 255
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers.js, 1743, 1280, 322, 287, 0.0579, 343, 307
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/-is-form-control.js, 657, 279, 70, 63, 0.0126, 243, 182
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/and_then.js, 291, 191, 48, 43, 0.0086, 171, 130
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/click.js, 1052, 360, 91, 81, 0.0163, 239, 197
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/current_path.js, 777, 271, 68, 61, 0.0123, 221, 181
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/current_route_name.js, 836, 282, 71, 63, 0.0127, 228, 175
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/current_url.js, 749, 271, 68, 61, 0.0123, 225, 181
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/fill_in.js, 1295, 449, 113, 101, 0.0203, 299, 233
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/find.js, 1411, 295, 74, 66, 0.0133, 227, 175
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/find_with_assert.js, 1245, 268, 67, 60, 0.0121, 222, 199
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/key_event.js, 1208, 278, 70, 62, 0.0126, 230, 185
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/pause_test.js, 1661, 388, 98, 87, 0.0175, 278, 229
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/trigger_event.js, 2115, 435, 110, 98, 0.0197, 297, 244
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/visit.js, 1206, 460, 116, 103, 0.0208, 329, 264
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/helpers/wait.js, 2555, 611, 154, 137, 0.0276, 385, 322
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/initializers.js, 506, 279, 70, 63, 0.0126, 190, 163
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/setup_for_testing.js, 1579, 796, 200, 179, 0.036, 362, 302
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/support.js, 1976, 611, 154, 137, 0.0276, 382, 286
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test.js, 2063, 736, 185, 165, 0.0333, 319, 286
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test/adapter.js, 979, 467, 118, 105, 0.0211, 293, 237
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test/helpers.js, 3334, 408, 103, 92, 0.0184, 243, 186
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test/on_inject_helpers.js, 1185, 302, 76, 68, 0.0137, 222, 178
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test/pending_requests.js, 877, 423, 106, 95, 0.0191, 262, 203
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test/promise.js, 3263, 955, 240, 214, 0.0432, 537, 459
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test/run.js, 364, 217, 55, 49, 0.0098, 191, 144
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, ember-testing/lib/test/waiters.js, 3215, 607, 153, 136, 0.0274, 339, 279
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, license.js, 389, 390, 101, 85, 0.0008, 252, 193
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, loader.js, 2424, 1058, 273, 230, 0.0022, 540, 458
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/browser-environment/index.js, 1485, 957, 247, 208, 0.002, 451, 355
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/console/index.js, 5967, 700, 181, 152, 0.0014, 304, 273
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/container/index.js, 40165, 8435, 2176, 1831, 0.0172, 2440, 2176
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/environment/index.js, 9278, 2035, 525, 442, 0.0041, 943, 809
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/error-handling/index.js, 908, 361, 93, 78, 0.0007, 231, 190
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/extension-support/index.js, 658, 452, 117, 98, 0.0009, 226, 184
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/extension-support/lib/container_debug_adapter.js, 3016, 635, 164, 138, 0.0013, 413, 328
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/extension-support/lib/data_adapter.js, 14727, 3247, 838, 705, 0.0066, 1197, 1048
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/glimmer/index.js, 325056, 78456, 20237, 17031, 0.1599, 21022, 18507
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/meta/index.js, 1155, 754, 194, 164, 0.0015, 241, 196
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/meta/lib/meta.js, 28324, 6904, 1781, 1499, 0.0141, 2095, 1898
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/metal/index.js, 162162, 33635, 8676, 7301, 0.0685, 10722, 9776
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/owner/index.js, 2261, 279, 72, 61, 0.0006, 212, 174
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/index.js, 3348, 2274, 587, 494, 0.0046, 430, 366
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/ext/controller.js, 8414, 927, 239, 201, 0.0019, 447, 377
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/location/api.js, 3469, 322, 83, 70, 0.0007, 235, 183
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/location/auto_location.js, 10352, 2285, 589, 496, 0.0047, 1055, 937
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/location/hash_location.js, 4975, 1385, 357, 301, 0.0028, 584, 493
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/location/history_location.js, 8292, 2615, 675, 568, 0.0053, 981, 837
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/location/none_location.js, 3804, 882, 228, 191, 0.0018, 471, 397
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/location/util.js, 3391, 856, 221, 186, 0.0017, 479, 406
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/services/router.js, 17446, 2190, 565, 475, 0.0045, 872, 750
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/services/routing.js, 3954, 1332, 344, 289, 0.0027, 651, 560
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/cache.js, 1273, 501, 129, 109, 0.001, 296, 250
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/controller_for.js, 504, 213, 55, 46, 0.0004, 184, 147
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/dsl.js, 7567, 2728, 704, 592, 0.0056, 1126, 1010
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/engines.js, 92, 73, 19, 16, 0.0001, 92, 69
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/generate_controller.js, 1572, 505, 130, 110, 0.001, 309, 246
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/query_params.js, 422, 246, 63, 53, 0.0005, 201, 171
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/route-info.js, 5964, 76, 20, 16, 0.0002, 92, 76
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/route.js, 83633, 12205, 3148, 2649, 0.0249, 4226, 3874
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/router.js, 57823, 15644, 4035, 3396, 0.0319, 5302, 4772
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/router_state.js, 1239, 616, 159, 134, 0.0013, 362, 301
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/system/transition.js, 5323, 76, 20, 16, 0.0002, 93, 70
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/routing/lib/utils.js, 6826, 2061, 532, 447, 0.0042, 1083, 949
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/index.js, 6409, 4254, 1097, 923, 0.0087, 683, 590
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/compare.js, 4023, 1041, 269, 226, 0.0021, 532, 470
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/copy.js, 3492, 887, 229, 193, 0.0018, 478, 417
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/ext/function.js, 6221, 760, 196, 165, 0.0015, 333, 261
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/ext/rsvp.js, 1716, 841, 217, 183, 0.0017, 466, 395
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/is-equal.js, 1875, 304, 78, 66, 0.0006, 222, 180
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/-proxy.js, 3465, 1322, 341, 287, 0.0027, 673, 582
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/action_handler.js, 6457, 526, 136, 114, 0.0011, 345, 295
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/array.js, 29708, 6992, 1804, 1518, 0.0142, 2183, 1970
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/comparable.js, 1174, 241, 62, 52, 0.0005, 191, 157
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/container_proxy.js, 4565, 638, 165, 138, 0.0013, 353, 307
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/copyable.js, 1141, 236, 61, 51, 0.0005, 189, 160
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/enumerable.js, 664, 227, 59, 49, 0.0005, 184, 153
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/evented.js, 4579, 598, 154, 130, 0.0012, 334, 277
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/mutable_enumerable.js, 749, 296, 76, 64, 0.0006, 201, 169
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/observable.js, 17601, 1406, 363, 305, 0.0029, 535, 463
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/promise_proxy.js, 5567, 1128, 291, 245, 0.0023, 511, 439
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/registry_proxy.js, 8202, 713, 184, 155, 0.0015, 355, 301
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/mixins/target_action_support.js, 4919, 1080, 279, 234, 0.0022, 502, 437
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/system/array_proxy.js, 11576, 3593, 927, 780, 0.0073, 1098, 967
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/system/core_object.js, 37566, 4594, 1185, 997, 0.0094, 1801, 1618
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/system/namespace.js, 2148, 970, 250, 211, 0.002, 474, 432
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/system/object.js, 4000, 1272, 328, 276, 0.0026, 548, 461
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/system/object_proxy.js, 2845, 439, 113, 95, 0.0009, 271, 219
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/runtime/lib/type-of.js, 4123, 749, 193, 163, 0.0015, 407, 346
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/utils/index.js, 22954, 5115, 1319, 1110, 0.0104, 2023, 1852
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/index.js, 5662, 3738, 964, 811, 0.0076, 647, 554
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/compat/attrs.js, 344, 242, 62, 53, 0.0005, 198, 165
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/compat/fallback-view-registry.js, 339, 243, 63, 53, 0.0005, 200, 158
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/component_lookup.js, 672, 383, 99, 83, 0.0008, 245, 207
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/mixins/action_support.js, 6264, 984, 254, 214, 0.002, 551, 476
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/mixins/child_views_support.js, 868, 450, 116, 98, 0.0009, 292, 250
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/mixins/class_names_support.js, 3388, 414, 107, 90, 0.0008, 279, 226
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/mixins/text_support.js, 11488, 1693, 437, 368, 0.0035, 780, 651
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/mixins/view_state_support.js, 712, 384, 99, 83, 0.0008, 257, 214
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/mixins/view_support.js, 14824, 1725, 445, 374, 0.0035, 759, 637
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/system/action_manager.js, 426, 198, 51, 43, 0.0004, 178, 133
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/system/event_dispatcher.js, 16624, 4305, 1110, 935, 0.0088, 1806, 1557
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/system/jquery.js, 1319, 694, 179, 151, 0.0014, 399, 345
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/system/jquery_event_deprecation.js, 3267, 301, 78, 65, 0.0006, 215, 169
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/system/lookup_partial.js, 1835, 887, 229, 193, 0.0018, 432, 353
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/system/utils.js, 6858, 2458, 634, 534, 0.005, 1047, 876
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/views/core_view.js, 2533, 1057, 273, 229, 0.0022, 583, 461
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/views/states.js, 1385, 491, 127, 107, 0.001, 245, 208
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/views/states/default.js, 765, 403, 104, 87, 0.0008, 273, 202
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/views/states/destroying.js, 753, 519, 134, 113, 0.0011, 287, 224
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/views/states/has_element.js, 1284, 595, 153, 129, 0.0012, 343, 287
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/views/states/in_dom.js, 1387, 438, 113, 95, 0.0009, 258, 222
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/-internals/views/lib/views/states/pre_render.js, 456, 306, 79, 66, 0.0006, 210, 169
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/application/globals-resolver.js, 14054, 3047, 786, 661, 0.0062, 1213, 1060
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/application/index.js, 1143, 744, 192, 162, 0.0015, 259, 223
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/application/instance.js, 17171, 3427, 884, 744, 0.007, 1242, 1071
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/application/lib/application.js, 37875, 4512, 1164, 979, 0.0092, 1619, 1428
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/application/lib/lazy_load.js, 2113, 547, 141, 119, 0.0011, 363, 310
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/application/lib/validate-type.js, 1021, 441, 114, 96, 0.0009, 275, 226
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/canary-features/index.js, 3683, 1439, 371, 312, 0.0029, 563, 479
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/component/index.js, 341, 240, 62, 52, 0.0005, 179, 146
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/component/template-only.js, 2460, 453, 117, 98, 0.0009, 261, 213
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/controller/index.js, 1880, 442, 114, 96, 0.0009, 288, 225
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/controller/lib/controller_mixin.js, 1721, 447, 115, 97, 0.0009, 290, 244
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/debug/index.js, 10935, 1325, 342, 288, 0.0027, 504, 428
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/debug/lib/capture-render-tree.js, 840, 317, 82, 69, 0.0006, 238, 182
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/debug/lib/deprecate.js, 7136, 516, 133, 112, 0.0011, 267, 229
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/debug/lib/handlers.js, 1019, 263, 68, 57, 0.0005, 199, 156
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/debug/lib/testing.js, 371, 205, 53, 45, 0.0004, 175, 144
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/debug/lib/warn.js, 4332, 413, 107, 90, 0.0008, 236, 195
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/deprecated-features/index.js, 1726, 634, 164, 138, 0.0013, 346, 284
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/engine/index.js, 18109, 3809, 982, 827, 0.0078, 1297, 1162
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/engine/instance.js, 7531, 2813, 726, 611, 0.0057, 1096, 945
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/engine/lib/engine-parent.js, 1064, 278, 72, 60, 0.0006, 219, 173
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/error/index.js, 431, 159, 41, 35, 0.0003, 151, 119
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/instrumentation/index.js, 6595, 1630, 420, 354, 0.0033, 870, 753
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/modifier/index.js, 513, 358, 92, 78, 0.0007, 211, 172
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/object/compat.js, 2446, 604, 156, 131, 0.0012, 367, 305
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/object/computed.js, 4664, 2627, 678, 570, 0.0054, 422, 400
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/object/index.js, 5175, 764, 197, 166, 0.0016, 431, 365
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/object/lib/computed/computed_macros.js, 34295, 1979, 510, 430, 0.004, 600, 538
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/object/lib/computed/reduce_computed_macros.js, 47890, 3638, 938, 790, 0.0074, 1223, 1113
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/polyfills/index.js, 915, 564, 145, 122, 0.0011, 269, 233
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/polyfills/lib/assign.js, 1523, 340, 88, 74, 0.0007, 250, 199
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/polyfills/lib/merge.js, 1435, 282, 73, 61, 0.0006, 227, 189
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/polyfills/lib/weak_set.js, 760, 418, 108, 91, 0.0009, 265, 218
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/runloop/index.js, 25834, 1897, 489, 412, 0.0039, 748, 646
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/service/index.js, 2061, 421, 109, 91, 0.0009, 291, 221
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/string/index.js, 12919, 2854, 736, 620, 0.0058, 987, 857
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @ember/string/lib/string_registry.js, 616, 243, 63, 53, 0.0005, 179, 139
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/encoder.js, 1796, 964, 249, 209, 0.002, 460, 376
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/low-level.js, 1984, 940, 242, 204, 0.0019, 409, 364
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/node.js, 5745, 2578, 665, 560, 0.0053, 965, 827
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/opcode-compiler.js, 80923, 30963, 7987, 6721, 0.0631, 8118, 7263
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/program.js, 14755, 6159, 1589, 1337, 0.0126, 1738, 1560
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/reference.js, 18159, 7291, 1881, 1583, 0.0149, 2382, 2195
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/runtime.js, 174001, 69546, 17939, 15097, 0.1417, 18130, 15992
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/util.js, 6364, 2982, 769, 647, 0.0061, 1081, 953
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/vm.js, 1335, 320, 83, 69, 0.0007, 228, 190
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, @glimmer/wire-format.js, 3003, 1644, 424, 357, 0.0034, 668, 581
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, backburner.js, 35662, 12577, 3244, 2730, 0.0256, 4024, 3637
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, dag-map.js, 5989, 2442, 630, 530, 0.005, 940, 842
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, ember-babel.js, 4179, 1080, 279, 234, 0.0022, 547, 471
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, ember/index.js, 18238, 8910, 2298, 1934, 0.0182, 3061, 2756
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, ember/version.js, 238, 149, 38, 32, 0.0003, 147, 118
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, node-module/index.js, 689, 347, 90, 75, 0.0007, 222, 185
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, route-recognizer.js, 22968, 7704, 1987, 1672, 0.0157, 3073, 2746
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, router_js.js, 80431, 25213, 6503, 5473, 0.0514, 7530, 6828
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, rsvp.js, 71239, 12375, 3192, 2686, 0.0252, 4184, 3764
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, vendor/ember-cli/vendor-prefix.js, 266, 171, 43, 36, 0.0002, 167, 142
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, vendor/loader/loader.js, 8964, 4355, 1094, 908, 0.006, 1631, 1491
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, vendor/regenerator-runtime/runtime.js, 21975, 5735, 1441, 1196, 0.0078, 2156, 1975
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, vendor/ember/ember.js, 1951356, 489939, 123064, 102156, 0.67, 126529, 106447
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, vendor/ember-fetch.js, 27012, 12511, 3143, 2609, 0.0171, 4216, 3728
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/adapter/-private.js, 17539, 3760, 944, 784, 0.0051, 1521, 1347
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/adapter/error.js, 11763, 1718, 432, 358, 0.0023, 699, 587
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/adapter/index.js, 21579, 804, 202, 168, 0.0011, 377, 322
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/adapter/json-api.js, 6663, 882, 222, 184, 0.0012, 489, 421
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/adapter/rest.js, 43787, 8081, 2030, 1685, 0.0111, 3054, 2692
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/adapter/version.js, 252, 163, 41, 34, 0.0002, 157, 126
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/canary-features/default-features.js, 918, 307, 77, 64, 0.0004, 243, 187
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/canary-features/index.js, 1880, 1081, 272, 225, 0.0015, 515, 427
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/model/-private.js, 14024, 2063, 518, 430, 0.0028, 856, 729
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/model/index.js, 791, 517, 130, 108, 0.0007, 226, 186
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/model/version.js, 250, 161, 40, 34, 0.0002, 156, 124
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/serializer/-private.js, 31627, 5856, 1471, 1221, 0.008, 1722, 1566
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/serializer/index.js, 4470, 258, 65, 54, 0.0004, 201, 165
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/serializer/json-api.js, 20029, 4111, 1033, 857, 0.0056, 1332, 1187
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/serializer/json.js, 48708, 7983, 2005, 1665, 0.0109, 2135, 1939
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/serializer/rest.js, 26331, 3080, 774, 642, 0.0042, 1242, 1133
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/serializer/transform.js, 359, 215, 54, 45, 0.0003, 175, 133
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/serializer/version.js, 255, 166, 42, 35, 0.0002, 159, 129
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/store/-private.js, 497242, 135523, 34041, 28258, 0.1853, 31980, 27233
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/store/index.js, 1361, 936, 235, 195, 0.0013, 270, 227
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember-data/store/version.js, 250, 161, 40, 34, 0.0002, 156, 124
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/@ember/ordered-set/index.js, 3493, 1379, 346, 288, 0.0019, 606, 515
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-cli-app-version/initializer-factory.js, 540, 282, 71, 59, 0.0004, 226, 189
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-cli-app-version/utils/regexp.js, 676, 252, 63, 53, 0.0003, 197, 176
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/-private.js, 10327, 4098, 1029, 854, 0.0056, 1193, 1033
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/adapter.js, 327, 226, 57, 47, 0.0003, 170, 128
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/adapters/errors.js, 1839, 1222, 307, 255, 0.0017, 304, 254
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/adapters/json-api.js, 346, 245, 62, 51, 0.0003, 179, 150
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/adapters/rest.js, 332, 237, 60, 49, 0.0003, 175, 143
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/attr.js, 315, 218, 55, 45, 0.0003, 171, 138
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/index.js, 3613, 2441, 613, 509, 0.0033, 909, 766
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/initialize-store-service.js, 726, 207, 52, 43, 0.0003, 177, 129
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/model.js, 319, 222, 56, 46, 0.0003, 169, 137
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/relationships.js, 467, 318, 80, 66, 0.0004, 195, 151
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/serializer.js, 339, 232, 58, 48, 0.0003, 171, 139
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/serializers/embedded-records-mixin.js, 369, 274, 69, 57, 0.0004, 200, 173
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/serializers/json-api.js, 352, 251, 63, 52, 0.0003, 180, 153
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/serializers/json.js, 338, 243, 61, 51, 0.0003, 177, 151
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/serializers/rest.js, 338, 243, 61, 51, 0.0003, 177, 148
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/setup-container.js, 2400, 643, 162, 134, 0.0009, 325, 263
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/store.js, 319, 222, 56, 46, 0.0003, 168, 137
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/transform.js, 346, 241, 61, 50, 0.0003, 178, 148
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-data/version.js, 243, 154, 39, 32, 0.0002, 150, 121
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-fetch/ajax.js, 446, 229, 58, 48, 0.0003, 185, 151
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-fetch/errors.js, 2059, 639, 161, 133, 0.0009, 282, 233
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-fetch/mixins/adapter-fetch.js, 5562, 1621, 407, 338, 0.0022, 749, 649
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-fetch/types.js, 320, 206, 52, 43, 0.0003, 176, 160
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-fetch/utils/determine-body-promise.js, 1266, 419, 105, 87, 0.0006, 327, 255
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-fetch/utils/mung-options-for-fetch.js, 2008, 579, 145, 121, 0.0008, 382, 319
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-fetch/utils/serialize-query-params.js, 2559, 957, 240, 200, 0.0013, 518, 436
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/index.js, 1611, 1187, 298, 247, 0.0016, 386, 334
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/ext/string.js, 1344, 809, 203, 169, 0.0011, 336, 285
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/helpers/pluralize.js, 891, 523, 131, 109, 0.0007, 341, 287
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/helpers/singularize.js, 392, 271, 68, 57, 0.0004, 200, 168
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/system.js, 671, 452, 114, 94, 0.0006, 231, 199
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/system/inflections.js, 1803, 1610, 404, 336, 0.0022, 690, 649
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/system/inflector.js, 7773, 3100, 779, 646, 0.0042, 1147, 1014
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/system/string.js, 619, 365, 92, 76, 0.0005, 226, 191
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-inflector/lib/utils/make-helper.js, 483, 308, 77, 64, 0.0004, 210, 181
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-load-initializers/index.js, 2135, 787, 198, 164, 0.0011, 430, 365
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-resolver/features.js, 239, 52, 13, 11, 0.0001, 70, 52
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-resolver/index.js, 336, 241, 61, 50, 0.0003, 177, 134
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-resolver/resolver.js, 339, 244, 61, 51, 0.0003, 173, 141
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-resolver/resolvers/classic/container-debug-adapter.js, 3009, 846, 212, 176, 0.0012, 478, 388
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-resolver/resolvers/classic/index.js, 16006, 5917, 1486, 1234, 0.0081, 2081, 1854
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-resolver/utils/class-factory.js, 457, 233, 59, 49, 0.0003, 183, 138
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-resolver/utils/make-dictionary.js, 351, 221, 56, 46, 0.0003, 181, 136
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-test-waiters/build-waiter.js, 1174, 243, 61, 51, 0.0003, 174, 145
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-test-waiters/index.js, 1733, 1103, 277, 230, 0.0015, 305, 261
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-test-waiters/noop-test-waiter.js, 1680, 717, 180, 149, 0.001, 412, 339
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-test-waiters/test-waiter.js, 5219, 1761, 442, 367, 0.0024, 801, 696
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-test-waiters/types/index.js, 78, 59, 15, 12, 0.0001, 79, 60
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-test-waiters/wait-for-promise.js, 1311, 246, 62, 51, 0.0003, 181, 141
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, addon-tree-output/ember-test-waiters/waiter-manager.js, 3057, 932, 234, 194, 0.0013, 524, 438
+module, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, vendor/ember-cli/vendor-suffix.js, 1, 0, 0, 0, 0, 20, 1
+bundle, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-fetch.js, 19519, 9928, 3308, 2941
+bundle, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, my-app.js, 15861, 9025, 2130, 1864
+bundle, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember-testing.js, 81182, 22122, 5569, 4962
+bundle, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, ember.js, 1951427, 490714, 126574, 106521
+bundle, /Users/mnorth/Development/oss/ember-asset-size-report/module-size-report.csv, vendor.js, 2855105, 731260, 183679, 152473

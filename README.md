@@ -110,7 +110,7 @@ Multiple tables (i.e., "modules" and "bundles" can be extracted from the single 
 
 This numeric version allows us to introduce breaking changes to the output format, while preserving the ability to parse both old and new data
 
-#### Version 2
+#### Version 3
 
 There are several sections
 

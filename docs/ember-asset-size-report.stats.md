@@ -7,6 +7,7 @@
 > This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
 > 
 
+Stats data store
 
 <b>Signature:</b>
 
@@ -18,19 +19,13 @@ declare class Stats
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(csvFileName)](./ember-asset-size-report.stats._constructor_.md) |  | <b><i>(BETA)</i></b> Constructs a new instance of the <code>Stats</code> class |
-
-## Properties
-
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [csvFileName](./ember-asset-size-report.stats.csvfilename.md) |  | <code>string</code> | <b><i>(BETA)</i></b> |
+|  [(constructor)(csvFileName, dataSetName)](./ember-asset-size-report.stats._constructor_.md) |  | <b><i>(BETA)</i></b> Constructs a new instance of the <code>Stats</code> class |
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [addBundleRow(bundleName, sizes)](./ember-asset-size-report.stats.addbundlerow.md) |  | <b><i>(BETA)</i></b> |
-|  [addFileRow(bundleName, fileName, sizes)](./ember-asset-size-report.stats.addfilerow.md) |  | <b><i>(BETA)</i></b> |
-|  [save(project, spinner)](./ember-asset-size-report.stats.save.md) |  | <b><i>(BETA)</i></b> |
+|  [addBundleRow(bundleName, sizes)](./ember-asset-size-report.stats.addbundlerow.md) |  | <b><i>(BETA)</i></b> Add a bundle's size information to the data set |
+|  [addModuleRow(bundleName, fileName, sizes)](./ember-asset-size-report.stats.addmodulerow.md) |  | <b><i>(BETA)</i></b> Add a module's size information to the data set |
+|  [save(project, spinner)](./ember-asset-size-report.stats.save.md) |  | <b><i>(BETA)</i></b> Save this data set as a CSV file |
 

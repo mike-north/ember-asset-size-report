@@ -15,7 +15,8 @@ import Stats from "./stats-csv";
 class ReportGenerator {
   public constructor(
     private project: EmberProject,
-    private reportPath: string = "module-size-report.csv"
+    private reportPath: string,
+    private datasetName: string
   ) {}
 
   /**
@@ -25,7 +26,7 @@ class ReportGenerator {
     await this.csv.save(this.project);
   }
   // create a container to hold Csv data
-  private csv = new Stats(this.reportPath);
+  private csv = new Stats(this.reportPath, this.datasetName);
 
   private get spinner(): SpinnerLike | undefined {
     return this.project.spinner;
@@ -50,7 +51,7 @@ class ReportGenerator {
         `${toKB(brSize)} KB min+br`
       )}`
     );
-    this.csv.addFileRow(assetPath, assetPath, {
+    this.csv.addModuleRow(assetPath, assetPath, {
       size: 0,
       minSize,
       brSize: brSize,

@@ -12,7 +12,9 @@ Constructs a new instance of the `Stats` class
 <b>Signature:</b>
 
 ```typescript
-constructor(csvFileName: string);
+constructor(
+    csvFileName: string, 
+    dataSetName: string);
 ```
 
 ## Parameters
@@ -20,4 +22,5 @@ constructor(csvFileName: string);
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  csvFileName | <code>string</code> |  |
+|  dataSetName | <code>string</code> |  |
 

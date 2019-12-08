@@ -34,13 +34,18 @@ export interface GenerateReportOptions {
    * any extra JS files we should include?
    */
   extraJsFiles: string[];
+  /**
+   * name of this dataset
+   */
+  datasetName: string;
 }
 
 const DEFAULT_OPTIONS: GenerateReportOptions = {
   project: findDefaultProjectLocation(),
   out: findDefaultReportOutputLocation(),
   build: true,
-  extraJsFiles: []
+  extraJsFiles: [],
+  datasetName: findDefaultReportOutputLocation()
 };
 
 function buildOptions(
@@ -98,6 +103,7 @@ export async function generateReport(
     build,
     extraJsFiles: includeFiles,
     project,
+    datasetName,
     out
   }: GenerateReportOptions = {
     ...DEFAULT_OPTIONS,
@@ -107,7 +113,7 @@ export async function generateReport(
   const proj = new EmberProject(project, spinner);
   const includedFilePaths = includeFiles.map(p => path.join(proj.distPath, p));
 
-  const rptBuilder = new ReportGenerator(proj, out);
+  const rptBuilder = new ReportGenerator(proj, out, datasetName);
   if (build) {
     await proj.build();
   }

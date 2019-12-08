@@ -13,7 +13,7 @@
 |  [Project](./ember-asset-size-report.project.md) | <b><i>(BETA)</i></b> A "controller" for an ember-cli project |
 |  [ReportGenerator](./ember-asset-size-report.reportgenerator.md) | <b><i>(BETA)</i></b> Report generation utility |
 |  [Spinner](./ember-asset-size-report.spinner.md) | <b><i>(BETA)</i></b> Loading spinner |
-|  [Stats](./ember-asset-size-report.stats.md) | <b><i>(BETA)</i></b> |
+|  [Stats](./ember-asset-size-report.stats.md) | <b><i>(BETA)</i></b> Stats data store |
 
 ## Functions
 
