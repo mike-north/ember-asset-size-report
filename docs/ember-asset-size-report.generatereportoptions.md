@@ -19,6 +19,7 @@ export interface GenerateReportOptions
 
 |  Property | Type | Description |
 |  --- | --- | --- |
+|  [appendData](./ember-asset-size-report.generatereportoptions.appenddata.md) | <code>boolean</code> | <b><i>(BETA)</i></b> if csv file is found to already exist, should we amend data to it or replace it? |
 |  [build](./ember-asset-size-report.generatereportoptions.build.md) | <code>boolean</code> | <b><i>(BETA)</i></b> should we make a prod build of the ember-cli app? |
 |  [datasetName](./ember-asset-size-report.generatereportoptions.datasetname.md) | <code>string</code> | <b><i>(BETA)</i></b> name of this dataset |
 |  [extraJsFiles](./ember-asset-size-report.generatereportoptions.extrajsfiles.md) | <code>string[]</code> | <b><i>(BETA)</i></b> any extra JS files we should include? |

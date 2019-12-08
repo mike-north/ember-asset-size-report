@@ -19,7 +19,7 @@ declare class Stats
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(csvFileName, dataSetName)](./ember-asset-size-report.stats._constructor_.md) |  | <b><i>(BETA)</i></b> Constructs a new instance of the <code>Stats</code> class |
+|  [(constructor)(csvFileName, dataSetName, options)](./ember-asset-size-report.stats._constructor_.md) |  | <b><i>(BETA)</i></b> Constructs a new instance of the <code>Stats</code> class |
 
 ## Methods
 

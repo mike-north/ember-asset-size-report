@@ -14,7 +14,9 @@ Constructs a new instance of the `Stats` class
 ```typescript
 constructor(
     csvFileName: string, 
-    dataSetName: string);
+    dataSetName: string, options?: {
+        append?: boolean;
+    });
 ```
 
 ## Parameters
@@ -23,4 +25,5 @@ constructor(
 |  --- | --- | --- |
 |  csvFileName | <code>string</code> |  |
 |  dataSetName | <code>string</code> |  |
+|  options | <code>{</code><br/><code>        append?: boolean;</code><br/><code>    }</code> |  |
 

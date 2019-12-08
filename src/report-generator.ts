@@ -16,7 +16,10 @@ class ReportGenerator {
   public constructor(
     private project: EmberProject,
     private reportPath: string,
-    private datasetName: string
+    private outputOptions: {
+      datasetName: string;
+      appendData: boolean;
+    }
   ) {}
 
   /**
@@ -26,7 +29,9 @@ class ReportGenerator {
     await this.csv.save(this.project);
   }
   // create a container to hold Csv data
-  private csv = new Stats(this.reportPath, this.datasetName);
+  private csv = new Stats(this.reportPath, this.outputOptions.datasetName, {
+    append: this.outputOptions.appendData
+  });
 
   private get spinner(): SpinnerLike | undefined {
     return this.project.spinner;

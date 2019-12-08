@@ -19,7 +19,7 @@ declare class ReportGenerator
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(project, reportPath, datasetName)](./ember-asset-size-report.reportgenerator._constructor_.md) |  | <b><i>(BETA)</i></b> Constructs a new instance of the <code>ReportGenerator</code> class |
+|  [(constructor)(project, reportPath, outputOptions)](./ember-asset-size-report.reportgenerator._constructor_.md) |  | <b><i>(BETA)</i></b> Constructs a new instance of the <code>ReportGenerator</code> class |
 
 ## Methods
 

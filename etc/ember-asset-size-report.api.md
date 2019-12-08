@@ -38,6 +38,7 @@ export function generateReport(options?: Partial<GenerateReportOptions>): Promis
 
 // @beta
 export interface GenerateReportOptions {
+    appendData: boolean;
     build: boolean;
     datasetName: string;
     extraJsFiles: string[];
@@ -82,7 +83,10 @@ export class Project {
 
 // @beta
 export class ReportGenerator {
-    constructor(project: Project, reportPath: string, datasetName: string);
+    constructor(project: Project, reportPath: string, outputOptions: {
+        datasetName: string;
+        appendData: boolean;
+    });
     addPublicFile(assetPath: string): Promise<void>;
     analyze(): Promise<void>;
     save(): Promise<void>;
@@ -112,7 +116,9 @@ export interface SpinnerLike {
 export class Stats {
     constructor(
     csvFileName: string,
-    dataSetName: string);
+    dataSetName: string, options?: {
+        append?: boolean;
+    });
     addBundleRow(bundleName: string, sizes: BundleSizes): void;
     addModuleRow(bundleName: string, fileName: string, sizes: ModuleSizes): void;
     save(project: Project, spinner?: SpinnerLike): Promise<void>;

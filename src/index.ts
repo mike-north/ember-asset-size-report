@@ -38,6 +38,10 @@ export interface GenerateReportOptions {
    * name of this dataset
    */
   datasetName: string;
+  /**
+   * if csv file is found to already exist, should we amend data to it or replace it?
+   */
+  appendData: boolean;
 }
 
 const DEFAULT_OPTIONS: GenerateReportOptions = {
@@ -45,6 +49,7 @@ const DEFAULT_OPTIONS: GenerateReportOptions = {
   out: findDefaultReportOutputLocation(),
   build: true,
   extraJsFiles: [],
+  appendData: true,
   datasetName: findDefaultReportOutputLocation()
 };
 
@@ -104,6 +109,7 @@ export async function generateReport(
     extraJsFiles: includeFiles,
     project,
     datasetName,
+    appendData,
     out
   }: GenerateReportOptions = {
     ...DEFAULT_OPTIONS,
@@ -113,7 +119,10 @@ export async function generateReport(
   const proj = new EmberProject(project, spinner);
   const includedFilePaths = includeFiles.map(p => path.join(proj.distPath, p));
 
-  const rptBuilder = new ReportGenerator(proj, out, datasetName);
+  const rptBuilder = new ReportGenerator(proj, out, {
+    datasetName,
+    appendData
+  });
   if (build) {
     await proj.build();
   }

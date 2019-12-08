@@ -54,6 +54,7 @@ class Stats {
     ],
     ["type", "dataset", "bundleName", "size", "minSize", "gzipSize", "brSize"]
   ];
+  private readonly appendData: boolean;
   public constructor(
     /**
      * Name of the CSV file
@@ -62,8 +63,11 @@ class Stats {
     /**
      * Name of the dataset
      */
-    private dataSetName: string
-  ) {}
+    private dataSetName: string,
+    options?: { append?: boolean }
+  ) {
+    this.appendData = options?.append ?? true;
+  }
 
   /**
    * Add a bundle's size information to the data set
@@ -118,9 +122,10 @@ class Stats {
       throw new Error(`CSV file ${this.csvFileName} is already saved`);
     this.isSaved = true;
     spinner?.start(`Saving CSV file: ${this.csvFileName}`);
+    const exists = fs.existsSync(this.csvFileName);
     await pWriteFile(
       [
-        ...this.headers,
+        ...(exists ? [] : this.headers),
         ...this.moduleRows.map(([typ, name, bundleName, ...rest]) => [
           typ,
           this.dataSetName,
@@ -138,7 +143,10 @@ class Stats {
         .map(r => r.join(", "))
         .join("\n"),
       this.csvFileName,
-      "utf8"
+      {
+        encoding: "utf8",
+        flag: this.appendData ? "a" : "w"
+      }
     );
     spinner?.succeedAndStart(`Saved CSV file: ${this.csvFileName}`);
   }

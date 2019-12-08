@@ -14,7 +14,14 @@ function printArgSummary(
   ui: cliui.CLIUI,
   args: Partial<GenerateReportOptions>
 ): void {
-  ["build", "project", "out", "extraJsFiles", "datasetName"].forEach(arg => {
+  [
+    "build",
+    "project",
+    "out",
+    "extraJsFiles",
+    "datasetName",
+    "amendData"
+  ].forEach(arg => {
     const key = arg as keyof GenerateReportOptions;
     ui.div(
       {
@@ -43,6 +50,12 @@ function createProgram(argv = process.argv) {
     })
     .option("build", { type: "boolean", default: true })
     .option("dataset-name", { type: "string" })
+    .option("append-data", {
+      type: "boolean",
+      description:
+        "if the csv output file is found to exist, should we append or overwrite?",
+      default: true
+    })
     .option("extra-js-file", { array: true, default: [] as string[] })
     .config(config)
     .pkgConf("asset-report")
@@ -64,6 +77,7 @@ export async function main(): Promise<void> {
     extraJsFiles: prog["extra-js-file"] ?? [],
     project: prog.project,
     datasetName: prog["dataset-name"],
+    appendData: prog["append-data"],
     out: prog.out
   };
   printArgSummary(ui, receivedOpts);
@@ -74,7 +88,7 @@ export async function main(): Promise<void> {
     )
   });
   const resolvedOpts: Partial<GenerateReportOptions> = {
-    build: receivedOpts.build,
+    ...receivedOpts,
     extraJsFiles: receivedOpts.extraJsFiles,
     project: receivedOpts.project ?? findDefaultProjectLocation(),
     out: receivedOpts.out ?? findDefaultReportOutputLocation(),

@@ -57,8 +57,8 @@ QUnit.module("acceptance tests", hooks => {
     assert.deepEqual(
       headerRows[0],
       [
-        "dataset",
         "type",
+        "dataset",
         "bundleName",
         "moduleName",
         "size",
@@ -74,8 +74,8 @@ QUnit.module("acceptance tests", hooks => {
     assert.deepEqual(
       headerRows[1],
       [
-        "dataset",
         "type",
+        "dataset",
         "bundleName",
         "size",
         "minSize",
