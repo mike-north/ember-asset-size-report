@@ -20,7 +20,7 @@ function printArgSummary(
     "out",
     "extraJsFiles",
     "datasetName",
-    "amendData"
+    "appendData"
   ].forEach(arg => {
     const key = arg as keyof GenerateReportOptions;
     ui.div(
