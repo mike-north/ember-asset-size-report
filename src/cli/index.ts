@@ -14,7 +14,7 @@ function printArgSummary(
   ui: cliui.CLIUI,
   args: Partial<GenerateReportOptions>
 ): void {
-  ["build", "project", "out", "extraJsFiles"].forEach(arg => {
+  ["build", "project", "out", "extraJsFiles", "datasetName"].forEach(arg => {
     const key = arg as keyof GenerateReportOptions;
     ui.div(
       {
